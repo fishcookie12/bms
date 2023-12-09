@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="memberMapper">
+	<insert id="insertMember" parameterType="MemberDTO">
+		INSERT INTO MEMBER(
+				MEMBER_ID,
+				PASSWD,
+				MEMBER_NM,
+				SEX,
+				BIRTH_DT,
+				HP,
+				EMAIL,
+				JOIN_DT
+		)
+		VALUES (
+				#{memberId},
+				#{passwd},
+				#{memberNm},
+				#{sex},
+				#{birthDt},
+				#{hp},
+				#{email},
+				NOW()			
+		 )
+	</insert>
+	
+	<select id="selectOneMember" parameterType="String" resultType="MemberDTO">
+		SELECT
+				*
+		FROM
+				MEMBER
+		WHERE
+				MEMBER_ID=#{memberId}
+	</select>
+	
+	<select id="selectOneDuplicatedMemberCheck" parameterType="String" resultType="MemberDTO">
+		SELECT
+				*
+		FROM
+				MEMBER
+		WHERE
+				MEMBER_ID=#{memberId}
+	</select>
+	
+	<select id="detailMember" parameterType="String" resultType="MemberDTO">
+		SELECT
+				*
+		FROM
+				MEMBER
+		WHERE
+				MEMBER_ID=#{memberId}
+	</select>
+	
+	<update id="updateMember" parameterType="MemberDTO">
+		UPDATE
+				MEMBER
+		SET
+				PASSWD=#{passwd},
+				HP=#{hp},
+				EMAIL=#{email}
+		WHERE
+				MEMBER_ID=#{memberId}
+	</update>
+	
+	<select id="findId" parameterType="MemberDTO" resultType="String">
+		SELECT
+				MEMBER_ID
+		FROM
+				MEMBER
+		WHERE
+				BIRTH_DT=#{birthDt}
+		AND
+				HP=#{hp}
+	</select>
+	
+	<select id="findPw" parameterType="String" resultType="String">
+		SELECT
+				PASSWD
+		FROM
+				MEMBER
+		WHERE
+				MEMBER_ID=#{memberId}
+	</select>
+</mapper>

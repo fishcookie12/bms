@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	
+ 	<definition name="/member/addMember"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/member/addMember.jsp"/>	
+ 		<put-attribute name="title" value="회원가입"/>	
+ 	</definition>
+ 	
+ 	<definition name="/member/loginMember"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/member/loginMember.jsp"/>	
+ 		<put-attribute name="title" value="로그인"/>	
+ 	</definition>
+ 	
+ 	<definition name="/member/detailMember"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/member/detailMember.jsp"/>	
+ 		<put-attribute name="title" value="회원정보상세조회"/>	
+ 	</definition>
+ 	
+ 	
+ 	<definition name="/member/modifyMember"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/member/modifyMember.jsp"/>	
+ 		<put-attribute name="title" value="회원정보수정"/>	
+ 	</definition>
+ 	
+ 	<definition name="/member/findId"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/member/findId.jsp"/>	
+ 		<put-attribute name="title" value="아이디찾기"/>	
+ 	</definition>
+ 	
+ 	<definition name="/member/IdFound"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/member/IdFound.jsp"/>	
+ 		<put-attribute name="title" value="아이디확인"/>	
+ 	</definition>
+ 	
+ 	<definition name="/member/findPw"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/member/findPw.jsp"/>	
+ 		<put-attribute name="title" value="비밀번호찾기"/>	
+ 	</definition>
+ 	
+ 	<definition name="/member/PwFound"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/member/PwFound.jsp"/>	
+ 		<put-attribute name="title" value="비밀번호확인"/>	
+ 	</definition>
+ 	
+</tiles-definitions>
