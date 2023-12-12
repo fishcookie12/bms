@@ -13,7 +13,11 @@ public interface MemberDAO {
 	
 	public void updateMember(MemberDTO memberDTO)throws Exception;
 	
+	public void deleteMember(String memberId)throws Exception;
+	
 	public String findId(MemberDTO memberDTO)throws Exception;
 	
-	public String findPw(String memeberId)throws Exception;
+	public MemberDTO findPw(String memberId)throws Exception;
+	
+	public void temporaryPassword(MemberDTO memberDTO)throws Exception;
 }

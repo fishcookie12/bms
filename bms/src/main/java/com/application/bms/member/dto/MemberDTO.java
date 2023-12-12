@@ -14,6 +14,7 @@ public class MemberDTO {
 	private String hp;
 	private String email;
 	private Date joinDt;
+	private int point;
 	public String getMemberId() {
 		return memberId;
 	}
@@ -62,10 +63,17 @@ public class MemberDTO {
 	public void setJoinDt(Date joinDt) {
 		this.joinDt = joinDt;
 	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
 	@Override
 	public String toString() {
 		return "MemberDTO [memberId=" + memberId + ", passwd=" + passwd + ", memberNm=" + memberNm + ", sex=" + sex
-				+ ", birthDt=" + birthDt + ", hp=" + hp + ", email=" + email + ", joinDt=" + joinDt + "]";
+				+ ", birthDt=" + birthDt + ", hp=" + hp + ", email=" + email + ", joinDt=" + joinDt + ", point=" + point
+				+ "]";
 	}
 	
 	

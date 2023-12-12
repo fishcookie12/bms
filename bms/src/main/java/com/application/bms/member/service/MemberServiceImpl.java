@@ -44,15 +44,31 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDTO getMemberDetail(String memberId) throws Exception {
 		
-		return memberDAO.detailMember(memberId);
+		return memberDAO.selectOneMember(memberId);
+	}
+	
+	@Override
+	public boolean isAuthentication(MemberDTO memberDTO) throws Exception {
+		MemberDTO dbMemberDTO=memberDAO.selectOneMember(memberDTO.getMemberId());
+		if(bCryptPasswordEncoder.matches(memberDTO.getPasswd(), dbMemberDTO.getPasswd())){
+			return true;
+		}
+		return false;
 	}
 	
 	@Override
 	public void modifyMember(MemberDTO memberDTO) throws Exception {
+		memberDTO.setPasswd(bCryptPasswordEncoder.encode(memberDTO.getPasswd()));
 		memberDAO.updateMember(memberDTO);
 		
 	}
 
+	@Override
+	public void removeMember(String memberId) throws Exception {
+		memberDAO.deleteMember(memberId);
+		
+	}
+	
 	@Override
 	public String findMemberId(MemberDTO memberDTO) throws Exception {
 		String findId=memberDAO.findId(memberDTO);
@@ -64,12 +80,21 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String findMemberPw(String memberId) throws Exception {
-		String findPw=memberDAO.findPw(memberId);
-		if(findPw!=null) {
-			return findPw;
+	public MemberDTO findMemberPw(String memberId) throws Exception {
+		
+		if(memberDAO.findPw(memberId)!=null) {
+			return memberDAO.findPw(memberId);
 		}
 		return null;
 	}
+
+	@Override
+	public void modifyPw(MemberDTO memberDTO) throws Exception {
+		memberDAO.temporaryPassword(memberDTO);
+		
+	}
+	
+
+
 
 }

@@ -18,10 +18,20 @@
  		<put-attribute name="title" value="회원정보상세조회"/>	
  	</definition>
  	
+ 	<definition name="/member/authentication"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/member/authentication.jsp"/>	
+ 		<put-attribute name="title" value="회원인증"/>	
+ 	</definition>
+ 	
  	
  	<definition name="/member/modifyMember"  extends="baseLayout">	
  		<put-attribute name="body" value="/WEB-INF/views/client/member/modifyMember.jsp"/>	
  		<put-attribute name="title" value="회원정보수정"/>	
+ 	</definition>
+ 	
+ 	<definition name="/member/removeMember"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/member/removeMember.jsp"/>	
+ 		<put-attribute name="title" value="회원탈퇴"/>	
  	</definition>
  	
  	<definition name="/member/findId"  extends="baseLayout">	

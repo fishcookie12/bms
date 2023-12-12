@@ -53,9 +53,9 @@
                                 <a href="${contextPath}/member/addMember"><i class="fa fa-user"></i> 회원가입</a>
 									</c:when>
 									<c:otherwise>
-										<p><a href="${contextPath }/member/modifyMember">회원정보 수정</a></p>	
-										<p><a href="${contextPath }/member/logoutMember">로그아웃</a></p>
-										<p><a href="${contextPath }/member/removeMember">회원탈퇴</a></p>	
+									
+										<p><a href="${contextPath }/member/detailMember">${sessionScope.memberId}님</a></p>	
+										<p><a href="${contextPath }/member/logoutMember">로그아웃</a></p>	
 									</c:otherwise>
 								</c:choose>
 							</c:otherwise>
@@ -75,20 +75,49 @@
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
+                    	<c:if test="${sessionScope.memberId eq 'admin'}">
                         <ul>
+                        	<li>관리자 카테고리
+                        		<ul>
+                        			<li>도서관리</li>
+                        			<li>회원관리</li>
+                        			<li>매출관리</li>
+                        			<li>주문관리</li>
+                        			<li>Q&A</li>
+                        		</ul>
+                        	</li>
                             <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            
+                            <li><a href="./shop-grid.html">베스트</a></li>
+                      
+                            <li><a href="#">신상품</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="./shop-details.html">국내도서</a></li>
+                                    <li><a href="./shoping-cart.html">외국도서</a></li>
+                                    <li><a href="./checkout.html">eBook</a></li>
+                                    
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="./blog.html">이벤트</a></li>
+                            <!--  <li><a href="./contact.html">추천도서</a></li>-->
                         </ul>
+                    	</c:if>
+                        <ul>
+                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li><a href="./shop-grid.html">베스트</a></li>
+                      
+                            <li><a href="#">신상품</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="./shop-details.html">국내도서</a></li>
+                                    <li><a href="./shoping-cart.html">외국도서</a></li>
+                                    <li><a href="./checkout.html">eBook</a></li>
+                                    
+                                </ul>
+                            </li>
+                            <li><a href="./blog.html">문의하기</a></li>
+                            <!--  <li><a href="./contact.html">추천도서</a></li>-->
+                        </ul>
+                        
                     </nav>
                 </div>
                 <div class="col-lg-3">

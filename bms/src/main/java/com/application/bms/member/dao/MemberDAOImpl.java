@@ -40,6 +40,12 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.update("memberMapper.updateMember", memberDTO);
 		
 	}
+	
+	@Override
+	public void deleteMember(String memberId) throws Exception {
+		sqlSession.delete("memberMapper.deleteMember", memberId);
+		
+	}
 
 	@Override
 	public String findId(MemberDTO memberDTO) throws Exception {
@@ -48,9 +54,16 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public String findPw(String memeberId) throws Exception {
+	public MemberDTO findPw(String memberId) throws Exception {
 		
-		return sqlSession.selectOne("memberMapper.findPw", memeberId);
+		return sqlSession.selectOne("memberMapper.findPw", memberId);
 	}
 
+	@Override
+	public void temporaryPassword(MemberDTO memberDTO) throws Exception {
+		
+		sqlSession.update("memberMapper.temporaryPassword", memberDTO);
+	}
+
+	
 }

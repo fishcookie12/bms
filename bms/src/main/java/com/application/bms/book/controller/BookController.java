@@ -1,0 +1,172 @@
+package com.application.bms.book.controller;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.application.bms.book.dto.BookDTO;
+import com.application.bms.book.service.BookService;
+
+@Controller
+@RequestMapping("/book")
+public class BookController {
+	@Autowired
+	private BookService bookService;
+	private static final String FILE_REPO_PATH ="C:\\bms_book_file_repo\\";
+
+	@GetMapping("/addBook")
+	public ModelAndView main() throws Exception {
+		return new ModelAndView("/book/addBook");
+	}
+	
+	@PostMapping("/addBook")
+	@ResponseBody
+	public String addBook(HttpServletRequest request, MultipartHttpServletRequest multipartRequest) throws Exception {
+		String jsScript="";
+		Iterator<String> fileList = multipartRequest.getFileNames();			
+		String fileName = "";
+		if (fileList.hasNext()) {												
+			MultipartFile uploadFile = multipartRequest.getFile(fileList.next()); 
+			if (!uploadFile.getOriginalFilename().isEmpty()) {
+				SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
+				fileName = fmt.format(new Date()) + "_" + UUID.randomUUID() + "_" + uploadFile.getOriginalFilename();
+				uploadFile.transferTo(new File(FILE_REPO_PATH + fileName)); 
+			}
+		
+		}
+		BookDTO bookDTO=new BookDTO();
+	
+		bookDTO.setBookNm(multipartRequest.getParameter("bookNm"));
+		bookDTO.setWriter(multipartRequest.getParameter("writer"));
+		bookDTO.setPrice(Integer.parseInt(multipartRequest.getParameter("price")));
+		bookDTO.setDiscountRt(Integer.parseInt(multipartRequest.getParameter("discountRt")));
+		bookDTO.setStock(Integer.parseInt(multipartRequest.getParameter("stock")));
+		bookDTO.setPublisher(multipartRequest.getParameter("publisher"));
+		bookDTO.setSort(multipartRequest.getParameter("sort"));
+		bookDTO.setPoint(Integer.parseInt(multipartRequest.getParameter("point")));
+		bookDTO.setTotalPage(Integer.parseInt(multipartRequest.getParameter("totalPage")));
+		bookDTO.setIsbn(multipartRequest.getParameter("isbn"));
+		bookDTO.setDeliveryPrice(Integer.parseInt(multipartRequest.getParameter("deliveryPrice")));
+		bookDTO.setPart(multipartRequest.getParameter("part"));
+		bookDTO.setWriterIntro(multipartRequest.getParameter("writerIntro"));
+		bookDTO.setContentsOrder(multipartRequest.getParameter("contentsOrder"));
+		bookDTO.setIntro(multipartRequest.getParameter("intro"));
+		bookDTO.setPublisherComment(multipartRequest.getParameter("publisherComment"));
+		bookDTO.setRecommendation(multipartRequest.getParameter("recommendation"));
+		bookDTO.setImgNm(multipartRequest.getParameter("imgNm"));
+		
+		bookService.addBook(bookDTO);
+
+		jsScript = "<script>";
+		jsScript += "alert('Registration completed.');";
+		jsScript += "location.href='" + request.getContextPath() + "/'";
+		jsScript += "</script>";
+		return jsScript;
+	}
+
+	@GetMapping("/bookList")
+	public ModelAndView bookList() throws Exception {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("book/bookList");
+		mv.addObject("bookList", bookService.getBookList());
+		return mv;
+	}
+	
+	@GetMapping("/bookDetail")
+	public ModelAndView bookDetail(@RequestParam("bookCd")int bookCd) throws Exception {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("book/bookDetail");
+		mv.addObject("bookDTO", bookService.getBookDetail(bookCd));
+		return mv;
+	}
+	
+	@GetMapping("/modifyBook")
+	public ModelAndView modifyBook(@RequestParam("bookCd")int bookCd) throws Exception {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("book/modifyBook");
+		mv.addObject("bookDTO", bookService.getBookDetail(bookCd));
+		return mv;
+	}
+	
+	@PostMapping("/modifyBook")
+	@ResponseBody
+	public String modifyBook(HttpServletRequest request, MultipartHttpServletRequest multipartRequest) throws Exception {
+		String jsScript="";
+		Iterator<String> fileList = multipartRequest.getFileNames();			
+		String fileName = "";
+		if (fileList.hasNext()) {												
+			MultipartFile uploadFile = multipartRequest.getFile(fileList.next()); 
+			if (!uploadFile.getOriginalFilename().isEmpty()) {
+				SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
+				fileName = fmt.format(new Date()) + "_" + UUID.randomUUID() + "_" + uploadFile.getOriginalFilename();
+				uploadFile.transferTo(new File(FILE_REPO_PATH + fileName)); 
+			}
+		
+		}
+		BookDTO bookDTO=new BookDTO();
+		bookDTO.setBookNm(multipartRequest.getParameter("bookNm"));
+		bookDTO.setWriter(multipartRequest.getParameter("writer"));
+		bookDTO.setPrice(Integer.parseInt(multipartRequest.getParameter("price")));
+		bookDTO.setDiscountRt(Integer.parseInt(multipartRequest.getParameter("discountRt")));
+		bookDTO.setStock(Integer.parseInt(multipartRequest.getParameter("stock")));
+		bookDTO.setPublisher(multipartRequest.getParameter("publisher"));
+		bookDTO.setSort(multipartRequest.getParameter("sort"));
+		bookDTO.setPoint(Integer.parseInt(multipartRequest.getParameter("point")));
+		bookDTO.setTotalPage(Integer.parseInt(multipartRequest.getParameter("totalPage")));
+		bookDTO.setIsbn(multipartRequest.getParameter("isbn"));
+		bookDTO.setDeliveryPrice(Integer.parseInt(multipartRequest.getParameter("deliveryPrice")));
+		bookDTO.setPart(multipartRequest.getParameter("part"));
+		bookDTO.setWriterIntro(multipartRequest.getParameter("writerIntro"));
+		bookDTO.setContentsOrder(multipartRequest.getParameter("contentsOrder"));
+		bookDTO.setIntro(multipartRequest.getParameter("intro"));
+		bookDTO.setPublisherComment(multipartRequest.getParameter("publisherComment"));
+		bookDTO.setRecommendation(multipartRequest.getParameter("recommendation"));
+		bookDTO.setImgNm(multipartRequest.getParameter("imgNm"));
+		bookService.modifyBook(bookDTO);
+		
+		jsScript+="<script>;";
+		jsScript += "alert('Modifications completed.');";
+		jsScript += "location.href='" + request.getContextPath() + "/'";
+		jsScript+="</script>;";
+		return jsScript;
+	}
+	
+	@GetMapping("/removeBook")
+	public ModelAndView removeBook(@RequestParam("bookCd")int bookCd) {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("book/removeBook");
+		mv.addObject("bookCd", bookCd);
+		return mv;
+	}
+	
+	@PostMapping("/removeBook")
+	public String removeBook(HttpServletRequest request, int bookCd) {
+		String jsScript="";
+		jsScript += "<script>";
+		jsScript += "alert('Deletion completed.');";
+		jsScript += "location.href='" + request.getContextPath() + "/'";
+		jsScript += "</script>";
+		return jsScript;
+	}
+	
+	
+}

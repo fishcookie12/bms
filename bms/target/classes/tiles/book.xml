@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	
+ 	<definition name="/book/addBook"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/admin/book/addBook.jsp"/>	
+ 		<put-attribute name="title" value="도서등록"/>	
+ 	</definition>
+ 	
+ 	<definition name="/book/bookList"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/admin/book/bookList.jsp"/>	
+ 		<put-attribute name="title" value="도서목록"/>	
+ 	</definition>
+ 	
+ 	<definition name="/book/bookDetail"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/admin/book/bookDetail.jsp"/>	
+ 		<put-attribute name="title" value="도서조회"/>	
+ 	</definition>
+ 	
+ 	<definition name="/book/modifyBook"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/admin/book/modifyBook.jsp"/>	
+ 		<put-attribute name="title" value="도서수정"/>	
+ 	</definition>
+ 	
+ 	<definition name="/book/removeBook"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/admin/book/rmoveBook.jsp"/>	
+ 		<put-attribute name="title" value="도서삭제"/>	
+ 	</definition>
+ 
+</tiles-definitions>

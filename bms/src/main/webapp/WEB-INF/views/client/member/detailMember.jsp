@@ -10,8 +10,8 @@
 <title>detailMember</title>
 </head>
 <body>
-	<h3>회원정보상세조회</h3>
-	<form>
+	<h3>'${memberDTO.memberId }'회원정보상세조회</h3>
+	<form action="${contextPath }/member/detailMember" method="post">
 		<table border="1">
 			<tr>
 				<td>아이디</td>
@@ -29,10 +29,13 @@
 				<td>이메일</td>
 				<td>${memberDTO.email }</td>
 			</tr>
+			<tr>
+				<td>포인트</td>
+				<td>${memberDTO.point }</td>
+			</tr>
 		</table>
-		<input type="button" value="메인화면" onclick="location.href='${contextPath}/member/index'">
-		<input type="button" value="회원정보수정하기" onclick="location.href='authentication?memberId'+${memberDTO.memberId}&menu=update';">
-		<input type="button" value="회원탈퇴하기" onclick="location.href='authentication?memberId'+${memberDTO.memberId}&menu=delete';">
+		<input type="button" value="회원정보수정하기" onclick="location.href='authentication?memberId=${memberDTO.memberId}&menu=update';">
+		<input type="button" value="회원탈퇴하기" onclick="location.href='authentication?memberId=${memberDTO.memberId}&menu=delete';">
 	</form>
 </body>
 </html>

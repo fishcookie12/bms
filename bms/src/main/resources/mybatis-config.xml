@@ -32,5 +32,7 @@
 	 -->
 	 <typeAliases>
 	 	<typeAlias type="com.application.bms.member.dto.MemberDTO" alias="MemberDTO" />
+	 	<typeAlias type="com.application.bms.book.dto.BookDTO" alias="BookDTO" />
+	 	
 	 </typeAliases>	
 </configuration>

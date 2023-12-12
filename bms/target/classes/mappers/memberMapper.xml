@@ -11,7 +11,8 @@
 				BIRTH_DT,
 				HP,
 				EMAIL,
-				JOIN_DT
+				JOIN_DT,
+				POINT
 		)
 		VALUES (
 				#{memberId},
@@ -21,7 +22,8 @@
 				#{birthDt},
 				#{hp},
 				#{email},
-				NOW()			
+				NOW(),
+				1000			
 		 )
 	</insert>
 	
@@ -43,15 +45,6 @@
 				MEMBER_ID=#{memberId}
 	</select>
 	
-	<select id="detailMember" parameterType="String" resultType="MemberDTO">
-		SELECT
-				*
-		FROM
-				MEMBER
-		WHERE
-				MEMBER_ID=#{memberId}
-	</select>
-	
 	<update id="updateMember" parameterType="MemberDTO">
 		UPDATE
 				MEMBER
@@ -62,6 +55,13 @@
 		WHERE
 				MEMBER_ID=#{memberId}
 	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM
+				MEMBER
+		WHERE
+				MEMBER_ID=#{memberId}
+	</delete>
 	
 	<select id="findId" parameterType="MemberDTO" resultType="String">
 		SELECT
@@ -74,12 +74,21 @@
 				HP=#{hp}
 	</select>
 	
-	<select id="findPw" parameterType="String" resultType="String">
+	<select id="findPw" parameterType="String" resultType="MemberDTO">
 		SELECT
-				PASSWD
+				*
 		FROM
 				MEMBER
 		WHERE
 				MEMBER_ID=#{memberId}
 	</select>
+	
+	<update id="temporaryPassword" parameterType="MemberDTO">
+		UPDATE
+				MEMBER
+		SER
+				PASSWD=#{passwd}
+		WHERE
+				MEMBER_ID=#{memberId}
+	</update>
 </mapper>

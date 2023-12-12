@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bookMapper">
+
+	<insert id="insertBook">
+		INSERT INTO BOOK(
+			BOOK_CD,
+			BOOK_NM,
+			WRITER,
+			PRICE,
+			DISCOUNT_RT,
+			STOCK,
+			PUBLISHER,
+			SORT,
+			POINT,
+			PUBLISHED_DT,
+			TOTAL_PAGE,
+			ISBN,
+			DELIVERY_PRICE,
+			PART,
+			WRITER_INTRO,
+			CONTENTS_ORDER,
+			INTRO,
+			PUBLISHER_COMMENT,
+			RECOMMENDATION,
+			IMG_NM,
+			ENROLL_DT
+		)VALUES(
+			#{bookCd},
+			#{bookNm},
+			#{writer},
+			#{price},
+			#{discountRt},
+			#{stock},
+			#{publisher},
+			#{sort},
+			#{point},
+			#{publishedDt},
+			#{totalPage},
+			#{isbn},
+			#{deliveryPrice},
+			#{part},
+			#{writerIntro},
+			#{contentsOrder},
+			#{intro},
+			#{publisherComment},
+			#{recommendation},
+			#{imgNm},
+			NOW()
+			
+		)
+	</insert>
+	
+	<select id="selectBookList" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK
+	</select>
+	
+	<select id="selectOneBook" parameterType="int" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK
+		WHERE
+				BOOK_CD=#{bookCd}
+	</select>
+	
+	<update id="updateBook" parameterType="BookDTO">
+		UPDATE
+				BOOK
+		SET
+				BOOK_NM=#{bookNm},
+				WRITER=#{writer},
+				PRICE=#{price},
+				DISCOUNT_RT=#{discountRt},
+				STOCK=#{stock},
+				PUBLISHER=#{publisher},
+				SORT=#{sort},
+				POINT=#{point},
+				PUBLISHED_DT=#{publishedDt},
+				TOTAL_PAGE=#{totalPage},
+				ISBN=#{isbn},
+				DELIVERY_PRICE=#{deliveryPrice},
+				PART=#{part},
+				WRITER_INTRO=#{writerIntro},
+				CONTENTS_ORDER=#{contentsOrder},
+				INTRO=#{intro},
+				PUBLISHER_COMMENT=#{publisherComment},
+				RECOMMENDATION=#{recommendation},
+				IMG_NM=#{imgNm}
+		WHERE
+				BOOK_CD=#{bookCd}
+	</update>
+	
+	<delete id="deleteBook" parameterType="int">
+		DELETE	FROM
+				BOOK
+		WHERE
+				BOOK_CD=#{bookCd}
+	</delete>
+</mapper>

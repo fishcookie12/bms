@@ -37,38 +37,63 @@ public class MemberController {
 		String jsScript="";
 		jsScript+="<script>";
 		jsScript+="alert('Registration Completed!');";
-		jsScript+="location.href='"+request.getContextPath()+"/common/index';";
+		jsScript+="location.href='"+request.getContextPath()+"/';";
 		jsScript+="</script>";
 		return jsScript;
 	}
 	
 	@GetMapping("/loginMember")
-	public ModelAndView loginMember() {
-		
+	public ModelAndView loginMember() throws Exception {
 		return new ModelAndView("/member/loginMember");
 	}
 	
+	
 	@PostMapping("/loginMember")
 	@ResponseBody
-	public String loginMember(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
-		String jsScript="";
-		if(memberService.loginMember(memberDTO)!=null) {
-			HttpSession session=request.getSession();
+	public String loginMember(MemberDTO memberDTO , HttpServletRequest request) throws Exception {
+		
+		String jsScript = "";
+		if (memberService.loginMember(memberDTO) != null) {
+			
+			HttpSession session = request.getSession();
 			session.setAttribute("memberId", memberDTO.getMemberId());
-			jsScript+="<script>";
-			jsScript+="alert('Login Successful');";
-			jsScript+="location.href='"+request.getContextPath()+"/common/index';";
-			jsScript+="</script>";
-		}
+			
+			jsScript += "<script>";
+			jsScript += "alert('You are logged in.');";
+			jsScript += "location.href='" + request.getContextPath() + "/'";
+			jsScript += "</script>";
+			System.out.println("Id : "+memberDTO.getMemberId());
+			
+		} 
 		else {
-			jsScript+="<script>";
-			jsScript+="alert('check your Id or Passwd');";
-			jsScript+="history.go(-1);";
-			jsScript+="</script>";
+			
+			jsScript += "<script>";
+			jsScript += "alert('check your Id or Password!');";
+			jsScript += "history.go(-1);";
+			jsScript += "</script>";
+			
 		}
 		
 		return jsScript;
+		
 	}
+	
+	@GetMapping("/logoutMember")
+	@ResponseBody
+	public String logoutMember(HttpServletRequest request) throws Exception{
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		String jsScript = "<script>";
+				jsScript += "alert('You are logged out.');";
+				jsScript += "location.href='" + request.getContextPath() + "/'";
+				jsScript += "</script>";
+		
+		return jsScript;
+		
+	}
+	
 	@PostMapping("/overlappedId")
 	@ResponseBody
 	public String overlapped(@RequestParam("memberId") String memberId) throws Exception{
@@ -76,17 +101,61 @@ public class MemberController {
 	}
 	
 	@GetMapping("/detailMember")
-	public ModelAndView detailMember(@RequestParam("memberId")String memberId) throws Exception {
+	public ModelAndView detailMember(HttpServletRequest request) throws Exception {
+	    HttpSession session = request.getSession();
+	   
+	    ModelAndView mv = new ModelAndView();
+	   
+	    mv.setViewName("/member/detailMember");
+	    
+	    mv.addObject("memberDTO" , memberService.getMemberDetail((String)session.getAttribute("memberId")));
+	    return mv;
+	}
+
+	@GetMapping("/authentication")
+	public ModelAndView authentication(HttpSession session,@RequestParam("memberId")String memberId, @RequestParam("menu")String menu) throws Exception {
+		session.setAttribute("loggedInMemberId", memberId);
 		ModelAndView mv=new ModelAndView();
-		mv.setViewName("/member/detailMember");
+		mv.setViewName("/member/authentication");
 		mv.addObject("memberDTO", memberService.getMemberDetail(memberId));
+		mv.addObject("menu", menu);
 		return mv;
 	}
 	
+	@PostMapping("/authentication")
+	@ResponseBody
+	public String authentication(HttpSession session,MemberDTO memberDTO, HttpServletRequest request, String menu) throws Exception {
+		String jsScript="";
+		 String loggedInMemberId = (String) session.getAttribute("loggedInMemberId");
+		if(memberService.isAuthentication(memberDTO)) {
+			if(menu.equals("update")) {
+				jsScript+="<script>";
+				//jsScript+="alert('passwd ok!');";
+				jsScript+="location.href="+request.getContextPath()+"member/modifyMember';";
+				jsScript+="</script>";
+				
+			}
+			else if(menu.equals("delete")) {
+				jsScript+="<script>";
+				jsScript+="location.href="+request.getContextPath()+"/member/removeMember';";
+				jsScript+="</script>";
+	
+			}
+		}
+		else {
+			jsScript+="<script>";
+			jsScript+="alert('checky your passwd');";
+			jsScript+="history.go(-1);";
+			jsScript+="</script>";
+		}
+		return jsScript;
+	}
+	
 	@GetMapping("/modifyMember")
-	public ModelAndView modifyMember() {
+	public ModelAndView modifyMember(@RequestParam("memberId")String memberId) throws Exception {
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("/member/modifyMember");
+		mv.addObject("memberDTO", memberService.getMemberDetail(memberId));
 		return mv;
 	}
 	
@@ -104,6 +173,26 @@ public class MemberController {
 		return jsScript;
 	}
 	
+	@GetMapping("/removeMember")
+	public ModelAndView removeMember(@RequestParam("memberId")String memberId) {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("/member/removeMember");
+		mv.addObject("memberId", memberId);
+		return mv;
+	}
+	
+	@PostMapping("/removeMember")
+	@ResponseBody
+	public String removeMember(String memberId, HttpServletRequest request) throws Exception {
+		String jsScript="";
+		memberService.removeMember(memberId);
+		jsScript+="<script>";
+		jsScript+="alert('Delete completed');";
+		jsScript+="location.href='"+request.getContextPath()+"/';";
+		jsScript+="</script>";
+		
+		return jsScript;
+	}
 	@GetMapping("/findId")
 	public ModelAndView findId() {
 		return new ModelAndView("/member/findId");
@@ -138,7 +227,8 @@ public class MemberController {
 	@ResponseBody
 	public String findPw(String memberId, HttpServletRequest request) throws Exception {
 		String jsScript="";
-		if(memberService.findMemberPw(memberId)==null) {
+		MemberDTO foundMember=memberService.findMemberPw(memberId);
+		if(foundMember==null) {
 			jsScript+="<script>";
 			jsScript+="alert('No matching member information found');";
 			jsScript+="history.go(-1);";
@@ -153,8 +243,8 @@ public class MemberController {
 				int rNum=ran.nextInt(characters.length());
 				PwFound=PwFound+characters.charAt(rNum);
 			}
-			MemberDTO memberDTO=new MemberDTO();
-			memberDTO.setPasswd(PwFound);
+			foundMember.setPasswd(PwFound);
+	        memberService.modifyPw(foundMember);
 			jsScript+="<script>";
 			jsScript += "location.href='" + request.getContextPath() + "/member/PwFound?PwFound=" + PwFound + "';";
 			jsScript+="</script>";

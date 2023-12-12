@@ -19,12 +19,14 @@
 	
 	        $(this).val(inputValue);
 	    });
+	     
 	});
 </script>
 <body>
 	<h3>회원정보수정</h3>
 	<form action="${contextPath }/member/modifyMember" method="post">
 		<table>
+		
 			<tr>
 				<td>비밀번호수정</td>
 				<td><input type="password" name="passwd"></td>
@@ -40,6 +42,7 @@
 		
 		</table>
 		<input type="submit" value="수정하기" >
+		<input type="hidden" value="${memberDTO.memberId }" >
 	</form>
 </body>
 </html>

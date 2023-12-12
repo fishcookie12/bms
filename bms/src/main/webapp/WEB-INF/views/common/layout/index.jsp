@@ -21,32 +21,48 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <li><a href="#">국내도서</a>
+                            	<ul class="header__menu__dropdown">
+                            		<li>소설</li>
+                            		<li>시/에세이</li>
+                            		<li>인문학</li>
+                            		<li>경제/경영</li>
+                            		<li>예술</li>
+                            		<li>IT</li>
+                            		<li>자격증</li>
+                            		<li>외국어</li>
+                            		<li>공무원</li>
+                            		<li>기업</li>
+                            		<li>중고등참고서</li>
+                            		<li>초등참고서</li>
+                            		<li>유아</li>
+                            	</ul>
+                            </li>
+                            
+                            <li><a href="#">외국도서</a></li>
+                            <li><a href="#">중고샵</a></li>
+                            <li><a href="#">eBook</a></li>
+               
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
+                              
                         <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
+                            <form action="#" method="post">
+                                 <select name="searchkeyword">
+	                            	<option value="">전체조회</option>
+	                            	<option value="bookNm">도서제목</option>
+	                            	<option value="writer">저자</option>
+	                            	<option value="publisher">출판사</option>
+	                            </select>
                                 <input type="text" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
+                            </form>      
                         </div>
+                            
+                            
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
