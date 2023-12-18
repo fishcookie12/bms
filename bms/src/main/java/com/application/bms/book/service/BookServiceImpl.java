@@ -1,6 +1,7 @@
 package com.application.bms.book.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,12 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<BookDTO> getBookList() throws Exception {
+	public List<BookDTO> getBookList(Map<String, Object> searchMap) throws Exception {
 		
-		return bookDAO.selectBookList();
+		return bookDAO.selectBookList(searchMap);
 	}
+	
+	
 
 	@Override
 	public BookDTO getBookDetail(int bookCd) throws Exception {

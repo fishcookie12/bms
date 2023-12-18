@@ -51,11 +51,49 @@
 		)
 	</insert>
 	
-	<select id="selectBookList" resultType="BookDTO">
-		SELECT
-				*
-		FROM
-				BOOK
+	<select id="selectBookList" parameterType="hashMap" resultType="BookDTO">
+		<choose>
+			<when test='searchOption.equals("total")'>
+				<choose>
+					<when test='searchWord.equals("")'>
+						SELECT
+								*
+						FROM
+								BOOK
+						ORDER BY
+								ENROLL_DT DESC
+			
+					</when>
+					<otherwise>
+						SELECT 
+								*
+						FROM
+								BOOK
+						WHERE
+								BOOK_NM LIKE CONCAT('%' , #{searchWord} , '%') OR
+								WRITER LIKE CONCAT('%' , #{searchWord} , '%')
+						ORDER BY
+								ENROLL_DT DESC
+		
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				SELECT
+						*
+				FROM
+						BOOK
+				WHERE
+					<if test='searchOption.equals("writer")'>
+						WRITER LIKE CONCAT('%' , #{searchWord} , '%')
+					</if>
+					<if test='searchOption.equals("bookNm")'>
+						BOOK_NM LIKE CONCAT('%' , #{searchWord} , '%')
+					</if>
+				ORDER BY
+						ENROLL_DT DESC
+			</otherwise>
+		</choose>
 	</select>
 	
 	<select id="selectOneBook" parameterType="int" resultType="BookDTO">
@@ -70,26 +108,44 @@
 	<update id="updateBook" parameterType="BookDTO">
 		UPDATE
 				BOOK
-		SET
-				BOOK_NM=#{bookNm},
-				WRITER=#{writer},
+		
+		<set>
+				
+				<if test='price != null and !price.equals("")'>
 				PRICE=#{price},
-				DISCOUNT_RT=#{discountRt},
-				STOCK=#{stock},
-				PUBLISHER=#{publisher},
+				</if>
+				<if test='discountRt != null and !discountRt.equals("")'>
+				DISCOUNT_RT=#{discountRt},	
+				</if>
+				<if test='stock != null and !stock.equals("")'>
+				STOCK=#{stock},	
+				</if>
+				
+				<if test='sort != null and !sort.equals("")'>
 				SORT=#{sort},
+				</if>
+				<if test='point != null and !point.equals("")'>
 				POINT=#{point},
-				PUBLISHED_DT=#{publishedDt},
+				</if>
+				
+				<if test='totalPage != null and !totalPage.equals("")'>
 				TOTAL_PAGE=#{totalPage},
+				</if>
+				<if test='isbn != null and !isbn.equals("")'>	
 				ISBN=#{isbn},
+				</if>
+				<if test='deliveryPrice != null and !deliveryPrice.equals("")'>	
 				DELIVERY_PRICE=#{deliveryPrice},
+				</if>
+				<if test='part != null and !part.equals("")'>	
 				PART=#{part},
-				WRITER_INTRO=#{writerIntro},
-				CONTENTS_ORDER=#{contentsOrder},
-				INTRO=#{intro},
-				PUBLISHER_COMMENT=#{publisherComment},
-				RECOMMENDATION=#{recommendation},
+				</if>
+				
+				<if test='imgNm != null and !imgNm.equals("")'>
 				IMG_NM=#{imgNm}
+				</if>
+		
+		</set>
 		WHERE
 				BOOK_CD=#{bookCd}
 	</update>

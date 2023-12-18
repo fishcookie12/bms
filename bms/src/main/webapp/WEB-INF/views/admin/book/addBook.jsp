@@ -10,7 +10,7 @@
 </head>
 <body>
 <h3>도서등록하기</h3>
-	<form action="${contextPath }/book/addBook" method="post">
+	<form action="${contextPath }/book/addBook" method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 		        <td>도서이미지</td>

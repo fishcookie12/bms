@@ -24,7 +24,7 @@
  	</definition>
  	
  	<definition name="/book/removeBook"  extends="baseLayout">	
- 		<put-attribute name="body" value="/WEB-INF/views/admin/book/rmoveBook.jsp"/>	
+ 		<put-attribute name="body" value="/WEB-INF/views/admin/book/removeBook.jsp"/>	
  		<put-attribute name="title" value="도서삭제"/>	
  	</definition>
  

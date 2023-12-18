@@ -42,8 +42,11 @@
                             </div>
                             <div class="header__top__right__auth">
                             <c:choose>
-								<c:when test="${sessionScope.memberId eq 'admin'}">
+								<c:when test="${sessionScope.adminId eq 'admin1' or sessionScope.adminId eq 'admin2' or sessionScope.adminId eq 'admin3'}">
+								<!-- 
 									<p><a href="${contextPath }/member/memberList">회원리스트 조회</a></p>
+								 -->
+								 	<p>${sessionScope.adminId}관리자로 접속중</p>
 									<p><a href="${contextPath }/member/logoutMember">로그아웃</a></p>
 								</c:when>
 								<c:otherwise>
@@ -51,6 +54,7 @@
 										<c:when test="${sessionScope.memberId eq null}">
                                 <a href="${contextPath}/member/loginMember"><i class="fa fa-user"></i> 로그인</a>
                                 <a href="${contextPath}/member/addMember"><i class="fa fa-user"></i> 회원가입</a>
+                                <a href="${contextPath}/admin/adminLog"><i class="fa fa-user"></i> 관리자</a>
 									</c:when>
 									<c:otherwise>
 									
@@ -73,35 +77,30 @@
                         <a href="./index.html"><img src="${contextPath}/resources/bootstrap/img/logo.png" alt=""></a>
                     </div>
                 </div>
+                <div class="hero__search__form">
+				    <form action="${contextPath}/book/bookList" method="get">
+				        <select name="searchOption" id="searchOption">
+				            <option value="total">전체검색</option>
+				            <option value="writer">저자</option>
+				            <option value="bookNm">제목</option>
+				        </select>
+				        <input type="text" id="searchWord" name="searchWord" value="${searchWord }">
+				        <button type="submit" class="site-btn">검색</button>
+				    </form>
+				</div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
-                    	<c:if test="${sessionScope.memberId eq 'admin'}">
-                        <ul>
-                        	<li>관리자 카테고리
-                        		<ul>
-                        			<li>도서관리</li>
-                        			<li>회원관리</li>
-                        			<li>매출관리</li>
-                        			<li>주문관리</li>
-                        			<li>Q&A</li>
-                        		</ul>
-                        	</li>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            
-                            <li><a href="./shop-grid.html">베스트</a></li>
-                      
-                            <li><a href="#">신상품</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">국내도서</a></li>
-                                    <li><a href="./shoping-cart.html">외국도서</a></li>
-                                    <li><a href="./checkout.html">eBook</a></li>
-                                    
-                                </ul>
-                            </li>
-                            <li><a href="./blog.html">이벤트</a></li>
-                            <!--  <li><a href="./contact.html">추천도서</a></li>-->
-                        </ul>
-                    	</c:if>
+                    	<c:choose>
+                    		<c:when test="${sessionScope.adminId eq 'admin1' or sessionScope.adminId eq 'admin2' or sessionScope.adminId eq 'admin3'}">
+                    			<ul>
+                    				<li>도서관리</li>
+                    				<li>회원관리</li>
+                    				<li>매출관리</li>
+                    				<li>주문관리</li>
+                    			</ul>
+                    		</c:when>
+                    		
+                    		<c:otherwise>
                         <ul>
                             <li class="active"><a href="./index.html">Home</a></li>
                             <li><a href="./shop-grid.html">베스트</a></li>
@@ -117,6 +116,9 @@
                             <li><a href="./blog.html">문의하기</a></li>
                             <!--  <li><a href="./contact.html">추천도서</a></li>-->
                         </ul>
+                    		
+                    		</c:otherwise>
+                    	</c:choose>
                         
                     </nav>
                 </div>
@@ -124,7 +126,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="${contextPath }/cart/cartList"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>

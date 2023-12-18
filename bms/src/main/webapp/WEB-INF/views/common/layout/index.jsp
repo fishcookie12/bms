@@ -48,20 +48,19 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
-                              
+                          <!-- 
                         <div class="hero__search__form">
-                            <form action="#" method="post">
-                                 <select name="searchkeyword">
-	                            	<option value="">전체조회</option>
-	                            	<option value="bookNm">도서제목</option>
-	                            	<option value="writer">저자</option>
-	                            	<option value="publisher">출판사</option>
-	                            </select>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                            <form action="${contextPath}/book/bookList" method="post">
+                                 <select id="searchKeyword">
+										<option value="total">전체검색</option>
+										<option value="writer">저자</option>
+										<option value="subject">제목</option>
+									</select>
+									<input type="text" id="searchWord" name="searchWord" value="${searchWord }">
+                               		<button type="submit" class="site-btn">검색</button>
                             </form>      
                         </div>
-                            
+                         --> 
                             
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
@@ -73,12 +72,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="hero__item set-bg" data-setbg="${contextPath}/resources/bootstrap/img/hero/banner.jpg">
+                    <div class="hero__item set-bg" data-setbg="${contextPath}/resources/book/359163_7927_2845.jpg">
                         <div class="hero__text">
-                            <span>FRUIT FRESH</span>
-                            <h2>Vegetable <br />100% Organic</h2>
-                            <p>Free Pickup and Delivery Available</p>
-                            <a href="#" class="primary-btn">SHOP NOW</a>
+                            <span>온라인도서쇼핑몰</span>
+                            <h2 style="color: white">BOOK STORE</h2>
+                            <p style="color: black">국내도서해외도서 eBook까지</p>
+                            <a href="${contextPath}/book/bookList" class="primary-btn">SHOP NOW</a>
                         </div>
                     </div>
                 </div>

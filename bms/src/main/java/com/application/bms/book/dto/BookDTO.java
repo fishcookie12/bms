@@ -2,6 +2,7 @@ package com.application.bms.book.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 @Component
 public class BookDTO {
@@ -14,6 +15,7 @@ public class BookDTO {
 	private String publisher;
 	private String sort;
 	private int point;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date publishedDt;
 	private int totalPage;
 	private String isbn;

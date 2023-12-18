@@ -8,90 +8,180 @@
 <head>
 <meta charset="UTF-8">
 <title>bookDetail</title>
+<script>
+	$().ready(function () {
+   
+    var quantityInput = $('#quantity');
+    var plusButton = $('#plus1');
+    var minusButton = $('#minus1');
+
+    	
+    plusButton.click(function () {
+        	
+        var currentValue = parseInt(quantityInput.val());
+        quantityInput.val(currentValue + 1);
+        updateTotalPrice();
+    });
+
+ 
+    minusButton.click(function () {
+        
+        var currentValue = parseInt(quantityInput.val());
+        quantityInput.val(currentValue > 1 ? currentValue - 1 : 1);
+        updateTotalPrice();
+    });
+    
+    function updateTotalPrice() {
+        var price = parseInt('${bookDTO.price}');
+        var quantity = parseInt(quantityInput.val());
+        var totalPrice = price * quantity;
+
+       
+        $('#totalPrice').text(totalPrice.toLocaleString()); 
+    }
+});
+	function addToCart() {
+		var memberId="${sessionScope.memberId}";
+		var bookCd="${bookDTO.bookCd}";
+		var quantity=parseInt($("#quantity").val());
+		var param={
+				"memberId" : memberId,
+				"bookCd" : bookCd,
+				"quantity" : quantity
+		};
+		$().ajax({
+			url : "${contextPath}/cart/addCart",
+			type : "post",
+			data : JSON.stringify(param),
+			contentType: "application/json",
+			success : function(data) {
+				alert("장바구니 추가완료");
+			}
+		})
+	}
+</script>
 </head>
+
 <body>
-	<h3>도서상세조회</h3>
-	<form>
-		<c:if test="${memberDTO.memberId eq 'admin' }">
-			<input type="button" value="도서정보수정하기" onclick="location.href='modifyBook?bookCd=${bookDTO.bookCd}'">
-			<input type="button" value="도서정보삭제하기" onclick="location.href='removeBook?bookCd=${bookDTO.bookCd}'">
-		</c:if>
-		<table border="1">
-			<tr>
-				<td>${bookDTO.bookNm }</td>
-			</tr>
-			<tr>
-				<td>${bookDTO.price }원</td>
-			</tr>
-			<tr>
-				<td>저자 : ${bookDTO.writer }</td>
-			</tr>
-			<tr>
-				<td>출판사 : ${bookDTO.publisher }</td>
-			</tr>
-			<tr>
-				<td>총 ${bookDTO.totalPage} 페이지</td>
-			</tr>
-			<tr>
-				<td>포인트 : ${bookDTO.point }</td>
-			</tr>
-			<tr>
-				<td>
-					<c:choose>
-						<c:when test="${bookDTO.stock eq 0 }">
-							<p>재고없음</p>
-						</c:when>
-						<c:otherwise>
-							<p>재고있음</p>
-						</c:otherwise>
-					</c:choose>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					배송비 : ${bookDTO.deliveryPrice }
-					<p>7만원이상 주문시 배송비 무료</p>
-				</td>
-				
-			</tr>
-			<tr>
-				<td>
-					<p>목차</p>
-					<p>${bookDTO.contentsOrder }</p>
-				</td>
-			</tr>
-			<c:if test="${bookDTO.writerIntro != null }">
-				<tr>
-					<td>저자서문</td>
-					<td>${bookDTO.writerIntro }</td>
-				</tr>
-			</c:if>
-			
-			<c:if test="${bookDTO.publisherComment != null }">
-				<tr>
-					<td>출판서평</td>
-					<td>${bookDTO.publisherComment }</td>
-				</tr>
-			</c:if>
-			
-			<c:if test="${bookDTO.recommendation != null }">
-				<tr>
-					<td>추천사</td>
-					<td>${bookDTO.recommendation }</td>
-				</tr>
-			</c:if>
-		</table>
-		<c:choose>
-			<c:when test="${bookDTO.stock ne 0 }">
-				<input type="button" value="구매하기" onclick="location.href=''">
-				<input type="button" value="장바구니" onclick="location.href=''">
-			</c:when>
-			<c:otherwise>
-				<input type="button" value="구매하기" onclick="location.href=''" disabled>
-				<input type="button" value="장바구니" onclick="location.href=''" disabled>
-			</c:otherwise>
-		</c:choose>
-		
-	</form>
+	
+	
+	<!-- Product Details Section Begin -->
+	
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__pic">
+                        <div class="product__details__pic__item">
+                            <img class="product__details__pic__item--large"
+                                src="img/product/details/product-details-1.jpg" alt="">
+                        </div>
+                        <div class="product__details__pic__slider owl-carousel">
+                            <img data-imgbigurl="img/product/details/product-details-2.jpg"
+                                src="img/product/details/thumb-1.jpg" alt="">
+                            <img data-imgbigurl="img/product/details/product-details-3.jpg"
+                                src="img/product/details/thumb-2.jpg" alt="">
+                            <img data-imgbigurl="img/product/details/product-details-5.jpg"
+                                src="img/product/details/thumb-3.jpg" alt="">
+                            <img data-imgbigurl="img/product/details/product-details-4.jpg"
+                                src="img/product/details/thumb-4.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__text">
+                        <h3>${bookDTO.bookNm }</h3>
+                        <div class="product__details__rating">
+                            
+                        </div>
+                        <div class="product__details__price">${bookDTO.price }원</div>
+                        배송비 : ${bookDTO.deliveryPrice }
+						<p>7만원이상 주문시 배송비 무료</p>
+                        <input type="text" value="1" id="quantity">
+                        <input type="button" value="+" id="plus1">
+                        <input type="button" value="-" id="minus1">
+                        <a href="javascript:void(0);" class="primary-btn" onclick="addToCart()">장바구니</a>
+                        <h6>총금액 :<span id="totalPrice"> ${bookDTO.price } </h6>
+                        <ul>
+                            <li><b>재고유무</b> 
+                            	<span>
+                            		<c:choose>
+										<c:when test="${bookDTO.stock eq 0 }">
+											<p>재고없음</p>
+										</c:when>
+										<c:otherwise>
+											<p>재고있음</p>
+										</c:otherwise>
+									</c:choose>
+                            	</span>
+                            </li>
+                            <li><b>저자</b> <span>${bookDTO.writer }</li>
+                            <li><b>출판사</b> <span> ${bookDTO.publisher }</span></li>
+                            <li><b>총페이지 </b><span>${bookDTO.totalPage}</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                                    aria-selected="true">책 소개 </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
+                                    aria-selected="false">저자의 말</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
+                                    aria-selected="false">출판사 평</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <h6>목차</h6>
+                                    <p>${bookDTO.contentsOrder }</p>
+                                </div>
+                                <div class="product__details__tab__desc">
+                                    <h6>추천사</h6>
+                                    <p>
+                                    	<c:if test="${bookDTO.recommendation != null }">
+											
+												<td>추천사</td>
+												<td>${bookDTO.recommendation }</td>
+										</c:if>	
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <h6>저자서문</h6>
+                                    <p>
+                                    	<c:if test="${bookDTO.writerIntro != null }">
+                                    		${bookDTO.writerIntro }</p>
+                                    	</c:if>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <h6>출판서문</h6>
+                                    <p>
+                                    	<c:if test="${bookDTO.publisherComment != null }">
+                                    		${bookDTO.publisherComment }
+                                    	</c:if>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <c:if test="${sessionScope.adminId eq 'admin1' or sessionScope.adminId eq 'admin2' or sessionScope.adminId eq 'admin3'}">
+        	<input type="button" value="도서정보수정하기" onclick="location.href='modifyBook?bookCd=${bookDTO.bookCd}';">
+			<input type="button" value="도서정보삭제하기" onclick="location.href='removeBook?bookCd=${bookDTO.bookCd}';">
+        </c:if>
+    </section>
 </body>
 </html>

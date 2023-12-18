@@ -15,7 +15,7 @@
 		<form action="${contextPath }/book/removeBook" method="post">
 			<input type="hidden" name="bookCd" value="${bookCd }">
 			<input type="submit" value="삭제하기">
-			<input type="button" value="취소" onclick="location.href='${contextPath }/book/'">
+			
 		</form>
 </body>
 </html>

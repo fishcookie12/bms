@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h3>도서정보수정</h3>
-		<form action="${contextPath }/book/modifyBook" method="post">
+		<form action="${contextPath }/book/modifyBook" method="post" enctype="multipart/form-data">
 			<table style="width: 700px;" border="1">
 				<tr>
 			        <td><img src="${contextPath }/member/thumbnails?fileName=${bookDTO.imgNm}" width="50" height="50" alt="사진"></td>
@@ -22,11 +22,11 @@
 	        	</tr>
 				<tr>
 					<td>도서제목</td>
-					<td><input type="text" name="bookNm" value="${bookDTO.bookNm }" size="70"/></td>
+					<td>${bookDTO.bookNm }</td>
 				</tr>
 				<tr>
 					<td>저자</td>
-					<td><input type="text" name="writer" value="${bookDTO.writer }" size="70"/></td>
+					<td>${bookDTO.writer }</td>
 				</tr>
 				<tr>
 					<td>가격</td>
@@ -49,7 +49,7 @@
 				<tr>
 					<td>출판사</td>
 					<td>
-						<input type="text" name="bookCd" value="${bookDTO.publisher }">
+						${bookDTO.publisher }
 					</td>
 				</tr>
 				<tr>
@@ -67,7 +67,7 @@
 				<tr>
 					<td>출판일</td>
 					<td>
-						<input type="date" name="publishedDt" value="${bookDTO.publishedDt }">
+						${bookDTO.publishedDt }
 					</td>
 				</tr>
 				<tr>
@@ -97,31 +97,31 @@
 				<tr>
 					<td>저자서문</td>
 					<td>
-						<textarea rows="10" cols="40" name="writerIntro">${bookDTO.writerIntro }</textarea>
+						${bookDTO.writerIntro }
 					</td>
 				</tr>
 				<tr>
 					<td>목차</td>
 					<td>
-						<textarea rows="10" cols="40" name="contentsOrder">${bookDTO.contentsOrder }</textarea>
+						${bookDTO.contentsOrder }
 					</td>
 				</tr>
 				<tr>
 					<td>설명</td>
 					<td>
-						<textarea rows="10" cols="40" name="intro">${bookDTO.intro }</textarea>
+						${bookDTO.intro }
 					</td>
 				</tr>
 				<tr>
 					<td>출판사평</td>
 					<td>
-						<textarea rows="10" cols="40" name="publisherComment">${bookDTO.publisherComment }</textarea>
+						${bookDTO.publisherComment }
 					</td>
 				</tr>
 				<tr>
 					<td>추천사</td>
 					<td>
-						<textarea rows="10" cols="40" name="recommendation">${bookDTO.recommendation }</textarea>
+						${bookDTO.recommendation }
 					</td>
 				</tr>
 			</table>

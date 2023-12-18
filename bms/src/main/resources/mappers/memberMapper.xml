@@ -42,18 +42,26 @@
 		FROM
 				MEMBER
 		WHERE
-				MEMBER_ID=#{memberId}
+				MEMBER_ID = #{memberId}
 	</select>
 	
 	<update id="updateMember" parameterType="MemberDTO">
 		UPDATE
 				MEMBER
-		SET
-				PASSWD=#{passwd},
-				HP=#{hp},
-				EMAIL=#{email}
+		<set>
+			<if test='hp != null and !hp.equals("")'>
+				HP = #{hp},  
+			</if>
+			<if test='email != null and !email.equals("")'>
+				EMAIL = #{email}, 
+			</if>
+			<if test='passwd != null and !passwd.equals("")'>
+				PASSWD = #{passwd} 
+			</if>
+			
+		</set>
 		WHERE
-				MEMBER_ID=#{memberId}
+				MEMBER_ID = #{memberId}
 	</update>
 	
 	<delete id="deleteMember" parameterType="String">

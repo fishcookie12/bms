@@ -1,6 +1,7 @@
 package com.application.bms.book.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,9 @@ public class BookDAOImpl implements BookDAO {
 		
 	}
 	@Override
-	public List<BookDTO> selectBookList() throws Exception {
+	public List<BookDTO> selectBookList(Map<String, Object> searchMap) throws Exception {
 		
-		return sqlSession.selectList("bookMapper.selectBookList");
+		return sqlSession.selectList("bookMapper.selectBookList",searchMap);
 	}
 	@Override
 	public BookDTO selectOneBook(int bookCd) throws Exception {
@@ -37,5 +38,6 @@ public class BookDAOImpl implements BookDAO {
 	public void deleteBook(int bookCd) throws Exception {
 		sqlSession.delete("bookMapper.deleteBook",bookCd);
 	}
+	
 
 }

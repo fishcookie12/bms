@@ -131,13 +131,13 @@ public class MemberController {
 			if(menu.equals("update")) {
 				jsScript+="<script>";
 				//jsScript+="alert('passwd ok!');";
-				jsScript+="location.href="+request.getContextPath()+"member/modifyMember';";
+				jsScript+="location.href='"+request.getContextPath()+"/member/modifyMember?memberId=" + memberDTO.getMemberId() + "';";
 				jsScript+="</script>";
 				
 			}
 			else if(menu.equals("delete")) {
 				jsScript+="<script>";
-				jsScript+="location.href="+request.getContextPath()+"/member/removeMember';";
+				jsScript+="location.href='"+request.getContextPath()+"/member/removeMember?memberId=" + memberDTO.getMemberId() + "';";
 				jsScript+="</script>";
 	
 			}
@@ -162,32 +162,32 @@ public class MemberController {
 	@PostMapping("/modifyMember")
 	@ResponseBody
 	public String modifyMember(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
+		System.out.println(memberDTO);
 		memberService.modifyMember(memberDTO);
 		String jsScript="";
 		HttpSession session=request.getSession();
 		session.setAttribute("memberId", memberDTO.getMemberId());
 		jsScript+="<script>";
 		jsScript+="alert('Modification completed');";
-		jsScript+="location.href='"+request.getContextPath()+"/common/index';";
+		jsScript+="location.href='"+request.getContextPath()+"/';";
 		jsScript+="</script>";
 		return jsScript;
 	}
 	
 	@GetMapping("/removeMember")
-	public ModelAndView removeMember(@RequestParam("memberId")String memberId) {
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("/member/removeMember");
-		mv.addObject("memberId", memberId);
-		return mv;
+	public ModelAndView removeMember() throws Exception{
+		return new ModelAndView("/member/removeMember");
 	}
 	
 	@PostMapping("/removeMember")
 	@ResponseBody
 	public String removeMember(String memberId, HttpServletRequest request) throws Exception {
 		String jsScript="";
+		HttpSession session = request.getSession();
+		session.invalidate();
 		memberService.removeMember(memberId);
 		jsScript+="<script>";
-		jsScript+="alert('Delete completed');";
+		jsScript+="alert('Withdrawa completed');";
 		jsScript+="location.href='"+request.getContextPath()+"/';";
 		jsScript+="</script>";
 		
@@ -203,6 +203,7 @@ public class MemberController {
 	@ResponseBody
 	public String findId(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
 		String jsScript="";
+		System.out.println("1");
 		if(memberService.findMemberId(memberDTO)==null) {
 			jsScript+="<script>";
 			jsScript+="alert('No matching member information found');";
@@ -210,10 +211,13 @@ public class MemberController {
 			jsScript+="</script>";
 		}
 		else {
-			String IdFound=memberService.findMemberId(memberDTO);
+			System.out.println("2");
+			String foundId=memberService.findMemberId(memberDTO);
+			System.out.println("3");
 			jsScript+="<script>";
-			jsScript += "location.href='" + request.getContextPath() + "/member/IdFound?IdFound=" + IdFound + "';";
+			jsScript += "location.href='"+request.getContextPath()+"/member/IdFound?foundId="+foundId+"';";
 			jsScript+="</script>";
+			System.out.println("4");
 		}
 		return jsScript;
 	}
@@ -246,7 +250,7 @@ public class MemberController {
 			foundMember.setPasswd(PwFound);
 	        memberService.modifyPw(foundMember);
 			jsScript+="<script>";
-			jsScript += "location.href='" + request.getContextPath() + "/member/PwFound?PwFound=" + PwFound + "';";
+			jsScript += "location.href='"+request.getContextPath()+"/member/PwFound?PwFound="+PwFound+"';";
 			jsScript+="</script>";
 			
 		}

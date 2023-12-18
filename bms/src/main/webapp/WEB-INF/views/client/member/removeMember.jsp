@@ -12,7 +12,7 @@
 <h3>회원탈퇴</h3>
 		<p><span style="color:red;">탈퇴하시겠습니까?</span></p>
 		<form action="${contextPath }/member/removeMember" method="post" >
-			<input type="hidden" name="boardId" value="${memberId }">
+			<input type="hidden" name="memberId" value="${memberId }">
 			<input type="submit" value="탈퇴하기">
 		</form>
 </body>
