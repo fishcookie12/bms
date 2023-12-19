@@ -1,6 +1,7 @@
 package com.application.bms.cart.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,9 +20,9 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public List<CartDTO> cartList() throws Exception {
+	public List<Map<String,Object>> cartList(String memberId) throws Exception {
 		
-		return cartDAO.selectCartList();
+		return cartDAO.selectCartList(memberId);
 	}
 
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cartMapper">
 	<insert id="insertCart" parameterType="CartDTO">
-		INSERT INTO MEMBER(
+		INSERT INTO CART(
 				MEMBER_ID,
 				BOOK_CD,
 				QUANTITY
@@ -14,9 +14,15 @@
 				#{quantity}
 							
 		 )
+		ON DUPLICATE KEY UPDATE
+        QUANTITY = QUANTITY + VALUES(QUANTITY);
 	</insert>
-
-	<select id="selectCartList" resultType="CartDTO">
+	<resultMap type="hashMap" id="joinMap">
+		<result column="BOOK_NM" property="bookNm"/>
+		<result column="PRICE" property="price"/>
+		<result column="QUANTITY" property="quantity"/>
+	</resultMap>
+	<select id="selectCartList" resultMap="joinMap">
 		SELECT
 				B.BOOK_NM,
 				B.PRICE,
@@ -25,6 +31,8 @@
 				CART C
 			INNER JOIN BOOK B
 					ON	B.BOOK_CD=C.BOOK_CD
+			INNER JOIN MEMBER M
+					ON	M.MEMBER_ID=C.MEMBER_ID
 		WHERE
 				C.MEMBER_ID=#{memberId}
 	</select>

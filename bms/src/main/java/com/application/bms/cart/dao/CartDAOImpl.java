@@ -1,6 +1,7 @@
 package com.application.bms.cart.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,9 @@ public class CartDAOImpl implements CartDAO {
 	}
 	
 	@Override
-	public List<CartDTO> selectCartList() throws Exception {
+	public List<Map<String,Object>> selectCartList(String memberId) throws Exception {
 		
-		return sqlSession.selectList("cartMapper.selectCartList");
+		return sqlSession.selectList("cartMapper.selectCartList",memberId);
 	}
 
 }

@@ -36,7 +36,7 @@
 </script>
 </head>
 <body>
-	<h3>장바구니</h3>
+
 	 <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
         <div class="container">
@@ -53,36 +53,33 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <c:forEach var="cartDTO" items="${cartList}">              
-	                            <tbody>
-	                                <tr>
-	                                    <td class="shoping__cart__item">
-	                                        <img src="img/cart/cart-1.jpg" alt="">
-	                                        <h5>${cartDTO.bookNm }</h5>
-	                                    </td>
-	                                    <td class="shoping__cart__price">
-	                                        ${cartDTO.price }
-	                                    </td>
-	                                    <td class="shoping__cart__quantity">
-	                                        <div class="quantity">
-	                                            <div class="pro-qty">
-	                                                <input type="text" value="${cartDTO.quantity }">
-	                                                 
-							                        <input type="button" value="+" id="plus1">
-							                        <input type="button" value="-" id="minus1">
-	                                            </div>
-	                                        </div>
-	                                    </td>
-	                                    <td class="shoping__cart__total">
-	                                       ${cartDTO.price * cartDTO.quantity}
-	                                    </td>
-	                                    <td class="shoping__cart__item__close">
-	                                        <span class="icon_close"></span>
-	                                    </td>
-	                                </tr>
-	                               
-	                            </tbody>
-                            </c:forEach>
+                            <tbody>
+                                <c:forEach var="cartDTO" items="${cartList}">
+                                    <tr>
+                                        <td class="shoping__cart__item">
+                                            <img src="img/cart/cart-1.jpg" alt="">
+                                            <h5>${cartDTO.bookNm }</h5>
+                                        </td>
+                                        <td class="shoping__cart__price">
+                                            ${cartDTO.price }
+                                        </td>
+                                        <td class="shoping__cart__quantity">
+                                            <div class="quantity">
+                                                <div class="pro-qty">
+                                                    <input type="text" value="${cartDTO.quantity }">
+                                                   
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="shoping__cart__total">
+                                            ${cartDTO.price * cartDTO.quantity}
+                                        </td>
+                                        <td class="shoping__cart__item__close">
+                                            <span class="icon_close"></span>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -93,11 +90,7 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                        <!-- 
-                          <li>총구매수량  <span>${fn:sum(cartList, 'quantity')}</span></li>
-                   		 <li>총구매금액 <span>${fn:sum(cartList, 'price * quantity')}</span></li>
                         
-                         -->
                         </ul>
                         <a href="#" class="primary-btn">주문하기</a>
                     </div>

@@ -3,9 +3,11 @@
 
 <tiles-definitions>
 	
- 	<definition name="/cart/cart"  extends="baseLayout">	
+ 	<definition name="/cart/cartList"  extends="baseLayout">	
  		<put-attribute name="body" value="/WEB-INF/views/client/cart/cartList.jsp"/>	
  		<put-attribute name="title" value="장바구니"/>	
  	</definition>
+ 	
+ 	
  	 
 </tiles-definitions>

@@ -11,9 +11,9 @@
 <script>
 	$().ready(function () {
    
-    var quantityInput = $('#quantity');
-    var plusButton = $('#plus1');
-    var minusButton = $('#minus1');
+	    var quantityInput = $('#quantity');
+	    var plusButton = $('#plus1');
+	    var minusButton = $('#minus1');
 
     	
     plusButton.click(function () {
@@ -39,6 +39,7 @@
        
         $('#totalPrice').text(totalPrice.toLocaleString()); 
     }
+    
 });
 	function addToCart() {
 		var memberId="${sessionScope.memberId}";
@@ -49,12 +50,11 @@
 				"bookCd" : bookCd,
 				"quantity" : quantity
 		};
-		$().ajax({
+		$.ajax({
 			url : "${contextPath}/cart/addCart",
 			type : "post",
-			data : JSON.stringify(param),
-			contentType: "application/json",
-			success : function(data) {
+			data : param,
+			success : function() {
 				alert("장바구니 추가완료");
 			}
 		})
@@ -100,7 +100,7 @@
                         <input type="text" value="1" id="quantity">
                         <input type="button" value="+" id="plus1">
                         <input type="button" value="-" id="minus1">
-                        <a href="javascript:void(0);" class="primary-btn" onclick="addToCart()">장바구니</a>
+                        <a href="javascript:addToCart();" class="primary-btn" >장바구니</a>
                         <h6>총금액 :<span id="totalPrice"> ${bookDTO.price } </h6>
                         <ul>
                             <li><b>재고유무</b> 

@@ -1,8 +1,11 @@
 package com.application.bms.cart.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,19 +25,18 @@ public class CartController {
 	private CartService cartService;
 	
 	@PostMapping("/addCart")
-	@ResponseBody
-	public String addCart(@ModelAttribute CartDTO cartDTO) throws Exception {
+	public ResponseEntity<Object> addCart(@ModelAttribute CartDTO cartDTO) throws Exception {
 		cartService.addCart(cartDTO);
-		
-		return "success";
+		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 	
 	
 	@GetMapping("/cartList")
-	public ModelAndView cartList() throws Exception {
+	public ModelAndView cartList(HttpServletRequest request) throws Exception {
+		HttpSession session=request.getSession();
 		ModelAndView mv=new ModelAndView();
-		mv.setViewName("cartList");
-		mv.addObject("cartList", cartService.cartList());
+		mv.setViewName("/cart/cartList");
+		mv.addObject("cartList", cartService.cartList((String)session.getAttribute("memberId")));
 		return mv;
 	}
 
