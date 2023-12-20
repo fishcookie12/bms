@@ -12,21 +12,18 @@
 	$().ready(function () {
    
 	    var quantityInput = $('#quantity');
-	    var plusButton = $('#plus1');
-	    var minusButton = $('#minus1');
 
-    	
-    plusButton.click(function () {
+    $("#plus1").click(function () {
         	
-        var currentValue = parseInt(quantityInput.val());
+        var currentValue = Number(quantityInput.val());
         quantityInput.val(currentValue + 1);
         updateTotalPrice();
     });
 
  
-    minusButton.click(function () {
+    $("#minus1").click(function () {
         
-        var currentValue = parseInt(quantityInput.val());
+        var currentValue = Number(quantityInput.val());
         quantityInput.val(currentValue > 1 ? currentValue - 1 : 1);
         updateTotalPrice();
     });
@@ -37,11 +34,17 @@
         var totalPrice = price * quantity;
 
        
-        $('#totalPrice').text(totalPrice.toLocaleString()); 
+        $('#totalPrice').text(totalPrice); 
+    }
+    if ("${bookDTO.stock eq 0}") {
+        addToCartButton.prop('disabled', true);
     }
     
 });
 	function addToCart() {
+		if ("${bookDTO.stock eq 0}") {
+	        return;
+	    }
 		var memberId="${sessionScope.memberId}";
 		var bookCd="${bookDTO.bookCd}";
 		var quantity=parseInt($("#quantity").val());
@@ -97,10 +100,10 @@
                         <div class="product__details__price">${bookDTO.price }원</div>
                         배송비 : ${bookDTO.deliveryPrice }
 						<p>7만원이상 주문시 배송비 무료</p>
-                        <input type="text" value="1" id="quantity">
                         <input type="button" value="+" id="plus1">
+                        <input type="text" value="1" id="quantity">
                         <input type="button" value="-" id="minus1">
-                        <a href="javascript:addToCart();" class="primary-btn" >장바구니</a>
+                        <a href="javascript:addToCart();" class="primary-btn">장바구니</a>
                         <h6>총금액 :<span id="totalPrice"> ${bookDTO.price } </h6>
                         <ul>
                             <li><b>재고유무</b> 

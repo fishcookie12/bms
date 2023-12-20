@@ -39,6 +39,19 @@ public class CartController {
 		mv.addObject("cartList", cartService.cartList((String)session.getAttribute("memberId")));
 		return mv;
 	}
+	
+	@PostMapping("/modifyCart")
+	public ResponseEntity<Object> modifyCart(CartDTO cartDTO, HttpServletRequest request) throws Exception {
+		System.out.println(cartDTO);
+		cartService.modifyCart(cartDTO);
+		return new ResponseEntity<Object>(HttpStatus.OK);
+	}
+	
+	@PostMapping("/removeCart")
+	public ResponseEntity<Object> removecart(int cartCd, HttpServletRequest request ) throws Exception{
+		cartService.removeCart(cartCd);
+		return new ResponseEntity<Object>(HttpStatus.OK);
+	}
 
 	
 }

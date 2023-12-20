@@ -37,5 +37,19 @@
 				C.MEMBER_ID=#{memberId}
 	</select>
 		
+	<update id="updateCart" parameterType="CartDTO">
+		UPDATE
+				CART
+		SET
+				QUANTITY=#{quantity}
+		WHERE
+				BOOK_CD=#{bookCd} AND MEMBER_ID=#{memberId}
+	</update>
 	
+	<delete id="deleteCart" parameterType="int">
+		DELETE FROM
+				CART
+		WHERE
+				CART_CD=#{cartCd}
+	</delete>
 </mapper>

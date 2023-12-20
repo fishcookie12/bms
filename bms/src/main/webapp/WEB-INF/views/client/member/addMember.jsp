@@ -17,7 +17,7 @@
 		   		alert("ID를 입력하세요.");
 		   		return;
 		    }
-		   
+		  
 		    $.ajax({
 		       type : "post",
 		       url : "${contextPath}/member/overlappedId",
@@ -41,7 +41,7 @@
 
 		    function validatePassword() {
 		        var password = $('#passwd').val();
-		     
+		    
 		        var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{10,}$/;
 
 		        if (!regex.test(password)) {
@@ -54,7 +54,7 @@
 		$().ready(function() {
        
             $("#birthDt").on("input", function() {
-              
+             
                 var inputValue = $(this).val().replace(/[^0-9]/g, '');
 
                 inputValue = inputValue.substring(0, 6);
@@ -66,7 +66,7 @@
 		$().ready(function() {
        
             $("#hp").on("input", function() {
-              
+             
                 var inputValue = $(this).val().replace(/[^0-9]/g, '');
 
                 inputValue = inputValue.substring(0, 11);

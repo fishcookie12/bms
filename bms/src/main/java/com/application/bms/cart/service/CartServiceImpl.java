@@ -25,4 +25,16 @@ public class CartServiceImpl implements CartService {
 		return cartDAO.selectCartList(memberId);
 	}
 
+	@Override
+	public void modifyCart(CartDTO cartDTO) throws Exception {
+		cartDAO.updateCart(cartDTO);
+		
+	}
+
+	@Override
+	public void removeCart(int cartCd) throws Exception {
+		cartDAO.deleteCart(cartCd);
+		
+	}
+
 }

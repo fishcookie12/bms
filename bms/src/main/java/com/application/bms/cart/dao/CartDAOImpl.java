@@ -25,4 +25,16 @@ public class CartDAOImpl implements CartDAO {
 		return sqlSession.selectList("cartMapper.selectCartList",memberId);
 	}
 
+	@Override
+	public void updateCart(CartDTO cartDTO) throws Exception {
+		sqlSession.update("cartMapper.updateCart",cartDTO);
+		
+	}
+
+	@Override
+	public void deleteCart(int cartCd) throws Exception {
+		sqlSession.delete("cartMapper.deleteCart",cartCd);
+		
+	}
+
 }
