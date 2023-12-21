@@ -113,8 +113,7 @@
                                     
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">문의하기</a></li>
-                            <!--  <li><a href="./contact.html">추천도서</a></li>-->
+                            <li><a href="${contextPath }/contact/addContact">문의하기</a></li>
                         </ul>
                     		
                     		</c:otherwise>

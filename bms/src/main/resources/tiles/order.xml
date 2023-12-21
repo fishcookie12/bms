@@ -4,7 +4,7 @@
 <tiles-definitions>
 	
  	<definition name="/order/order"  extends="baseLayout">	
- 		<put-attribute name="body" value="/WEB-INF/views/client/order/order.jsp"/>	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/order/addOrder.jsp"/>	
  		<put-attribute name="title" value="주문하기"/>	
  	</definition>
  	 

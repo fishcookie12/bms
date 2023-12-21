@@ -18,21 +18,23 @@
         QUANTITY = QUANTITY + VALUES(QUANTITY);
 	</insert>
 	<resultMap type="hashMap" id="joinMap">
+		<result column="CART_CD" property="cartCd"/>
 		<result column="BOOK_NM" property="bookNm"/>
 		<result column="PRICE" property="price"/>
 		<result column="QUANTITY" property="quantity"/>
 	</resultMap>
 	<select id="selectCartList" resultMap="joinMap">
 		SELECT
+				C.CART_CD,
+				C.QUANTITY,
 				B.BOOK_NM,
-				B.PRICE,
-				C.QUANTITY
+				B.PRICE
 		FROM
 				CART C
 			INNER JOIN BOOK B
-					ON	B.BOOK_CD=C.BOOK_CD
+					ON	B.BOOK_CD = C.BOOK_CD
 			INNER JOIN MEMBER M
-					ON	M.MEMBER_ID=C.MEMBER_ID
+					ON	M.MEMBER_ID = C.MEMBER_ID
 		WHERE
 				C.MEMBER_ID=#{memberId}
 	</select>
@@ -41,9 +43,9 @@
 		UPDATE
 				CART
 		SET
-				QUANTITY=#{quantity}
+				QUANTITY = #{quantity}
 		WHERE
-				BOOK_CD=#{bookCd} AND MEMBER_ID=#{memberId}
+				CART_CD = #{cartCd}
 	</update>
 	
 	<delete id="deleteCart" parameterType="int">

@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>cartList</title>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 <script>
     $(document).ready(function () {
     	
@@ -23,8 +23,11 @@
             var quantityInput = currentRow.find('input[type="text"]');
             var currentValue = parseInt(quantityInput.val());
             quantityInput.val(currentValue + 1);
+            
             updateTotalPrice();
-            updateCart();
+            
+            updateCart(quantityInput.prop("id") , quantityInput.val());
+            
         });
 
         minusButtons.click(function () {
@@ -33,13 +36,15 @@
             var currentValue = parseInt(quantityInput.val());
             quantityInput.val(currentValue > 1 ? currentValue - 1 : 1);
             updateTotalPrice();
-            updateCart();
+            updateCart(quantityInput.prop("id") , quantityInput.val());
         });
         
         deleteButtons.click(function () {
             var currentRow = $(this).closest('tr');
+            var cartCd = currentRow.find('input[type="button"].delete').prop("id");
             currentRow.remove();
             updateTotalPrice();
+            deleteCart(cartCd);
         });
 
         function updateTotalPrice() {
@@ -61,14 +66,21 @@
             $('.total-price').text(totalPrice);
         }
         
-       function updateCart() {
-    	   var memberId="${sessionScope.memberId}";
+       function updateCart(cartCd , quantity) {
+    	   /*
+    	    var memberId="${sessionScope.memberId}";
    			var bookCd="${cartDTO.bookCd}";
    			var quantity=parseInt($("#quantity").val());
    			var param={
 	   				"memberId" : memberId,
 	   				"bookCd" : bookCd,
 	   				"quantity" : quantity
+   			};
+   			
+   			*/
+   			var param={
+	   				"cartCd" : Number(cartCd),
+	   				"quantity" : Number(quantity)
    			};
    			console.log(param);
    			$.ajax({
@@ -79,6 +91,21 @@
    					alert("수정완료");
    				}
    			})
+		}
+       
+       function deleteCart(cartCd) {
+    	   var param={
+	   				"cartCd" : Number(cartCd) 				
+  			};
+    	   console.log(param);
+    	   $.ajax({
+    		   url : "${contextPath}/cart/removeCart",
+    		   type : "post",
+    		   data : param,
+    		   success :function(){
+  					alert("삭제완료");
+  				}
+    	   })
 		}
     });
 </script>
@@ -114,7 +141,7 @@
                                         <td class="shoping__cart__quantity">
                                             <div class="quantity">
                                                 <input type="button" value="+" class="plus">
-												<input type="text" value="${cartDTO.quantity}" size="3">
+												<input type="text" id="${cartDTO.cartCd }" value="${cartDTO.quantity}" size="3">
 												<input type="button" value="-" class="minus">
                                             </div>
                                         </td>
@@ -122,7 +149,7 @@
                                             ${cartDTO.quantity * cartDTO.price }
                                         </td>
                                         <td class="shoping__cart__item__close">
-                                            <input type="button" value="삭제" id="delete" class="delete"></span>
+                                            <input type="button" value="삭제" id="${cartDTO.cartCd }" class="delete"></span>
                                         </td>
                                     </tr>
                                 </c:forEach>

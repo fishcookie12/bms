@@ -37,6 +37,7 @@
 	 	<typeAlias type="com.application.bms.admin.dto.AdminDTO" alias="AdminDTO" />
 	 	<typeAlias type="com.application.bms.cart.dto.CartDTO" alias="CartDTO" />
 	 	<typeAlias type="com.application.bms.order.dto.OrderDTO" alias="OrderDTO" />
+	 	<typeAlias type="com.application.bms.contact.dto.ContactDTO" alias="ContactDTO" />
 	 	
 	 </typeAliases>	
 </configuration>

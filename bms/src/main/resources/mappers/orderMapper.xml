@@ -2,5 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="orderMapper">
-	
+	<insert id="insertOrder" parameterType="OrderDTO">
+		INSERT INTO ORDER(
+				MEMBER_ID,
+				BOOK_CD,
+				ORDER_BOOK_QTY,
+				RECEIVER,
+				DELIVERY_ADRESS,
+				DELIVERY_MESSAGE						
+		)
+		VALUES (
+				#{memberId},	
+				#{bookCd},	
+				#{orderBookQty},	
+				#{receiver},	
+				#{deliveryAdress},	
+				#{deliveryMessage}
+		 )
+	</insert>
 </mapper>

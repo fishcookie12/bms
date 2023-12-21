@@ -41,7 +41,7 @@ public class CartController {
 	}
 	
 	@PostMapping("/modifyCart")
-	public ResponseEntity<Object> modifyCart(CartDTO cartDTO, HttpServletRequest request) throws Exception {
+	public ResponseEntity<Object> modifyCart(CartDTO cartDTO) throws Exception {
 		System.out.println(cartDTO);
 		cartService.modifyCart(cartDTO);
 		return new ResponseEntity<Object>(HttpStatus.OK);
