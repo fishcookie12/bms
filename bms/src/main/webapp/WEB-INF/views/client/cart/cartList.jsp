@@ -113,6 +113,8 @@
 <body>
 
     <!-- Shoping Cart Section Begin -->
+    <form >
+    
     <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
@@ -166,12 +168,14 @@
                             <li>총 주문 수량: <span class="total-quantity">0</span></li>
                             <li>총 주문 금액: <span class="total-price">0</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">주문하기</a>
+                      
+                        <input type="button" value="주문하기" class="primary-btn" onclick="location.href='${contextPath}/order/addOrder';">
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    </form>
     <!-- Shoping Cart Section End -->
 </body>
 </html>

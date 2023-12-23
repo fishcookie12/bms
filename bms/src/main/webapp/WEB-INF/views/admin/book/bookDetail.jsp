@@ -13,55 +13,58 @@
    
 	    var quantityInput = $('#quantity');
 
-    $("#plus1").click(function () {
-        	
-        var currentValue = Number(quantityInput.val());
-        quantityInput.val(currentValue + 1);
-        updateTotalPrice();
-    });
-
- 
-    $("#minus1").click(function () {
-        
-        var currentValue = Number(quantityInput.val());
-        quantityInput.val(currentValue > 1 ? currentValue - 1 : 1);
-        updateTotalPrice();
-    });
+	    $("#plus1").click(function () {
+	        var currentValue = Number(quantityInput.val());
+	        quantityInput.val(currentValue + 1);
+	        updateTotalPrice();
+	    });
+	
+	 
+	    $("#minus1").click(function () {
+	        var currentValue = Number(quantityInput.val());
+	        quantityInput.val(currentValue > 1 ? currentValue - 1 : 1);
+	        updateTotalPrice();
+	    });
+	   
+	    $("#addToCart").click(function() {
+    		alert("1");
+    		 if (${bookDTO.stock} === 0) {
+    		        return;
+    		 }
+    		alert("2");
+    		var memberId="${sessionScope.memberId}";
+    		var quantity=parseInt($("#quantity").val());
+    		var bookCd = "${bookDTO.bookCd}";
+    		
+    		var param={
+    				"memberId" : memberId,
+    				"bookCd" : bookCd,
+    				"quantity" : quantity
+    		};
+    		
+    		
+    		$.ajax({
+    			url : "${contextPath}/cart/addCart",
+    			type : "post",
+    			data : param,
+    			success : function() {
+    				alert("장바구니 추가완료");
+    			}
+    		});
+    		
+    	}); 
     
-    function updateTotalPrice() {
-        var price = parseInt('${bookDTO.price}');
-        var quantity = parseInt(quantityInput.val());
-        var totalPrice = price * quantity;
-
-       
-        $('#totalPrice').text(totalPrice); 
-    }
-    if ("${bookDTO.stock eq 0}") {
-        addToCartButton.prop('disabled', true);
-    }
-    
-});
-	function addToCart() {
-		if ("${bookDTO.stock eq 0}") {
-	        return;
+	    
+	    function updateTotalPrice() {
+	        var price = parseInt('${bookDTO.price}');
+	        var quantity = parseInt(quantityInput.val());
+	        var totalPrice = price * quantity;
+	
+	       
+	        $('#totalPrice').text(totalPrice); 
 	    }
-		var memberId="${sessionScope.memberId}";
-		var bookCd="${bookDTO.bookCd}";
-		var quantity=parseInt($("#quantity").val());
-		var param={
-				"memberId" : memberId,
-				"bookCd" : bookCd,
-				"quantity" : quantity
-		};
-		$.ajax({
-			url : "${contextPath}/cart/addCart",
-			type : "post",
-			data : param,
-			success : function() {
-				alert("장바구니 추가완료");
-			}
-		})
-	}
+   
+});
 </script>
 </head>
 
@@ -103,7 +106,8 @@
                         <input type="button" value="+" id="plus1">
                         <input type="text" value="1" id="quantity">
                         <input type="button" value="-" id="minus1">
-                        <a href="javascript:addToCart();" class="primary-btn">장바구니</a>
+                 
+                        <input type="button" value="장바구니" id="addToCart">
                         <h6>총금액 :<span id="totalPrice"> ${bookDTO.price } </h6>
                         <ul>
                             <li><b>재고유무</b> 

@@ -14,8 +14,7 @@
 				#{quantity}
 							
 		 )
-		ON DUPLICATE KEY UPDATE
-        QUANTITY = QUANTITY + VALUES(QUANTITY);
+	
 	</insert>
 	<resultMap type="hashMap" id="joinMap">
 		<result column="CART_CD" property="cartCd"/>
@@ -54,4 +53,7 @@
 		WHERE
 				CART_CD=#{cartCd}
 	</delete>
+	
+	
+	
 </mapper>

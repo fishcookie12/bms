@@ -3,21 +3,32 @@
 	
 <mapper namespace="orderMapper">
 	<insert id="insertOrder" parameterType="OrderDTO">
-		INSERT INTO ORDER(
+		INSERT INTO ORDERS(
+				
 				MEMBER_ID,
-				BOOK_CD,
+				BOOK_NM,
 				ORDER_BOOK_QTY,
+				TOTAL_PRICE,
+				PAYMENT_METHOD,
+				HP,
 				RECEIVER,
 				DELIVERY_ADRESS,
-				DELIVERY_MESSAGE						
+				DELIVERY_MESSAGE,
+				ORDER_DT						
 		)
 		VALUES (
+				
 				#{memberId},	
-				#{bookCd},	
-				#{orderBookQty},	
+				#{bookNm},	
+				#{orderBookQty},
+				#{totalPrice},
+				#{paymentMethod},
+				#{hp},	
 				#{receiver},	
 				#{deliveryAdress},	
-				#{deliveryMessage}
+				#{deliveryMessage},
+				NOW()
 		 )
 	</insert>
+	
 </mapper>
