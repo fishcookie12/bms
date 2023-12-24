@@ -36,6 +36,7 @@
 		</table>
 		<input type="button" value="회원정보수정하기" onclick="location.href='authentication?memberId=${memberDTO.memberId}&menu=update';">
 		<input type="button" value="회원탈퇴하기" onclick="location.href='authentication?memberId=${memberDTO.memberId}&menu=delete';">
+		<input type="button" value="주문내역" onclick="location.href='${contextPath}/order/orderList?memberId=${sessionScope.memberId}';">
 	</form>
 </body>
 </html>

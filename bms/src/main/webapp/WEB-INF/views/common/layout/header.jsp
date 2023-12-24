@@ -93,10 +93,30 @@
                     	<c:choose>
                     		<c:when test="${sessionScope.adminId eq 'admin1' or sessionScope.adminId eq 'admin2' or sessionScope.adminId eq 'admin3'}">
                     			<ul>
-                    				<li>도서관리</li>
-                    				<li>회원관리</li>
-                    				<li>매출관리</li>
-                    				<li>주문관리</li>
+                    				<li><a href="">도서관리</a>
+                                	<ul class="header__menu__dropdown">
+                                    <li><a href="${contextPath}/book/bookList">도서리스트</a></li>
+                                    <li><a href="${contextPath}/book/addBook">도서등록</a></li>
+                                    
+                                	</ul>
+                          			 </li>
+                    				<li><a href="#">매출관리</a>
+                                	<ul class="header__menu__dropdown">
+                                    <li><a href="./shop-details.html">매출조회</a></li>
+                                	</ul>
+                          			 </li>
+                    				<li><a href="#">주문관리</a>
+                                	<ul class="header__menu__dropdown">
+                                    <li><a href="${contextPath}/order/adminOrderList">주문조회</a></li>
+                                	</ul>
+                          			 </li>
+                    				<li><a href="#">회원관리</a>
+                                	<ul class="header__menu__dropdown">
+                                    <li><a href="./shop-details.html">회원조회</a></li>
+                                    <li><a href="./shop-details.html">회원문의</a></li>
+                                	</ul>
+                          			 </li>
+                    				
                     			</ul>
                     		</c:when>
                     		

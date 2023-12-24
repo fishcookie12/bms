@@ -21,8 +21,32 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<Map<String, Object>> orderList(String memberId) throws Exception {
+	public List<OrderDTO> orderList(String memberId) throws Exception {
 		
 		return orderDAO.selectOrderList(memberId);
 	}
+
+	@Override
+	public OrderDTO orderDetail(int orderCd) throws Exception {
+		
+		return orderDAO.selectOrderOne(orderCd);
+	}
+
+	@Override
+	public void modifyOrder(OrderDTO orderDTO) throws Exception {
+		orderDAO.updateOrder(orderDTO);
+	}
+
+	@Override
+	public void removeOrder(int orderCd) throws Exception {
+		orderDAO.deleteOrder(orderCd);
+	}
+
+	@Override
+	public List<OrderDTO> adminOrderList() throws Exception {
+	
+		return orderDAO.adminOrderList();
+	}
+	
+	
 }

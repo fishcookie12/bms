@@ -14,6 +14,7 @@
 				RECEIVER,
 				DELIVERY_ADRESS,
 				DELIVERY_MESSAGE,
+				DELIVERY_STATUS,
 				ORDER_DT						
 		)
 		VALUES (
@@ -27,8 +28,71 @@
 				#{receiver},	
 				#{deliveryAdress},	
 				#{deliveryMessage},
+				'배송준비중',
 				NOW()
 		 )
 	</insert>
 	
+	<select id="selectOrderList" resultType="OrderDTO">
+		SELECT
+				*
+		FROM
+				ORDERS
+		WHERE
+				MEMBER_ID = #{memberId}
+		ORDER BY
+    			ORDER_DT DESC
+	</select>
+	
+	<select id="selectOrderOne" parameterType="int" resultType="OrderDTO">
+		SELECT
+				*
+		FROM
+				ORDERS
+		WHERE
+				ORDER_CD = #{orderCd}
+	</select>
+	
+	<update id="updateOrder" parameterType="OrderDTO">
+		UPDATE
+				ORDERS
+		<set>
+			<if test='hp != null and !hp.equals("")'>
+				HP = #{hp},  
+			</if>
+			<if test='receiver != null and !receiver.equals("")'>
+				RECEIVER = #{receiver},
+			</if>
+			<if test='deliveryAdress != null and !deliveryAdress.equals("")'>
+				DELIVERY_ADRESS = #{deliveryAdress},
+			</if>
+			<if test='deliveryMessage != null and !deliveryMessage.equals("")'>
+				DELIVERY_MESSAGE = #{deliveryMessage}
+			</if>
+			
+		</set>
+		
+		WHERE
+				ORDER_CD = #{orderCd}
+	</update>
+	
+	<delete id="deleteOrder" parameterType="int">
+		DELETE	FROM
+				ORDERS
+		WHERE
+				ORDER_CD = #{orderCd}
+	</delete>
+	
+	<select id="adminOrderList" resultType="OrderDTO">
+		SELECT
+				ORDER_CD,
+				MEMBER_ID,
+				ORDER_DT,
+				DELIVERY_STATUS
+				
+		FROM
+				ORDERS
+		ORDER BY
+       			ORDER_DT DESC
+	</select>
 </mapper>

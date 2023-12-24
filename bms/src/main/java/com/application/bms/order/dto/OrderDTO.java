@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Component
 
 public class OrderDTO {
+	private int orderCd;
 	private String memberId;
 	private int bookCd;
 	private String bookNm;
@@ -20,13 +21,18 @@ public class OrderDTO {
 	private String deliveryMessage;
 	private String deliveryStatus;
 	private Date orderDt;
+	public int getOrderCd() {
+		return orderCd;
+	}
+	public void setOrderCd(int orderCd) {
+		this.orderCd = orderCd;
+	}
 	public String getMemberId() {
 		return memberId;
 	}
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-
 	public int getBookCd() {
 		return bookCd;
 	}
@@ -95,9 +101,9 @@ public class OrderDTO {
 	}
 	@Override
 	public String toString() {
-		return "OrderDTO [memberId=" + memberId + ", bookCd=" + bookCd + ", bookNm=" + bookNm + ", orderBookQty="
-				+ orderBookQty + ", totalPrice=" + totalPrice + ", paymentMethod=" + paymentMethod + ", hp=" + hp
-				+ ", receiver=" + receiver + ", deliveryAdress=" + deliveryAdress + ", deliveryMessage="
+		return "OrderDTO [orderCd=" + orderCd + ", memberId=" + memberId + ", bookCd=" + bookCd + ", bookNm=" + bookNm
+				+ ", orderBookQty=" + orderBookQty + ", totalPrice=" + totalPrice + ", paymentMethod=" + paymentMethod
+				+ ", hp=" + hp + ", receiver=" + receiver + ", deliveryAdress=" + deliveryAdress + ", deliveryMessage="
 				+ deliveryMessage + ", deliveryStatus=" + deliveryStatus + ", orderDt=" + orderDt + "]";
 	}
 	

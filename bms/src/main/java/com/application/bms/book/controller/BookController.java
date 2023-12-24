@@ -104,10 +104,6 @@ public class BookController {
 		
 		searchMap.put("searchOption"  , searchOption);
 		searchMap.put("searchWord"     , searchWord);
-		
-		System.out.println(bookService.getBookList(searchMap));
-		System.out.println(searchOption);
-		System.out.println(searchWord);
 		mv.addObject("bookList",  bookService.getBookList(searchMap));		
 		return mv;
 	}

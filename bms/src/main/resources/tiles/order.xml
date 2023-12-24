@@ -8,4 +8,40 @@
  		<put-attribute name="title" value="주문하기"/>	
  	</definition>
  	 
+ 	<definition name="/order/orderList"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/order/orderList.jsp"/>	
+ 		<put-attribute name="title" value="주문목록"/>	
+ 	</definition>
+ 	
+ 	<definition name="/order/orderDetail"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/order/orderDetail.jsp"/>	
+ 		<put-attribute name="title" value="주문목록"/>	
+ 	</definition>
+ 	
+ 	<definition name="/order/modifyOrder"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/order/modifyOrder.jsp"/>	
+ 		<put-attribute name="title" value="주문수정"/>	
+ 	</definition>
+ 	
+ 	<definition name="/order/removeOrder"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/order/removeOrder.jsp"/>	
+ 		<put-attribute name="title" value="주문삭제"/>	
+ 	</definition>
+ 	
+ 	<definition name="/order/adminOrderList"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/order/adminOrderList.jsp"/>	
+ 		<put-attribute name="title" value="관리자주문리스트"/>	
+ 	</definition>
+ 	
+ 	<definition name="/order/adminOrderDetail"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/order/adminOrderDetail.jsp"/>	
+ 		<put-attribute name="title" value="관리자주문상세조회"/>	
+ 	</definition>
+ 	
+ 	<definition name="/order/adminModifyOrder"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/order/adminModifyOrder.jsp"/>	
+ 		<put-attribute name="title" value="관리자주문수정"/>	
+ 	</definition>
+ 	
+ 	 
 </tiles-definitions>
