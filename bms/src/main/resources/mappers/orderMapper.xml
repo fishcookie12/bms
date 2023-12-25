@@ -69,6 +69,9 @@
 			<if test='deliveryMessage != null and !deliveryMessage.equals("")'>
 				DELIVERY_MESSAGE = #{deliveryMessage}
 			</if>
+			<if test='deliveryStatus != null and !deliveryStatus.equals("")'>
+				DELIVERY_STATUS = #{deliveryStatus}
+			</if>
 			
 		</set>
 		
@@ -95,4 +98,5 @@
 		ORDER BY
        			ORDER_DT DESC
 	</select>
+	
 </mapper>

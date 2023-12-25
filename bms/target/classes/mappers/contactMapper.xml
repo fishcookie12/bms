@@ -5,12 +5,14 @@
 		INSERT INTO CONTACT(
 				MEMBER_ID,
 				EMAIL,
-				MESSAGE
+				MESSAGE,
+				RESOLVED
 		)
 		VALUES (
 				#{memberId},
 				#{email},
-				#{message}			
+				#{message},
+				'답변대기중'		
 		 )
 	</insert>
 	
@@ -20,4 +22,13 @@
 		FROM
 				CONTACT
 	</select>
+	
+	<update id="updateContact" parameterType="ContactDTO">
+		UPDATE
+				CONTACT
+		SET
+				RESOLVED=#{resolved}
+		WHERE
+				CONTACT_CD=#{contactCd}
+	</update>
 </mapper>

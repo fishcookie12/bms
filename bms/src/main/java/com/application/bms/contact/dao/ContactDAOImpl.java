@@ -25,6 +25,12 @@ public class ContactDAOImpl implements ContactDAO {
 		return sqlSession.selectList("contactMapper.selectListContact");
 	}
 
+	@Override
+	public void updateContact(ContactDTO contactDTO) throws Exception {
+		sqlSession.update("contactMapper.updateContact", contactDTO);
+		
+	}
+
 	
 	
 }

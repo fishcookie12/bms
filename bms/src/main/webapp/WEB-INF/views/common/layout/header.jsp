@@ -113,7 +113,7 @@
                     				<li><a href="#">회원관리</a>
                                 	<ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">회원조회</a></li>
-                                    <li><a href="./shop-details.html">회원문의</a></li>
+                                    <li><a href="${contextPath}/contact/contactList">회원문의</a></li>
                                 	</ul>
                           			 </li>
                     				

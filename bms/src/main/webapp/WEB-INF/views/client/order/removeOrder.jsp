@@ -15,7 +15,7 @@
 		<h3>${sessionScope.memberId}님</h3>
 		<p><span style="color:red;">주문을 취소하시겠습니까?</span></p>
 		<form action="${contextPath }/order/removeOrder" method="post">
-			<input type="hidden" name="orderCd" value="${orderDTO.orderCd }">
+			<input type="hidden" name="orderCd" value="${orderCd }">
 			<input type="submit" value="취소하기">
 		</form>
 	</div>

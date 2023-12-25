@@ -6,5 +6,15 @@
  		<put-attribute name="body" value="/WEB-INF/views/client/contact/addContact.jsp"/>	
  		<put-attribute name="title" value="문의하기"/>	
  	</definition>
+
+ 	<definition name="/contact/contactList"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/contact/contactList.jsp"/>	
+ 		<put-attribute name="title" value="회원문의목록"/>	
+ 	</definition>
+ 	
+ 	<definition name="/contact/contactDetail"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/contact/contactDetail.jsp"/>	
+ 		<put-attribute name="title" value="회원문의상세조회"/>	
+ 	</definition>
  	 
 </tiles-definitions>

@@ -24,4 +24,10 @@ public class ContactServiceImpl implements ContactService {
 		
 		return contactDAO.selectListContact();
 	}
+
+	@Override
+	public void modifyContact(ContactDTO contactDTO) throws Exception {
+		contactDAO.updateContact(contactDTO);
+		
+	}
 }

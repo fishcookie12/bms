@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.application.bms.cart.dto.CartDTO;
 import com.application.bms.cart.service.CartService;
 
+
 @Controller
 @RequestMapping("/cart")
 public class CartController {
@@ -57,4 +58,9 @@ public class CartController {
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 	
+	@PostMapping("/clearCart")
+	public ResponseEntity<Object> clearCart(String memberId, HttpServletRequest request) throws Exception{
+		cartService.clearCart(memberId);
+		return new ResponseEntity<Object>(HttpStatus.OK);
+	}
 }

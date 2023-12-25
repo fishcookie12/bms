@@ -11,7 +11,7 @@ public class ContactDTO {
 	private String email;
 	private String message;
 	private Date enrollDt;
-	private boolean resolved;
+	private String resolved;
 	public int getContactCd() {
 		return contactCd;
 	}
@@ -42,10 +42,10 @@ public class ContactDTO {
 	public void setEnrollDt(Date enrollDt) {
 		this.enrollDt = enrollDt;
 	}
-	public boolean isResolved() {
+	public String getResolved() {
 		return resolved;
 	}
-	public void setResolved(boolean resolved) {
+	public void setResolved(String resolved) {
 		this.resolved = resolved;
 	}
 	@Override

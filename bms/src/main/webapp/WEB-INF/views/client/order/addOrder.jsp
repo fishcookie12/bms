@@ -36,6 +36,25 @@
 	    $("form").submit(function () {
             updateTotalPrice();
         });
+	    
+	    $("#checkoutForm").submit(function(event) {
+           
+            event.preventDefault();
+       
+            $.ajax({
+                type: "POST",
+                url: "${contextPath}/cart/clearCart",
+                data: { memberId: "${sessionScope.memberId}" },
+                success: function(response) {
+                    
+                    $("#checkoutForm").unbind('submit').submit();
+                },
+                error: function(error) {
+                   
+                    console.error("Error clearing cart:", error);
+                }
+            });
+        });
 	 
 	});
 	
@@ -48,7 +67,7 @@
             
             <div class="checkout__form">
                 <h4>주문페이지</h4>
-                <form action="${contextPath }/order/addOrder" method="post">
+                <form action="${contextPath }/order/addOrder" method="post" id="checkoutForm">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="row">

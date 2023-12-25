@@ -36,12 +36,10 @@ public class CartDAOImpl implements CartDAO {
 		sqlSession.delete("cartMapper.deleteCart",cartCd);
 		
 	}
-	/*
+	
 	@Override
-	public List<CartDTO> getCartListbyMemberId(String memberId) throws Exception {
-		
-		return sqlSession.selectList("cartMapper.getCartListbyMemberId", memberId);
+	public void clearCart(String memberId) throws Exception {
+		sqlSession.delete("cartMapper.clearCart", memberId);
 	}
-	*/
 
 }

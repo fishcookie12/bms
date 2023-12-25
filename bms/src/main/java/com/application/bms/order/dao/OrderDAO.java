@@ -12,5 +12,5 @@ public interface OrderDAO {
 	public void updateOrder(OrderDTO orderDTO)throws Exception;
 	public void deleteOrder(int orderCd)throws Exception;
 	public List<OrderDTO> adminOrderList()throws Exception;
-
+	
 }

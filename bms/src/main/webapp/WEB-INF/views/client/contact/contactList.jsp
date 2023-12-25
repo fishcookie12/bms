@@ -12,29 +12,27 @@
 </head>
 <body>
 	<h3>문의관리</h3>
-	<form action="">
+	
 		<table border="1">
 			<tr>
 				<th>번호</th>
 				<th>문의코드</th>
 				<th>멤버아이디</th>
-				<th>문의내용</th>
-				<th>이메일</th>
 				<th>문의날짜</th>
+				<th>답변여부</th>
 			</tr>
 			<c:set var="idx" value="1"/>
 			<c:forEach var="ContactDTO" items="${contactList}">
 				<tr>
 					<td>${idx }</td>
-					<td>${contactDTO.contactCd }</td>
+					<td><a href="${contextPath }/contact/contactDetail?contactCd=${contactDTO.contactCd }">${contactDTO.contactCd }</a></td>
 					<td>${contactDTO.memberId }</td>
-					<td>${contactDTO.message }</td>
-					<td>${contactDTO.email }</td>
 					<td><fmt:formatDate value="${contactDTO.enrollDt }" pattern="yyyy-MM-dd"/></td>
+					<td>${contactDTO.resolved }</td>
 				</tr>
 				<c:set var="idx" value="${idx=idx+1 }"/>
 			</c:forEach>
 		</table>
-	</form>
+		
 </body>
 </html>

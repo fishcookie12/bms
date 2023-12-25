@@ -111,17 +111,18 @@ public class OrderController {
 	
 		mv.setViewName("/order/removeOrder");
 		mv.addObject("orderCd", orderCd);
-		
+		System.out.println("orderCd : "+orderCd);
 		return mv;
 	}
 	
 	@PostMapping("/removeOrder")
 	@ResponseBody
 	public String removeOrder(int orderCd, HttpServletRequest request) throws Exception {
+		System.out.println("orderCd : "+orderCd);
 		
 		String jsScript="";
 		orderService.removeOrder(orderCd);
-		
+		System.out.println("1");
 		jsScript+="<script>;";
 		jsScript+="alert('Order cancellation complete');";
 		jsScript += "location.href='" + request.getContextPath() + "/'";
@@ -147,6 +148,30 @@ public class OrderController {
 		mv.addObject("orderDTO", orderService.orderDetail(orderCd));
 		
 		return mv;
+	}
+	
+	@GetMapping("/adminModifyOrder")
+	public ModelAndView adminModifyOrder(@RequestParam("orderCd")int orderCd) throws Exception {
+		ModelAndView mv=new ModelAndView();
+	
+		mv.setViewName("/order/adminModifyOrder");
+		mv.addObject("orderDTO", orderService.orderDetail(orderCd));
+		
+		System.out.println("orderCd : "+orderCd);
+		return mv;
+	}
+	
+	@PostMapping("/adminModifyOrder")
+	@ResponseBody
+	public String adminModifyOrder(OrderDTO orderDTO, HttpServletRequest request) throws Exception {
+	
+		String jsScript="";
+		orderService.modifyOrder(orderDTO);
+		jsScript+="<script>;";
+		jsScript+="alert('Modification Complete');";
+		jsScript += "location.href='" + request.getContextPath() + "/'";
+		jsScript+="</script>;";
+		return jsScript;
 	}
 	
 }
