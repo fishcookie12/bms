@@ -45,7 +45,27 @@
             updateTotalPrice();
         });
 	    
-	   
+	    $("#checkoutForm").submit(function(event) {
+           
+            event.preventDefault();
+       
+            $.ajax({
+                type: "POST",
+                url: "${contextPath}/cart/clearCart",
+                data: { memberId: "${sessionScope.memberId}" },
+                success: function(response) {
+                	
+                	$("#checkoutForm").unbind('submit').submit();
+ 
+                },
+                error: function(error) {
+                   
+                    console.error("Error clearing cart:", error);
+                }
+            });
+           
+           
+        });
 	
 	});
 	
@@ -58,7 +78,7 @@
            
             <div class="checkout__form">
                 <h4>주문페이지</h4>
-                <form action="${contextPath }/order/addOrder" method="post" id="checkoutForm" >
+                <form action="${contextPath }/order/addCartOrder" method="post" id="checkoutForm">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="row">
@@ -97,18 +117,18 @@
                                 		<th>상품명</th>
                                 		<th>수량</th>
                                 		<th>가격</th>
-                                		<th>포인트</th>
                                 	</tr>
                                 	
-                                	
+                                	<c:forEach var="cartDTO" items="${cartList}">
                                         <tr>
-                                        	<td id="bookNmDisplay" width="30%">${param.bookNm}</td>
-							                <td id="quantityDisplay" width="10%">${param.quantity}</td>
-							                <td id="priceDisplay" width="20%">${param.price}</td>
-							                <td id="priceDisplay" width="20%">${param.point}</td>
-
+                                        	<td style="width: 70%;">${cartDTO.bookNm}</td>
+                                        	<td style="width: 20%;">${cartDTO.quantity}</td>
+                                        	<td style="width: 65%;">${cartDTO.price * cartDTO.quantity}</td>
+                                        	<input type="hidden" name="bookNm" value="${cartDTO.bookNm}">
+									        <input type="hidden" name="orderBookQty" value="${cartDTO.quantity}">
+									        <input type="hidden" name="totalPrice" value="${cartDTO.price * cartDTO.quantity}">
                                         </tr>
-                                  
+                                    </c:forEach>
                                 </table>
                                
                                
@@ -119,10 +139,6 @@
                                 <input type="radio" name="paymentMethod" value="bankTransfer">계좌이체
                                 <input type="radio" name="paymentMethod" value="phone">휴대폰결제
 								<input type="hidden" name="memberId" value="${sessionScope.memberId}">
-								<input type="hidden" name="bookCd" value="${param.bookCd}">
-								<input type="hidden" name="bookNm" value="${param.bookNm}">
-								<input type="hidden" name="orderBookQty" value="${param.quantity}">
-								<input type="hidden" name="totalPrice" value="${param.price}">
                                <input type="submit" value="결제하기">
                                
                             </div>

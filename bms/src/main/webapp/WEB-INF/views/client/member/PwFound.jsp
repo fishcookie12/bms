@@ -7,7 +7,9 @@
 <title>PwFound</title>
 </head>
 <body>
+	<div align="center">
 	<p>임시비밀번호를 발급해드립니다. 아래 임시비밀번호로 로그인 한 후 비밀번호를 변경해주세요</p>
 	<p>${PwFound }</p>
+	</div>
 </body>
 </html>

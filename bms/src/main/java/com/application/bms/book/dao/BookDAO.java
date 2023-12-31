@@ -11,4 +11,5 @@ public interface BookDAO {
 	public BookDTO selectOneBook(int bookCd)throws Exception;
 	public void updateBook(BookDTO bookDTO)throws Exception;
 	public void deleteBook(int bookCd)throws Exception;
+	
 }

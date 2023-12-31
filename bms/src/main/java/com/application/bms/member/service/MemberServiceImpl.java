@@ -1,5 +1,8 @@
 package com.application.bms.member.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -87,13 +90,36 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return null;
 	}
+	
+	
 
 	@Override
 	public void modifyPw(MemberDTO memberDTO) throws Exception {
 		memberDAO.temporaryPassword(memberDTO);
 		
 	}
+
 	
+	@Override
+	public List<MemberDTO> getMemberList() throws Exception {
+		return memberDAO.selectListMember();
+	}
+	
+	@Override
+	public List<MemberDTO> getMemberSearchList(Map<String, String> searchMap) throws Exception {
+		return memberDAO.selectListSearchMember(searchMap);
+	}
+
+	@Override
+	public int getMyOrderCnt(String memberId) throws Exception {
+		return memberDAO.selectMyOrderCnt(memberId);
+	}
+
+	@Override
+	public int getMyCartCnt(String memberId) throws Exception {
+		return memberDAO.selectMyCartCnt(memberId);
+	}
+
 
 
 

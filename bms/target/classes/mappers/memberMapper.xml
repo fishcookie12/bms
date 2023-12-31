@@ -94,9 +94,50 @@
 	<update id="temporaryPassword" parameterType="MemberDTO">
 		UPDATE
 				MEMBER
-		SER
+		SET
 				PASSWD=#{passwd}
 		WHERE
 				MEMBER_ID=#{memberId}
 	</update>
+	
+	<select id="selectListMember" resultType="MemberDTO">
+		SELECT
+				*
+		FROM
+				MEMBER
+	</select>
+	
+	<select id="selectListSearchMember" resultType="MemberDTO" parameterType="hashMap">
+		SELECT
+				*
+		FROM
+				MEMBER
+		<where>
+			<if test='searchKeyword.equals("memberId")'>
+				MEMBER_ID LIKE CONCAT ('%' , #{searchWord} , '%')
+			</if>
+			<if test='searchKeyword.equals("memberNm")'>
+				MEMBER_NM LIKE CONCAT ('%' , #{searchWord} , '%')
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectMyOrderCnt" resultType="int" parameterType="String">
+	  		SELECT
+	  				COUNT(*)
+	  		FROM
+	  				ORDERS
+	  		WHERE
+	  				MEMBER_ID = #{memberId}
+  	</select>
+  	
+  	<select id="selectMyCartCnt" resultType="int" parameterType="String">
+	  		SELECT
+	  				COUNT(*)
+	  		FROM
+	  				CART
+	  		WHERE
+	  				MEMBER_ID = #{memberId}
+  	</select>
+	
 </mapper>

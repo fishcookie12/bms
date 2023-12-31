@@ -1,5 +1,7 @@
 package com.application.bms.member.controller;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -203,7 +205,6 @@ public class MemberController {
 	@ResponseBody
 	public String findId(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
 		String jsScript="";
-		System.out.println("1");
 		if(memberService.findMemberId(memberDTO)==null) {
 			jsScript+="<script>";
 			jsScript+="alert('No matching member information found');";
@@ -211,15 +212,21 @@ public class MemberController {
 			jsScript+="</script>";
 		}
 		else {
-			System.out.println("2");
 			String foundId=memberService.findMemberId(memberDTO);
-			System.out.println("3");
 			jsScript+="<script>";
+			
 			jsScript += "location.href='"+request.getContextPath()+"/member/IdFound?foundId="+foundId+"';";
 			jsScript+="</script>";
-			System.out.println("4");
 		}
 		return jsScript;
+	}
+	
+	@GetMapping("/IdFound")
+	public ModelAndView IdFound( @RequestParam("foundId")String foundId) throws Exception {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("/member/IdFound");
+		mv.addObject("foundId", foundId);
+		return mv;
 	}
 	
 	@GetMapping("/findPw")
@@ -239,6 +246,7 @@ public class MemberController {
 			jsScript+="</script>";
 		}
 		else {
+			
 			Random ran=new Random();
 			String PwFound="";
 			String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -249,11 +257,36 @@ public class MemberController {
 			}
 			foundMember.setPasswd(PwFound);
 	        memberService.modifyPw(foundMember);
+	        
 			jsScript+="<script>";
 			jsScript += "location.href='"+request.getContextPath()+"/member/PwFound?PwFound="+PwFound+"';";
 			jsScript+="</script>";
 			
 		}
 		return jsScript;
+	}
+	
+	@GetMapping("/PwFound")
+	public ModelAndView PwFound( @RequestParam("PwFound")String PwFound) throws Exception {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("/member/PwFound");
+		mv.addObject("PwFound", PwFound);
+		return mv;
+	}
+	
+	@GetMapping("/memberList")
+	public ModelAndView memberList()throws Exception{
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("/member/memberList");
+		mv.addObject("memberList" , memberService.getMemberList());
+		
+		return mv;
+	}
+	
+	
+	@GetMapping("/searchMemberList")
+	@ResponseBody 
+	public List<MemberDTO> searchMemberList(@RequestParam Map<String,String> searchMap) throws Exception {
+		return memberService.getMemberSearchList(searchMap);
 	}
 }

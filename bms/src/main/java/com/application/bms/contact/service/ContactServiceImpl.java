@@ -1,6 +1,7 @@
 package com.application.bms.contact.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,4 +31,12 @@ public class ContactServiceImpl implements ContactService {
 		contactDAO.updateContact(contactDTO);
 		
 	}
+
+	@Override
+	public ContactDTO contactDetail(int contactCd) throws Exception {
+		
+		return contactDAO.selectOneContact(contactCd);
+	}
+	
+	
 }

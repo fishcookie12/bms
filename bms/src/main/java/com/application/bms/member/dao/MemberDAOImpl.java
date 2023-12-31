@@ -1,5 +1,8 @@
 package com.application.bms.member.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -65,5 +68,25 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.update("memberMapper.temporaryPassword", memberDTO);
 	}
 
+	@Override
+	public List<MemberDTO> selectListMember() throws Exception {
+		return sqlSession.selectList("memberMapper.selectListMember");
+	}
+
+	@Override
+	public List<MemberDTO> selectListSearchMember(Map<String, String> searchMap) throws Exception {
+		return sqlSession.selectList("member.selectListSearchMember" , searchMap);
+	}
+
+	@Override
+	public int selectMyOrderCnt(String memberId) throws Exception {
+		
+		return sqlSession.selectOne("member.selectMyOrderCnt" , memberId);
+	}
+
+	@Override
+	public int selectMyCartCnt(String memberId) throws Exception {
+		return sqlSession.selectOne("member.selectMyCartCnt" , memberId);
+	}
 	
 }

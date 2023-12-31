@@ -1,11 +1,16 @@
 package com.application.bms.order.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -37,9 +42,7 @@ public class OrderController {
 		ModelAndView mv=new ModelAndView();
 		HttpSession session=request.getSession();
 		String memberId=(String)session.getAttribute("memberId");
-		
 		mv.setViewName("/order/addOrder");
-		mv.addObject("cartList", cartService.cartList(memberId));
 		return mv;
 	}
 	
@@ -47,8 +50,8 @@ public class OrderController {
 	@ResponseBody
 	public String addOrder(OrderDTO orderDTO, HttpServletRequest request) throws Exception {
 		String jsScript="";
-		HttpSession session=request.getSession();
-		String memberId=(String) session.getAttribute("memberId");
+		HttpSession session = request.getSession();
+		String memberId = (String) session.getAttribute("memberId");
 		orderService.addOrder(orderDTO);
 		jsScript+="<script>";
 		jsScript+="alert('Order Completed');";
@@ -57,7 +60,32 @@ public class OrderController {
 		System.out.println(orderDTO);
 		return jsScript;
 	}
+	@GetMapping("/addCartOrder")
+	public ModelAndView addCartOrder(Model model,HttpServletRequest request) throws Exception {
+		ModelAndView mv=new ModelAndView();
+		HttpSession session=request.getSession();
+		String memberId=(String)session.getAttribute("memberId");
+		
+		mv.setViewName("/order/addCartOrder");
+		mv.addObject("cartList", cartService.cartList(memberId));
+		return mv;
+	}
 	
+	@PostMapping("/addCartOrder")
+	@ResponseBody
+	public String addCartOrder(OrderDTO orderDTO, HttpServletRequest request) throws Exception {
+		
+		String jsScript="";
+		HttpSession session = request.getSession();
+		String memberId = (String) session.getAttribute("memberId");
+		orderService.addOrder(orderDTO);
+		jsScript+="<script>";
+		jsScript+="alert('Order Completed');";
+		jsScript+="location.href='"+request.getContextPath()+"/';";
+		jsScript+="</script>";
+		System.out.println(orderDTO);
+		return jsScript;
+	}
 	@GetMapping("/orderList")
 	public ModelAndView orderList(OrderDTO orderDTO, HttpServletRequest request) throws Exception {
 		HttpSession session=request.getSession();
@@ -172,6 +200,17 @@ public class OrderController {
 		jsScript += "location.href='" + request.getContextPath() + "/'";
 		jsScript+="</script>;";
 		return jsScript;
+	}
+	
+	@GetMapping("/salseInquiry")
+	public ModelAndView salseInquiry() throws Exception {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("/order/salseInquiry");
+		mv.addObject("totalSales", orderService.totalSales());
+		mv.addObject("bestSellers", orderService.bestSaller());
+		mv.addObject("totalWomanSales", orderService.totalWomanSales());
+		mv.addObject("womanBestSellers", orderService.womanBestSaller());
+		return mv;
 	}
 	
 }

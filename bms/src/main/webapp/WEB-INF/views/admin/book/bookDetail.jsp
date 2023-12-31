@@ -53,6 +53,8 @@
     		});
     		
     	}); 
+	    
+	   
     
 	    
 	    function updateTotalPrice() {
@@ -63,6 +65,17 @@
 	       
 	        $('#totalPrice').text(totalPrice); 
 	    }
+	    
+	    $("#checkoutButton").click(function () {
+            var quantity = parseInt($("#quantity").val());
+            var bookCd = "${bookDTO.bookCd}";
+            var bookNm="${bookDTO.bookNm}";
+            var totalPrice = ${bookDTO.price} * quantity;
+          	var point=${bookDTO.point}* quantity
+
+            // 수량 정보를 "주문하기" 페이지로 전달
+            location.href = '${contextPath}/order/addOrder?bookCd=' + bookCd + '&bookNm=' + bookNm + '&quantity=' + quantity + '&price=' + totalPrice + "&point=" + point;
+        });
    
 });
 </script>
@@ -101,13 +114,15 @@
                             
                         </div>
                         <div class="product__details__price">${bookDTO.price }원</div>
+                        <p>적립포인트 : ${bookDTO.point }</p>
                         배송비 : ${bookDTO.deliveryPrice }
 						<p>7만원이상 주문시 배송비 무료</p>
                         <input type="button" value="+" id="plus1">
-                        <input type="text" value="1" id="quantity">
+                        <input type="text" value="1" id="quantity" name="quantity">
                         <input type="button" value="-" id="minus1">
                  
                         <input type="button" value="장바구니" id="addToCart">
+                        <input type="button" value="주문하기" id="checkoutButton">
                         <h6>총금액 :<span id="totalPrice"> ${bookDTO.price } </h6>
                         <ul>
                             <li><b>재고유무</b> 

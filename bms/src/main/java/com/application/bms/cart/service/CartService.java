@@ -11,4 +11,5 @@ public interface CartService {
 	public void modifyCart(CartDTO cartDTO)throws Exception;
 	public void removeCart(int cartCd)throws Exception;
 	public void clearCart(String memberId)throws Exception;
+	public void stockBook(Map<String, Object> orderDTO)throws Exception;
 }

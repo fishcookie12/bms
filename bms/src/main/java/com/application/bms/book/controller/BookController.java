@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,6 +48,7 @@ public class BookController {
 	@PostMapping("/addBook")
 	@ResponseBody
 	public String addBook(HttpServletRequest request, MultipartHttpServletRequest multipartRequest) throws Exception {
+		System.out.println("1");
 		String jsScript="";
 		Iterator<String> fileList = multipartRequest.getFileNames();			
 		String fileName = "";
@@ -83,7 +86,7 @@ public class BookController {
 		
 		
 		bookService.addBook(bookDTO);
-
+		System.out.println(bookDTO);
 		jsScript = "<script>";
 		jsScript += "alert('Registration completed.');";
 		jsScript += "location.href='" + request.getContextPath() + "/'";
@@ -192,6 +195,7 @@ public class BookController {
 		return jsScript;
 		
 	}
+	
 	
 	
 }

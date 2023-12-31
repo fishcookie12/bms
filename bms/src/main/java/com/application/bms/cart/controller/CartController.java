@@ -1,6 +1,7 @@
 package com.application.bms.cart.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,6 +33,7 @@ public class CartController {
 	public ResponseEntity<Object> addCart(@ModelAttribute CartDTO cartDTO) throws Exception {
 		cartService.addCart(cartDTO);
 		System.out.println(cartDTO);
+		
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 	
@@ -63,4 +65,12 @@ public class CartController {
 		cartService.clearCart(memberId);
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
+	
+	@PostMapping("/stockBook")
+	public ResponseEntity<Object> stockBook(Map<String, Object> orderDTO, HttpServletRequest request) throws Exception{
+		cartService.stockBook(orderDTO);
+		return new ResponseEntity<Object>(HttpStatus.OK);
+	}
+	
+	
 }

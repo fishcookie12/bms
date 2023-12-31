@@ -1,11 +1,16 @@
 package com.application.bms.order.service;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.application.bms.book.dto.BookDTO;
+import com.application.bms.member.dto.MemberDTO;
 import com.application.bms.order.dao.OrderDAO;
 import com.application.bms.order.dto.OrderDTO;
 
@@ -15,9 +20,15 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDAO orderDAO;
 
 	@Override
+	@Transactional
 	public void addOrder(OrderDTO orderDTO) throws Exception {
-		orderDAO.insertOrder(orderDTO);
+		Map<String, Object> orderMap = new HashMap<String, Object>();
 		
+		orderMap.put("orderBookQty", orderDTO.getOrderBookQty());
+		orderMap.put("bookCd", orderDTO.getBookCd());
+		
+		orderDAO.updateStock(orderMap);
+		orderDAO.insertOrder(orderDTO);
 	}
 
 	@Override
@@ -47,6 +58,32 @@ public class OrderServiceImpl implements OrderService {
 	
 		return orderDAO.adminOrderList();
 	}
+
+	@Override
+	public int totalSales() throws Exception {
+		
+		return orderDAO.allsalse();
+	}
+
+	@Override
+	public List<OrderDTO> bestSaller() throws Exception {
+		
+		return orderDAO.bestSeller();
+	}
+
+	@Override
+	public int totalWomanSales() throws Exception {
+		
+		return orderDAO.getWomanSales();
+	}
+
+	@Override
+	public List<OrderDTO> womanBestSaller() throws Exception {
+		
+		return orderDAO.getWomanBestSeller();
+	}
+
+
 	
-	
+
 }

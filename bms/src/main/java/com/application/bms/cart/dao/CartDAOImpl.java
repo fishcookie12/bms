@@ -42,4 +42,11 @@ public class CartDAOImpl implements CartDAO {
 		sqlSession.delete("cartMapper.clearCart", memberId);
 	}
 
+	@Override
+	public void stockBook(Map<String, Object> orderDTO) throws Exception {
+		sqlSession.update("cartMapper.stockBook", orderDTO);
+		
+	}
+
+	
 }

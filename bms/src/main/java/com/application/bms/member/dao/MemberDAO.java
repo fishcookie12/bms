@@ -1,5 +1,8 @@
 package com.application.bms.member.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import com.application.bms.member.dto.MemberDTO;
 
 public interface MemberDAO {
@@ -20,4 +23,11 @@ public interface MemberDAO {
 	public MemberDTO findPw(String memberId)throws Exception;
 	
 	public void temporaryPassword(MemberDTO memberDTO)throws Exception;
+	
+	public List<MemberDTO> selectListMember() throws Exception;
+	
+	public List<MemberDTO> selectListSearchMember(Map<String, String> searchMap) throws Exception;
+	public int selectMyOrderCnt(String memberId) throws Exception;
+	public int selectMyCartCnt(String memberId) throws Exception;
+	
 }

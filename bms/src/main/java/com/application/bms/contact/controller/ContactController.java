@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,16 +42,24 @@ public class ContactController {
 	}
 	
 	@GetMapping("/contactList")
-	public ModelAndView boardList() throws Exception{
+	public ModelAndView contactList() throws Exception{
 		ModelAndView mv=new ModelAndView();
-		mv.setViewName("contact/contactList");
+		mv.setViewName("/contact/contactList");
 		mv.addObject("contactList", contactService.contactList());
 		
 		return mv;
 	}
 	
+	@GetMapping("/contactDetail")
+	public ModelAndView modifyContact(@RequestParam("contactCd")int contactCd) throws Exception {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("/contact/contactDetail");
+		mv.addObject("contactDTO", contactService.contactDetail(contactCd));
+		return mv;
+	}
+	
 	@PostMapping("/modifyContact")
-	public ResponseEntity<Object> modifyCart(ContactDTO contactDTO) throws Exception {
+	public ResponseEntity<Object> modifyContact(ContactDTO contactDTO, HttpServletRequest request) throws Exception {
 		contactService.modifyContact(contactDTO);
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}

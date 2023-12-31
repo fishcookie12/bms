@@ -33,6 +33,24 @@
 		 )
 	</insert>
 	
+	
+	<update id="updateStock" parameterType="hashmap">
+		UPDATE
+				BOOK
+		SET
+				STOCK=STOCK-#{orderBookQty}
+		WHERE
+				BOOK_CD=#{bookCd}
+	</update>
+	
+	<delete id="deleteCart" parameterType="String">
+		DELETE FROM
+				CART
+		WHERE
+				MEMBER_ID = #{memberId}				
+	</delete>
+	
+	
 	<select id="selectOrderList" resultType="OrderDTO">
 		SELECT
 				*
@@ -97,6 +115,65 @@
 				ORDERS
 		ORDER BY
        			ORDER_DT DESC
+	</select>
+	
+	<select id="allsalse" resultType="int">
+		SELECT 
+				SUM(TOTAL_PRICE) AS totalSales
+        FROM 
+        		ORDERS
+	</select>
+	
+	<select id="bestSeller" resultType="OrderDTO">
+		SELECT
+				BOOK_CD,
+			    BOOK_NM,
+			    SUM(ORDER_BOOK_QTY) AS totalSales
+		FROM
+		    	ORDERS
+		GROUP BY
+		    	BOOK_CD, BOOK_NM
+		ORDER BY
+		    	totalSales DESC
+		LIMIT 10
+	</select>
+	
+	<select id="getWomanSales" resultType="int">
+		SELECT
+            SUM(ORDERS.TOTAL_PRICE) AS womanSales
+        FROM
+            ORDERS
+        INNER JOIN
+            MEMBER ON ORDERS.MEMBER_ID = MEMBER.MEMBER_ID
+        WHERE
+            MEMBER.SEX = 'w'
+    </select>
+	
+	<select id="getWomanBestSeller" resultType="OrderDTO">
+		 SELECT
+            ORDERS.BOOK_CD,
+            ORDERS.BOOK_NM,
+            SUM(ORDERS.ORDER_BOOK_QTY) AS orderBookQty
+        FROM
+            ORDERS
+        INNER JOIN
+            MEMBER ON ORDERS.MEMBER_ID = MEMBER.MEMBER_ID
+        WHERE
+            MEMBER.SEX = 'w'
+        GROUP BY
+            ORDERS.BOOK_CD, ORDERS.BOOK_NM
+        ORDER BY
+            orderBookQty DESC
+        LIMIT 10
+	</select>
+	
+	<select id="selectOneOrderer" parameterType="String" resultType="MemberDTO">
+		SELECT
+				*
+		FROM
+				MEMBER
+		WHERE
+				MEMBER_ID = #{memberId}
 	</select>
 	
 </mapper>

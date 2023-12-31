@@ -24,6 +24,7 @@
 </script>
 </head>
 <body>
+	<div align="center">
 	<h3>관리자전용페이지입니다.</h3>
 	
 		<table border="1">
@@ -37,7 +38,7 @@
 			</tr>
 			<tr>
 				<td>문의일</td>
-				<td>${contactDTO.enrollDt }</td>
+				<td><fmt:formatDate value="${contactDTO.enrollDt }" pattern="yyyy-MM-dd"/></td>
 			</tr>
 			<tr>
 				<td>문의메세지</td>
@@ -52,5 +53,6 @@
 			</tr>
 		</table>
 		<input type="button" value="확인" id="resolvedChange">
+		</div>
 </body>
 </html>

@@ -107,7 +107,8 @@
   				}
     	   })
 		}
-    });
+       
+   	});
 </script>
 </head>
 <body>
@@ -169,7 +170,7 @@
                             <li>총 주문 금액: <span class="total-price">0</span></li>
                         </ul>
                       
-                        <input type="button" value="주문하기" class="primary-btn" onclick="location.href='${contextPath}/order/addOrder';">
+                        <input type="button" value="주문하기" class="primary-btn" onclick="location.href='${contextPath}/order/addCartOrder';">
                     </div>
                 </div>
             </div>

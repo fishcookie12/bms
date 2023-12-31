@@ -41,6 +41,11 @@ public class CartServiceImpl implements CartService {
 	public void clearCart(String memberId) throws Exception {
 		cartDAO.clearCart(memberId);
 	}
-	
+
+	@Override
+	public void stockBook(Map<String, Object> orderDTO) throws Exception {
+		cartDAO.stockBook(orderDTO);
+		
+	}
 	
 }

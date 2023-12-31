@@ -11,6 +11,7 @@
 <title>contactList</title>
 </head>
 <body>
+	<div align="center">
 	<h3>문의관리</h3>
 	
 		<table border="1">
@@ -22,7 +23,7 @@
 				<th>답변여부</th>
 			</tr>
 			<c:set var="idx" value="1"/>
-			<c:forEach var="ContactDTO" items="${contactList}">
+			<c:forEach var="contactDTO" items="${contactList}">
 				<tr>
 					<td>${idx }</td>
 					<td><a href="${contextPath }/contact/contactDetail?contactCd=${contactDTO.contactCd }">${contactDTO.contactCd }</a></td>
@@ -33,6 +34,6 @@
 				<c:set var="idx" value="${idx=idx+1 }"/>
 			</c:forEach>
 		</table>
-		
+		</div>
 </body>
 </html>

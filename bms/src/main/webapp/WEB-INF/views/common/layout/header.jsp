@@ -102,7 +102,7 @@
                           			 </li>
                     				<li><a href="#">매출관리</a>
                                 	<ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">매출조회</a></li>
+                                    <li><a href="${contextPath}/order/salseInquiry">매출조회</a></li>
                                 	</ul>
                           			 </li>
                     				<li><a href="#">주문관리</a>
@@ -112,7 +112,7 @@
                           			 </li>
                     				<li><a href="#">회원관리</a>
                                 	<ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">회원조회</a></li>
+                                    <li><a href="${contextPath}/member/memberList">회원조회</a></li>
                                     <li><a href="${contextPath}/contact/contactList">회원문의</a></li>
                                 	</ul>
                           			 </li>

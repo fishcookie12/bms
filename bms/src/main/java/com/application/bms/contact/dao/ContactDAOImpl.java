@@ -1,6 +1,7 @@
 package com.application.bms.contact.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,11 @@ public class ContactDAOImpl implements ContactDAO {
 		
 	}
 
-	
+	@Override
+	public ContactDTO selectOneContact(int contactCd) throws Exception {
+		
+		return sqlSession.selectOne("contactMapper.selectOneContact", contactCd);
+	}
+		
 	
 }

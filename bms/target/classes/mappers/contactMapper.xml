@@ -21,6 +21,18 @@
 				*
 		FROM
 				CONTACT
+		ORDER BY 
+				ENROLL_DT DESC;
+		
+	</select>
+	
+	<select id="selectOneContact" parameterType="int" resultType="ContactDTO">
+		SELECT
+				*
+		FROM
+				CONTACT
+		WHERE
+				CONTACT_CD = #{contactCd}
 	</select>
 	
 	<update id="updateContact" parameterType="ContactDTO">
