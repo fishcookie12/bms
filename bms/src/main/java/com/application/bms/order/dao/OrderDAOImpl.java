@@ -94,4 +94,20 @@ public class OrderDAOImpl implements OrderDAO {
 		return sqlSession.selectList("orderMapper.getWomanBestSeller");
 	}
 
+	@Override
+	public int getManSales() throws Exception {
+		
+		return sqlSession.selectOne("orderMapper.getManSales");
+	}
+
+	@Override
+	public List<OrderDTO> getManBestSeller() throws Exception {
+		
+		return sqlSession.selectList("orderMapper.getManBestSeller");
+	}
+	
+	@Override
+	public void insertOrderByCart(List<OrderDTO> orderList) throws Exception{
+		sqlSession.insert("orderMapper.insertOrderByCart" , orderList);
+	}
 }

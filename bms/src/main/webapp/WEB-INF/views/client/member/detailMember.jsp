@@ -10,33 +10,59 @@
 <title>detailMember</title>
 </head>
 <body>
-	<h3>'${memberDTO.memberId }'회원정보상세조회</h3>
-	<form action="${contextPath }/member/detailMember" method="post">
-		<table border="1">
-			<tr>
-				<td>아이디</td>
-				<td>${memberDTO.memberId }</td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td>${memberDTO.memberNm }</td>
-			</tr>
-			<tr>
-				<td>휴대폰번호</td>
-				<td>${memberDTO.hp }</td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td>${memberDTO.email }</td>
-			</tr>
-			<tr>
-				<td>포인트</td>
-				<td>${memberDTO.point }</td>
-			</tr>
-		</table>
-		<input type="button" value="회원정보수정하기" onclick="location.href='authentication?memberId=${memberDTO.memberId}&menu=update';">
-		<input type="button" value="회원탈퇴하기" onclick="location.href='authentication?memberId=${memberDTO.memberId}&menu=delete';">
-		<input type="button" value="주문내역" onclick="location.href='${contextPath}/order/orderList?memberId=${sessionScope.memberId}';">
-	</form>
+	<section class="checkout spad">
+			<div class="container">
+				<div class="checkout__form">
+					<h4>회원정보상세조회</h4>
+					<form action="${contextPath }/member/detailMember" method="post">
+						<div class="row">
+	                        <div class="col-lg-8 col-md-6">
+								<div class="row">
+	                                <div class="col-lg-6">
+	                                	<div class="checkout__input">
+											<p><strong>아이디</strong></p>
+											${memberDTO.memberId }
+										</div>
+									</div>
+								</div>
+								<div class="row">
+	                                <div class="col-lg-6">
+	                                	<div class="checkout__input">
+											<p><strong>이름</strong></p>
+												${memberDTO.memberNm }
+											
+										</div>
+									</div>
+								</div>
+								<div class="row">
+	                                <div class="col-lg-6">
+	                                	<div class="checkout__input">
+											<p><strong>이메일</strong></p>
+												${memberDTO.email }
+											
+										</div>
+									</div>
+								</div>
+								<div class="row">
+	                                <div class="col-lg-6">
+	                                	<div class="checkout__input">
+											<p><strong>휴대폰번호</strong></p>
+												${memberDTO.hp }
+										</div>
+									</div>
+								</div>
+								<button type="button" class="site-btn" onclick="location.href='authentication?memberId=${memberDTO.memberId}&menu=update';">회원정보수정하기</button>
+								<button type="button" class="site-btn" onclick="location.href='authentication?memberId=${memberDTO.memberId}&menu=delete';">회원탈퇴하기</button>
+								<button type="button" class="site-btn" onclick="location.href='${contextPath}/order/orderList?memberId=${sessionScope.memberId}';">주문내역</button>
+							
+							</div>
+						</div>
+					</form>
+					
+				</div>
+			</div>
+		</section>
+	
+	
 </body>
 </html>

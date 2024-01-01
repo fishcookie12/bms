@@ -19,30 +19,68 @@
 	
 	        $(this).val(inputValue);
 	    });
+	    
+	    $('#passwd').on('input', function() {
+	        validatePassword();
+	    });
+
+	    function validatePassword() {
+	        var password = $('#passwd').val();
+	    
+	        var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{10,}$/;
+
+	        if (!regex.test(password)) {
+	            $('#passwordMessage').text('비밀번호는 영문과 숫자를 조합하여 10자 이상으로 입력해야 합니다.');
+	        } else {
+	            $('#passwordMessage').text('');
+	        }
+	    }
 	     
 	});
 </script>
 <body>
-	<h3>회원정보수정</h3>
-	<form action="${contextPath }/member/modifyMember" method="post">
-		<table>
-		
-			<tr>
-				<td>비밀번호수정</td>
-				<td><input type="password" name="passwd"></td>
-			</tr>
-			<tr>
-				<td>휴대폰번호수정</td>
-				<td><input type="text" name="hp" id="id" placeholder="숫자로만 입력하세요" ></td>
-			</tr>
-			<tr>
-				<td>이메일수정</td>
-				<td><input type="email" name="email"></td>
-			</tr>
-		
-		</table>
-		<input type="hidden" name="memberId" value="${memberDTO.memberId }" >
-		<input type="submit" value="수정하기" >
-	</form>
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>회원원정보수정페이지</h4>
+				<form action="${contextPath }/member/modifyMember" method="post">
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+						
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>비밀번호수정<span>*</span></p>
+										<input type="password" name="passwd" id="passwd" minlength="10" placeholder="영문숫자를 조합하여 10자 이상 입력하세요" size="40" required>
+										<div id="passwordMessage" style="color: red;"></div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>휴대폰번호수정<span>*</span></p>
+										<input type="text" name="hp" id="hp"  placeholder="숫자로만 입력하세요" maxlength="11" size="30" required>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>이메일수정<span>*</span></p>
+										<input type="email" name="email" required>
+									</div>
+								</div>
+							</div>
+							<input type="hidden" name="memberId" value="${memberDTO.memberId }" >
+							<button type="submit" class="site-btn">수정하기</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	
 </body>
 </html>

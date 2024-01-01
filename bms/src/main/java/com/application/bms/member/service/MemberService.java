@@ -16,8 +16,8 @@ public interface MemberService {
 	public String findMemberId(MemberDTO memberDTO)throws Exception;
 	public MemberDTO findMemberPw(String memberId)throws Exception;
 	public void modifyPw(MemberDTO memberDTO)throws Exception;
-	public List<MemberDTO> getMemberList() throws Exception;
-	public List<MemberDTO> getMemberSearchList(Map<String, String> searchMap) throws Exception;
+	public List<MemberDTO> getMemberList(Map<String, Object> searchMap) throws Exception;
+	//public List<MemberDTO> getMemberSearchList(Map<String, String> searchMap) throws Exception;
 	public int getMyOrderCnt(String memberId) throws Exception;
 	public int getMyCartCnt(String memberId) throws Exception;
 }

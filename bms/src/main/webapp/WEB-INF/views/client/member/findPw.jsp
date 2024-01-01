@@ -9,17 +9,29 @@
 <title>findPw</title>
 </head>
 <body>
-	<h3>비밀번호찾기</h3>
-	<form action="${contextPath }/member/findPw" method="post">
-		<table>
-			<tr>
-				<td>아이디</td>
-				<td>
-					<input type="text" name="memberId">
-				</td>
-			</tr>
-		</table>
-		<input type="submit" value="확인">
-	</form>
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>비밀번호찾기</h4>
+				<form action="${contextPath }/member/findPw" method="post">
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>아이디<span>*</span></p>
+										<input type="text" name="memberId">
+										
+									</div>
+								</div>
+							</div>
+							<button type="submit" class="site-btn">비밀번호찾기</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	
 </body>
 </html>

@@ -34,8 +34,12 @@
 						<p>${womanBestSellers.bookNm}</p>
 					</c:forEach>
 				</td>
-				<td></td>
-				<td></td>
+				<td><fmt:formatNumber value="${totalManSales}" type="number" pattern="#,###" /></td>
+				<td>
+					<c:forEach var="manBestSellers" items="${manBestSellers }">
+						<p>${manBestSellers.bookNm }</p>
+					</c:forEach>
+				</td>
 				<td>
 					<c:forEach var="bestSeller" items="${bestSellers}">
 						<p>${bestSeller.bookNm}</p>

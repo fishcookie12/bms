@@ -21,23 +21,18 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="#">국내도서</a>
-                            	<ul class="header__menu__dropdown">
-                            		<li>소설</li>
-                            		<li>시/에세이</li>
-                            		<li>인문학</li>
-                            		<li>경제/경영</li>
-                            		<li>예술</li>
-                            		<li>IT</li>
-                            		<li>자격증</li>
-                            		<li>외국어</li>
-                            		<li>공무원</li>
-                            		<li>기업</li>
-                            		<li>중고등참고서</li>
-                            		<li>초등참고서</li>
-                            		<li>유아</li>
-                            	</ul>
-                            </li>
+                            <li><a href="">한국소설</a></li>
+                            <li><a href="">영미소설</a></li>
+                            <li><a href="">일본소설</a></li>
+                            <li><a href="">유럽소설</a></li>
+                            <li><a href="">시/에세이</a></li>
+                            <li><a href="">경제/경영</a></li>
+                            <li><a href="">과학</a></li>
+                            <li><a href="">수험서</a></li>
+                            <li><a href="">공무원</a></li>
+                            <li><a href="">외국어</a></li>
+                            <li><a href="">중고등참고서</a></li>
+                            <li><a href="">초등참고서</a></li>
                             
                             <li><a href="#">외국도서</a></li>
                             <li><a href="#">중고샵</a></li>

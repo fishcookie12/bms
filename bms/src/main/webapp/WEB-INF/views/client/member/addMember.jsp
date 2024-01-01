@@ -92,60 +92,84 @@
  </script>
 </head>
 <body>
-	<form action="${contextPath }/member/addMember" method="post">
-		<h3>회원가입</h3>
-		<table border="1">
-			<tr>
-				<td>아이디</td>
-				<td>
-					<input type="text" name="memberId" id="memberId" maxlength="15" placeholder="아이디를 입력하세요" size="30"/>
-					<input type="button"  id="btnOverlapped" value="아이디중복확인"/>
-				</td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td>
-					<input type="password" name="passwd" id="passwd" minlength="10" placeholder="영문숫자를 조합하여 10자 이상 입력하세요" size="40" required>
-				</td>
-			</tr>
-			<tr>
-			    <td colspan="2">
-			        <div id="passwordMessage" style="color: red;"></div>
-			    </td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td>
-					<input type="text" name="memberNm" placeholder="이름을 입력하세요" size="30" required>
-				</td>
-			</tr>
-			<tr>
-				<td>성별</td>
-				<td>
-					<input type="radio" name="sex" value="m">남성
-					<input type="radio" name="sex" value="w">여성
-				</td>		
-			</tr>
-			<tr>
-				<td>생년월일</td>
-				<td>
-					<input type="text" name="birthDt" id="birthDt" maxlength="6" placeholder="6자리 숫자로 입력하세요" size="30"  required>
-				</td>
-			</tr>
-			<tr>
-				<td>휴대폰번호</td>
-				<td>
-					<input type="text" name="hp" id="hp"  placeholder="숫자로만 입력하세요" maxlength="11" size="30" required>
-				</td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td>
-					<input type="email" name="email" required>
-				</td>
-			</tr>	
-		</table>
-		<input type="submit" value="회원가입하기" >
-	</form>
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>회원가입페이지</h4>
+				<form action="${contextPath }/member/addMember" method="post">
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>아이디<span>*</span></p>
+										<input type="text" name="memberId" id="memberId" maxlength="15" placeholder="아이디를 입력하세요" size="30"/>
+										<input type="button"  id="btnOverlapped" value="아이디중복확인"/>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>비밀번호<span>*</span></p>
+										<input type="password" name="passwd" id="passwd" minlength="10" placeholder="영문숫자를 조합하여 10자 이상 입력하세요" size="40" required>
+										<div id="passwordMessage" style="color: red;"></div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>이름<span>*</span></p>
+										<input type="text" name="memberNm" placeholder="이름을 입력하세요" size="30" required>
+										
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>성별<span>*</span></p>
+									</div>
+										<input type="radio" name="sex" value="m">남성
+										<input type="radio" name="sex" value="w">여성
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>생년월일<span>*</span></p>
+										<input type="text" name="birthDt" id="birthDt" maxlength="6" placeholder="6자리 숫자로 입력하세요" size="30"  required>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>휴대폰번호<span>*</span></p>
+										<input type="text" name="hp" id="hp"  placeholder="숫자로만 입력하세요" maxlength="11" size="30" required>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>이메일<span>*</span></p>
+										<input type="email" name="email" required>
+									</div>
+								</div>
+							</div>
+							<button type="submit" class="site-btn">회원가입</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
 </body>
 </html>

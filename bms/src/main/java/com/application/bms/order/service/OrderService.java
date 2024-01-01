@@ -18,7 +18,9 @@ public interface OrderService {
 	public List<OrderDTO> adminOrderList()throws Exception;
 	public int totalSales()throws Exception;
 	public int totalWomanSales()throws Exception;
+	public int totalManSales()throws Exception;
 	public List<OrderDTO> bestSaller()throws Exception;
 	public List<OrderDTO> womanBestSaller()throws Exception;
+	public List<OrderDTO> manBestSaller()throws Exception;
 	
 }

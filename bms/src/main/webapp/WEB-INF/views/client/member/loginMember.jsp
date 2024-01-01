@@ -9,25 +9,39 @@
 <title>loginMember</title>
 </head>
 <body>
-	<h3>로그인하기</h3>
-	<form action="${contextPath }/member/loginMember" method="post">
-		<table border="1">
-			<tr>
-				<td>아이디</td>
-				<td>
-					<input type="text" name="memberId" placeholder="아이디를 입력하세요" required>
-				</td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td>
-					<input type="password" name="passwd" placeholder="비밀번호를 입력하세요" required>
-				</td>
-			</tr>
-		</table>
-		<input type="submit" value="로그인">	
-	</form>
-	<p><a href="${contextPath}/member/findId">아이디찾기</a></p>
-	<p><a href="${contextPath}/member/findPw">비밀번호찾기</a></p>
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>로그인페이지</h4>
+				<form action="${contextPath }/member/loginMember" method="post">
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>아이디<span>*</span></p>
+										<input type="text" name="memberId" placeholder="아이디를 입력하세요" required>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>비밀번호<span>*</span></p>
+										<input type="password" name="passwd" placeholder="비밀번호를 입력하세요" required>
+										<div id="passwordMessage" style="color: red;"></div>
+									</div>
+								</div>
+							</div>
+							<button type="submit" class="site-btn">로그인</button>
+						</div>
+					</div>
+				</form>
+				<p><a href="${contextPath}/member/findId">아이디찾기</a></p>
+				<p><a href="${contextPath}/member/findPw">비밀번호찾기</a></p>
+			</div>
+		</div>
+	</section>
+	
 </body>
 </html>

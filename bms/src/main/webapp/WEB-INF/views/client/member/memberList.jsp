@@ -10,62 +10,21 @@
 <meta charset="UTF-8">
 <title>memberList</title>
 <script>
-$(document).ready(function () {
-    $('#searchButton').click(function () {
-    	var param = {
-				"searchKeyword" : $("[name='searchKeyword']").val(),
-				"searchWord" : $("[name='searchWord']").val(),
-			}
-    	alert("1");
-    	$.ajax({
-		       type : "post",
-		       url : "${contextPath}/member/searchMemberList",
-		       data : param,
-		       success : function(data){
-		          
-		    	   var memberList = "";
-		    	   if (data.length == 0) {
-		    		   memberList += "<tr align='center'>";
-		    		   memberList += "<td colspan='6'><strong>조회된 회원이 없습니다.</strong></td>";
-	    			   memberList += "</tr>";
-		    	   }
-		    	   else {
-		    		   
-			    	   $(data).each(function(){
-			    		   
-			    		   memberList += "<tr>";
-			    		   memberList += "<td><img src='${contextPath }/member/thumbnails?fileName=" + this.profile +"' width='50' height='50' alt='사진'></td>";
-			    		   memberList += "<td>"+ this.memberId + "</td>";
-			    		   memberList += "<td>"+ this.memberNm + "</td>";
-			    		   memberList += "<td>"+ this.hp + "</td>";
-			    		   memberList += "<td>";
-			    		   memberList += this.roadAddress +"<br>"; 
-			    		   memberList += this.jibunAddress +"<br>";
-			    		   memberList += this.namujiAddress +"<br>";
-			    		   memberList += "</td>";
-			    		   
-			    		   var joinDt = new Date(this.joinDt);
-			    		   var year = joinDt.getFullYear();
-			    		   var month = joinDt.getMonth() + 1;
-			    		   if (month < 10) month = "0" + month;
-			    		   var date = joinDt.getDate();
-			    		   if (date < 10) date = "0" + date;
-			    		   
-			    		   memberList += "<td>"+ year + "-" + month + "-" + date + "</td>";
-			    		   memberList += "</tr>";
-			    		   
-			    	   });
-		    		   
-		    	   }
-		    	   
-		    	   
-		    	  $("#memberList").html(memberList);
-		    	   
-		       }
-		    });
+	$().ready(function(){
 
-    });
-});
+		$("#searchKeyword").val("${searchKeyword}");
+		
+	});
+	
+	function getMemberList() {
+		
+		var url = "${contextPath }/member/memberList"
+		    url += "?searchKeyword=" +  $("#searchKeyword").val();
+		    url += "&searchWord=" + $("#searchWord").val();
+
+		location.href = url;
+		
+	}
 </script>
 </head>
 <body>
@@ -106,13 +65,13 @@ $(document).ready(function () {
 			</tbody>
 			<tr>
 				<td colspan="6" align="center">
-					<select name="searchKeyword">
+					<select id="searchKeyword">
+						<option value="total">전체검색</option>
 						<option value="memberId">회원아이디</option>
-						<option value="memberNm">회원명</option>
-						
+						<option value="memberNm">회원이름</option>
 					</select>
-					 <input type="text" name="searchWord" id="searchWord" />
-                    <input type="button" value="조회하기" id="searchButton">
+					<input type="text" id="searchWord" name="searchWord" value="${searchWord }">
+                    <input type="button" value="조회하기" onclick="getMemberList()">
 				</td>
 			</tr>
 		</table>

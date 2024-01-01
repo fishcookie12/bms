@@ -9,9 +9,29 @@
 <title>IdFound</title>
 </head>
 <body>
-	<h3>아이디를 확인해주세요</h3>
-	<p>귀하의 아이디는 ${foundId } 입니다.</p>
-	<p><a href="${contextPath}/member/loginMember">로그인하기</a></p>
-	<p><a href="${contextPath}/member/findPw">비밀번호찾기</a></p>
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>아이디찾기</h4>
+				
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>귀하의 아이디는 ${foundId } 입니다.<span></span></p>
+										
+									</div>
+								</div>
+							</div>
+							<p><a href="${contextPath}/member/loginMember">로그인하기</a></p>
+							<p><a href="${contextPath}/member/findPw">비밀번호찾기</a></p>
+						</div>
+					</div>
+				
+			</div>
+		</div>
+	</section>
+	
 </body>
 </html>

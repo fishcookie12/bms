@@ -25,38 +25,54 @@
 	});
 </script>
 <body>
-	<div align="center">
-	<h4>${sessionScope.memberId}님 배송정보수정</h4>
-	<form action="${contextPath }/order/modifyOrder" method="post">
-		<table border="1">
-			<tr>
-				<td>수취인</td>
-				<td>
-					<input type="text" value="${orderDTO.receiver}" name="receiver">
-				</td>
-			</tr>
-			<tr>
-				<td>배송연락처</td>
-				<td>
-					<input type="text" value="${orderDTO.hp}" name="hp" id="hp" placeholder="숫자로만 입력하세요" >
-				</td>
-			</tr>
-			<tr>
-				<td>배송주소</td>
-				<td>
-					<input type="text" value="${orderDTO.deliveryAdress}" name="deliveryAdress">
-				</td>
-			</tr>
-			<tr>
-				<td>배송메세지</td>
-				<td>
-					<input type="text" value="${orderDTO.deliveryMessage}" name="deliveryMessage">
-				</td>
-			</tr>
-		</table>
-		<input type="hidden" name="orderCd" value="${orderDTO.orderCd }">
-		<input type="submit" value="수정완료">
-	</form>
-	</div>
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>배송정보수정페이지</h4>
+				<form action="${contextPath }/order/modifyOrder" method="post">
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>받는사람<span>*</span></p>
+										<input type="text" value="${orderDTO.receiver}" name="receiver">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>배송연락처<span>*</span></p>
+										<input type="text" value="${orderDTO.hp}" name="hp" id="hp" placeholder="숫자로만 입력하세요" >
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>배송주소<span>*</span></p>
+										<input type="text" value="${orderDTO.deliveryAdress}" name="deliveryAdress">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>배송메세지</p>
+										<input type="text" value="${orderDTO.deliveryMessage}" name="deliveryMessage">
+									</div>
+								</div>
+							</div>
+							<input type="hidden" name="orderCd" value="${orderDTO.orderCd }">
+							<button type="submit" class="site-btn">수정완료</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+
 </body>
 </html>

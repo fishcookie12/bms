@@ -9,24 +9,39 @@
 <title>authentication</title>
 </head>
 <body>
-	<h3>회원정보인증하기</h3>
-	<form action="${contextPath}/member/authentication" method="post">
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>회원정보인증하기</h4>
+				<form action="${contextPath}/member/authentication" method="post">
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>아이디</p>
+										${memberDTO.memberId }
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>비밀번호<span>*</span></p>
+										<input type="password" name="passwd">
+										
+									</div>
+								</div>
+							</div>
+							<button type="submit" class="site-btn">인증하기</button>
+							<input type="hidden" name="memberId" value="${memberDTO.memberId }">
+							<input type="hidden" name="menu" value="${menu }">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
 	
-		<table border="1">
-			<tr>
-				<td>아이디</td>
-				<td>${memberDTO.memberId }</td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td>
-					<input type="password" name="passwd">
-				</td>
-			</tr>
-		</table>
-		<input type="submit" value="인증하기">
-		<input type="hidden" name="memberId" value="${memberDTO.memberId }">
-		<input type="hidden" name="menu" value="${menu }">
-	</form>
 </body>
 </html>

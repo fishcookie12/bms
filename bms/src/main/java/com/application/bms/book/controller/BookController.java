@@ -2,6 +2,7 @@ package com.application.bms.book.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,6 +31,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.application.bms.book.dto.BookDTO;
 import com.application.bms.book.service.BookService;
+
+import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
 @RequestMapping("/book")
@@ -92,6 +96,22 @@ public class BookController {
 		jsScript += "location.href='" + request.getContextPath() + "/'";
 		jsScript += "</script>";
 		return jsScript;
+	}
+	
+	@GetMapping("/thumbnails")
+	public void thumbnails(@RequestParam("fileName") String fileName , HttpServletResponse response) throws Exception {
+	
+		OutputStream out = response.getOutputStream();
+		String filePath = FILE_REPO_PATH + fileName;
+		
+		File image = new File(filePath);
+		if (image.exists()) { 
+			Thumbnails.of(image).size(800,800).outputFormat("png").toOutputStream(out);
+		}
+		byte[] buffer = new byte[1024 * 8];
+		out.write(buffer);
+		out.close();
+		
 	}
 
 	@GetMapping("/bookList")

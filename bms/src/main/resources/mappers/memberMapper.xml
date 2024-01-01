@@ -100,28 +100,50 @@
 				MEMBER_ID=#{memberId}
 	</update>
 	
-	<select id="selectListMember" resultType="MemberDTO">
-		SELECT
-				*
-		FROM
-				MEMBER
+	<select id="selectListMember" parameterType="hashMap" resultType="MemberDTO">
+		<choose>
+			<when test='searchKeyword.equals("total")'>
+				<choose>
+					<when test='searchWord.equals("")'>
+						SELECT
+								*
+						FROM
+								MEMBER
+						ORDER BY
+								JOIN_DT DESC
+					</when>
+					<otherwise>
+						SELECT 
+								*
+						FROM
+								MEMBER
+						WHERE
+								MEMBER_NM LIKE CONCAT('%' , #{searchWord} , '%') OR
+								MEMBER_ID LIKE CONCAT('%' , #{searchWord} , '%')
+						ORDER BY
+								JOIN_DT DESC
+
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				SELECT
+						*
+				FROM
+						MEMBER
+				WHERE
+					<if test='searchKeyword.equals("memberNm")'>
+						MEMBER_NM LIKE CONCAT('%' , #{searchWord} , '%')
+					</if>
+					<if test='searchKeyword.equals("memberId")'>
+						MEMBER_ID LIKE CONCAT('%' , #{searchWord} , '%')
+					</if>
+				ORDER BY
+						JOIN_DT DESC
+			</otherwise>
+		</choose>
 	</select>
-	
-	<select id="selectListSearchMember" resultType="MemberDTO" parameterType="hashMap">
-		SELECT
-				*
-		FROM
-				MEMBER
-		<where>
-			<if test='searchKeyword.equals("memberId")'>
-				MEMBER_ID LIKE CONCAT ('%' , #{searchWord} , '%')
-			</if>
-			<if test='searchKeyword.equals("memberNm")'>
-				MEMBER_NM LIKE CONCAT ('%' , #{searchWord} , '%')
-			</if>
-		</where>
-	</select>
-	
+
 	<select id="selectMyOrderCnt" resultType="int" parameterType="String">
 	  		SELECT
 	  				COUNT(*)

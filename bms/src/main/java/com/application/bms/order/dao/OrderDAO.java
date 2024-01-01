@@ -10,7 +10,6 @@ import com.application.bms.order.dto.OrderDTO;
 public interface OrderDAO {
 	public List<Map<String,Object>> getListByCart(String memberId)throws Exception;
 	public void insertOrder(OrderDTO orderDTO)throws Exception;
-	
 	public List<OrderDTO> selectOrderList(String memberId)throws Exception;
 	public OrderDTO selectOrderOne(int orderCd)throws Exception;
 	public void updateOrder(OrderDTO orderDTO)throws Exception;
@@ -18,8 +17,11 @@ public interface OrderDAO {
 	public List<OrderDTO> adminOrderList()throws Exception;
 	public int allsalse()throws Exception;
 	public int getWomanSales()throws Exception;
-	public List<OrderDTO> getWomanBestSeller()throws Exception;
+	public int getManSales()throws Exception;
 	public List<OrderDTO> bestSeller()throws Exception;
+	public List<OrderDTO> getWomanBestSeller()throws Exception;
+	public List<OrderDTO> getManBestSeller()throws Exception;
 	public void updateStock(Map<String,Object> orderMap)throws Exception;
 	public void deleteCart()throws Exception;
+	public void insertOrderByCart(List<OrderDTO> orderList) throws Exception;
 }

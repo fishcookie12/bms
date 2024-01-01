@@ -210,6 +210,8 @@ public class OrderController {
 		mv.addObject("bestSellers", orderService.bestSaller());
 		mv.addObject("totalWomanSales", orderService.totalWomanSales());
 		mv.addObject("womanBestSellers", orderService.womanBestSaller());
+		mv.addObject("totalManSales", orderService.totalManSales());
+		mv.addObject("manBestSellers", orderService.manBestSaller());
 		return mv;
 	}
 	

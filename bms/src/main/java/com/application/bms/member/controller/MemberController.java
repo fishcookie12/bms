@@ -1,5 +1,6 @@
 package com.application.bms.member.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -275,18 +276,30 @@ public class MemberController {
 	}
 	
 	@GetMapping("/memberList")
-	public ModelAndView memberList()throws Exception{
+	public ModelAndView memberList(HttpServletRequest request)throws Exception{
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("/member/memberList");
-		mv.addObject("memberList" , memberService.getMemberList());
+		String searchKeyword = request.getParameter("searchKeyword");
+		if (searchKeyword == null) searchKeyword = "total";
+		
+		String searchWord = request.getParameter("searchWord");
+		if (searchWord == null) searchWord = "";
+		
+		mv.addObject("searchKeyword"     , searchKeyword);
+		mv.addObject("searchWord"        , searchWord);
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		searchMap.put("searchKeyword"  , searchKeyword);
+		searchMap.put("searchWord"     , searchWord);
+		mv.addObject("memberList" , memberService.getMemberList(searchMap));
 		
 		return mv;
 	}
 	
-	
+	/*
 	@GetMapping("/searchMemberList")
 	@ResponseBody 
 	public List<MemberDTO> searchMemberList(@RequestParam Map<String,String> searchMap) throws Exception {
 		return memberService.getMemberSearchList(searchMap);
 	}
+	*/
 }

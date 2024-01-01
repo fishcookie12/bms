@@ -6,6 +6,7 @@
 		INSERT INTO ORDERS(
 				
 				MEMBER_ID,
+				BOOK_CD,
 				BOOK_NM,
 				ORDER_BOOK_QTY,
 				TOTAL_PRICE,
@@ -19,7 +20,8 @@
 		)
 		VALUES (
 				
-				#{memberId},	
+				#{memberId},
+				#{bookCd},	
 				#{bookNm},	
 				#{orderBookQty},
 				#{totalPrice},
@@ -32,6 +34,7 @@
 				NOW()
 		 )
 	</insert>
+	
 	
 	
 	<update id="updateStock" parameterType="hashmap">
@@ -140,13 +143,27 @@
 	
 	<select id="getWomanSales" resultType="int">
 		SELECT
-            SUM(ORDERS.TOTAL_PRICE) AS womanSales
+            	SUM(ORDERS.TOTAL_PRICE) AS womanSales
         FROM
-            ORDERS
-        INNER JOIN
-            MEMBER ON ORDERS.MEMBER_ID = MEMBER.MEMBER_ID
+        		ORDERS
+        INNER	JOIN
+        		MEMBER ON 
+            	ORDERS.MEMBER_ID = MEMBER.MEMBER_ID
         WHERE
-            MEMBER.SEX = 'w'
+            	MEMBER.SEX = 'w'
+    </select>
+    
+    <select id="getManSales" resultType="int">
+    	SELECT
+    			SUM(O.TOTAL_PRICE)	AS	manSales
+    	FROM
+    			ORDERS O
+    	INNER	JOIN
+    			MEMBER M 
+    			ON O.MEMBER_ID = M.MEMBER_ID
+    	WHERE
+    			M.SEX='m'
+    			
     </select>
 	
 	<select id="getWomanBestSeller" resultType="OrderDTO">
@@ -167,6 +184,24 @@
         LIMIT 10
 	</select>
 	
+	<select id="getManBestSeller" resultType="OrderDTO">
+		SELECT
+				O.BOOK_CD,
+            	O.BOOK_NM,
+				SUM(O.ORDER_BOOK_QTY)	AS	orderBookQty
+		FROM
+				ORDERS	O
+		INNER	JOIN
+				MEMBER	M
+				ON	M.MEMBER_ID=O.MEMBER_ID
+		WHERE
+				M.SEX='m'
+		GROUP BY
+        		O.BOOK_CD, O.BOOK_NM
+        ORDER BY
+        		orderBookQty DESC
+        LIMIT 10
+	</select>
 	<select id="selectOneOrderer" parameterType="String" resultType="MemberDTO">
 		SELECT
 				*

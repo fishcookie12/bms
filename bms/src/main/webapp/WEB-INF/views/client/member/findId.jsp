@@ -29,23 +29,40 @@
 </script>
 </head>
 <body>
-	<h3>아이디찾기</h3>
-	<form action="${contextPath }/member/findId" method="post">
-		<table border="1">
-			<tr>
-				<td>생년월일</td>
-				<td>
-					<input type="text" name="birthDt" id="birthDt" placeholder="6자리 숫자로만 입력하세요" maxlength="6">
-				</td>
-			</tr>
-			<tr>
-				<td>핸드폰번호</td>
-				<td>
-					<input type="text" name="hp" id="hp" placeholder="숫자로만 입력하세요" maxlength="11">
-				</td>
-			</tr>
-		</table>
-		<input type="submit" value="확인">
-	</form>
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>아이디찾기</h4>
+				<form action="${contextPath }/member/findId" method="post">
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>생년월일<span>*</span></p>
+										<input type="text" name="birthDt" id="birthDt" placeholder="6자리 숫자로만 입력하세요" maxlength="6">
+										
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>휴대폰번호<span>*</span></p>
+										<input type="text" name="hp" id="hp" placeholder="숫자로만 입력하세요" maxlength="11">
+										
+									</div>
+								</div>
+							</div>
+							
+                              
+							<button type="submit" class="site-btn">아이디찾기</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+
 </body>
 </html>

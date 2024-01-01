@@ -24,9 +24,9 @@ public interface MemberDAO {
 	
 	public void temporaryPassword(MemberDTO memberDTO)throws Exception;
 	
-	public List<MemberDTO> selectListMember() throws Exception;
+	public List<MemberDTO> selectListMember(Map<String, Object> searchMap) throws Exception;
 	
-	public List<MemberDTO> selectListSearchMember(Map<String, String> searchMap) throws Exception;
+	//public List<MemberDTO> selectListSearchMember(Map<String, String> searchMap) throws Exception;
 	public int selectMyOrderCnt(String memberId) throws Exception;
 	public int selectMyCartCnt(String memberId) throws Exception;
 	

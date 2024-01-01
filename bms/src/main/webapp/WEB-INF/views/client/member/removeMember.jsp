@@ -9,11 +9,30 @@
 <title>removeMember</title>
 </head>
 <body>
-<h3>회원탈퇴</h3>
-		<p><span style="color:red;">탈퇴하시겠습니까?</span></p>
-		<form action="${contextPath }/member/removeMember" method="post" >
-			<input type="hidden" name="memberId" value="${memberId }">
-			<input type="submit" value="탈퇴하기">
-		</form>
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>회원탈퇴</h4>
+				<form action="${contextPath }/member/removeMember" method="post" >
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p><span style="color:red;">탈퇴하시겠습니까?</span></p>
+										<input type="hidden" name="memberId" value="${memberId }">
+										
+									</div>
+								</div>
+							</div>
+							
+							<button type="submit" class="site-btn">탈퇴하기</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+
 </body>
 </html>

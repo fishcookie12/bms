@@ -83,7 +83,16 @@ public class OrderServiceImpl implements OrderService {
 		return orderDAO.getWomanBestSeller();
 	}
 
+	@Override
+	public int totalManSales() throws Exception {
+		
+		return orderDAO.getManSales();
+	}
 
-	
+	@Override
+	public List<OrderDTO> manBestSaller() throws Exception {
+		
+		return orderDAO.getManBestSeller();
+	}
 
 }
