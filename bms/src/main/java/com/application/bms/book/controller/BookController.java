@@ -86,9 +86,8 @@ public class BookController {
 		bookDTO.setIntro(multipartRequest.getParameter("intro"));
 		bookDTO.setPublisherComment(multipartRequest.getParameter("publisherComment"));
 		bookDTO.setRecommendation(multipartRequest.getParameter("recommendation"));
-		bookDTO.setImgNm(multipartRequest.getParameter("imgNm"));
-		
-		
+		bookDTO.setImgNm(fileName);
+
 		bookService.addBook(bookDTO);
 		System.out.println(bookDTO);
 		jsScript = "<script>";
@@ -127,6 +126,7 @@ public class BookController {
 		
 		searchMap.put("searchOption"  , searchOption);
 		searchMap.put("searchWord"     , searchWord);
+		System.out.println(bookService.getBookList(searchMap));
 		mv.addObject("bookList",  bookService.getBookList(searchMap));		
 		return mv;
 	}
@@ -177,8 +177,8 @@ public class BookController {
 		bookDTO.setIsbn(multipartRequest.getParameter("isbn"));
 		bookDTO.setDeliveryPrice(Integer.parseInt(multipartRequest.getParameter("deliveryPrice")));
 		bookDTO.setPart(multipartRequest.getParameter("part"));
+		bookDTO.setImgNm(fileName);
 		
-		bookDTO.setImgNm(multipartRequest.getParameter("imgNm"));
 		
 		System.out.println(bookDTO);
 		bookService.modifyBook(bookDTO);

@@ -13,14 +13,13 @@
 	$().ready(function(){
 
 		$("#searchKeyword").val("${searchKeyword}");
-		
 	});
 	
 	function getMemberList() {
-		
+		alert($("#searchData").val());
 		var url = "${contextPath }/member/memberList"
 		    url += "?searchKeyword=" +  $("#searchKeyword").val();
-		    url += "&searchWord=" + $("#searchWord").val();
+		    url += "&searchData=" + $("#searchData").val();
 
 		location.href = url;
 		
@@ -70,7 +69,7 @@
 						<option value="memberId">회원아이디</option>
 						<option value="memberNm">회원이름</option>
 					</select>
-					<input type="text" id="searchWord" name="searchWord" value="${searchWord }">
+					<input type="text" id=searchData>
                     <input type="button" value="조회하기" onclick="getMemberList()">
 				</td>
 			</tr>

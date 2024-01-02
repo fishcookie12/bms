@@ -92,7 +92,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
-                            <img src="${contextPath}/member/thumbnails?fileName=${bookDTO.imgNm}" width="50" height="50" alt="사진">
+                            <img src="${contextPath}/book/thumbnails?fileName=${bookDTO.imgNm}" width="50" height="500" alt="사진">
                         </div>
                     </div>
                 </div>

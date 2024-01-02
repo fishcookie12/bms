@@ -282,24 +282,18 @@ public class MemberController {
 		String searchKeyword = request.getParameter("searchKeyword");
 		if (searchKeyword == null) searchKeyword = "total";
 		
-		String searchWord = request.getParameter("searchWord");
-		if (searchWord == null) searchWord = "";
+		String searchData = request.getParameter("searchData");
+		if (searchData == null) searchData = "";
 		
 		mv.addObject("searchKeyword"     , searchKeyword);
-		mv.addObject("searchWord"        , searchWord);
+		mv.addObject("searchWord"        , searchData);
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		searchMap.put("searchKeyword"  , searchKeyword);
-		searchMap.put("searchWord"     , searchWord);
+		searchMap.put("searchWord"     , searchData);
 		mv.addObject("memberList" , memberService.getMemberList(searchMap));
-		
+		System.out.println(searchKeyword);
+		System.out.println(searchData);
 		return mv;
 	}
-	
-	/*
-	@GetMapping("/searchMemberList")
-	@ResponseBody 
-	public List<MemberDTO> searchMemberList(@RequestParam Map<String,String> searchMap) throws Exception {
-		return memberService.getMemberSearchList(searchMap);
-	}
-	*/
+
 }

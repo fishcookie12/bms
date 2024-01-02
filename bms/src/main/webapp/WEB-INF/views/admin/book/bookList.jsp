@@ -21,11 +21,11 @@
                     <div class="product__item">
                         <div class="product__item__pic set-bg">
                             <ul class="product__item__pic__hover">
-                                <li><img src="${FILE_REPO_PATH}${bookDTO.imgNm}" width="50" height="50" alt="사진"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                <img src="${contextPath}/book/thumbnails?fileName=${bookDTO.imgNm}" width="300" height="600" alt="사진">
                             </ul>
                         </div>
                         <div class="product__item__text">
+                        
                             <h4><a href="${contextPath}/book/bookDetail?bookCd=${bookDTO.bookCd }">${bookDTO.bookNm }</a></h4>
                             <h6>${bookDTO.price }</h6>
                             <h6>${bookDTO.writer }</h6>
