@@ -83,10 +83,10 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberDTO findMemberPw(String memberId) throws Exception {
+	public MemberDTO findMemberPw(MemberDTO memberDTO) throws Exception {
 		
-		if(memberDAO.findPw(memberId)!=null) {
-			return memberDAO.findPw(memberId);
+		if(memberDAO.findPw(memberDTO)!=null) {
+			return memberDAO.findPw(memberDTO);
 		}
 		return null;
 	}

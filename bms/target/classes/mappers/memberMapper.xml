@@ -82,24 +82,17 @@
 				HP=#{hp}
 	</select>
 	
-	<select id="findPw" parameterType="String" resultType="MemberDTO">
+	<select id="findPw" parameterType="MemberDTO" resultType="MemberDTO">
 		SELECT
 				*
 		FROM
 				MEMBER
 		WHERE
 				MEMBER_ID=#{memberId}
+		AND
+				BIRTH_DT=#{birthDt}
 	</select>
-	
-	<update id="temporaryPassword" parameterType="MemberDTO">
-		UPDATE
-				MEMBER
-		SET
-				PASSWD=#{passwd}
-		WHERE
-				MEMBER_ID=#{memberId}
-	</update>
-	
+
 	<select id="selectListMember" parameterType="hashMap" resultType="MemberDTO">
 		<choose>
 			<when test='searchKeyword.equals("total")'>

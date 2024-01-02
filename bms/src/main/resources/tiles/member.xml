@@ -49,9 +49,9 @@
  		<put-attribute name="title" value="비밀번호찾기"/>	
  	</definition>
  	
- 	<definition name="/member/PwFound"  extends="baseLayout">	
- 		<put-attribute name="body" value="/WEB-INF/views/client/member/PwFound.jsp"/>	
- 		<put-attribute name="title" value="비밀번호확인"/>	
+ 	<definition name="/member/modifyPw"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/member/modifyPw.jsp"/>	
+ 		<put-attribute name="title" value="비밀번호수정"/>	
  	</definition>
  	
  	<definition name="/member/memberList"  extends="baseLayout">	

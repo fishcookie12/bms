@@ -57,9 +57,9 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public MemberDTO findPw(String memberId) throws Exception {
+	public MemberDTO findPw(MemberDTO memberDTO) throws Exception {
 		
-		return sqlSession.selectOne("memberMapper.findPw", memberId);
+		return sqlSession.selectOne("memberMapper.findPw", memberDTO);
 	}
 
 	@Override

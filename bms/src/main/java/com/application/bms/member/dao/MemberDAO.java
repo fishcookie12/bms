@@ -20,7 +20,7 @@ public interface MemberDAO {
 	
 	public String findId(MemberDTO memberDTO)throws Exception;
 	
-	public MemberDTO findPw(String memberId)throws Exception;
+	public MemberDTO findPw(MemberDTO memberDTO)throws Exception;
 	
 	public void temporaryPassword(MemberDTO memberDTO)throws Exception;
 	

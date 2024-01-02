@@ -237,9 +237,10 @@ public class MemberController {
 	
 	@PostMapping("/findPw")
 	@ResponseBody
-	public String findPw(String memberId, HttpServletRequest request) throws Exception {
+	public String findPw(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
+		System.out.println(memberDTO);
 		String jsScript="";
-		MemberDTO foundMember=memberService.findMemberPw(memberId);
+		MemberDTO foundMember=memberService.findMemberPw(memberDTO);
 		if(foundMember==null) {
 			jsScript+="<script>";
 			jsScript+="alert('No matching member information found');";
@@ -247,31 +248,19 @@ public class MemberController {
 			jsScript+="</script>";
 		}
 		else {
-			
-			Random ran=new Random();
-			String PwFound="";
-			String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-			int charnum=characters.length();
-			for (int i = 0; i < 11; i++) {
-				int rNum=ran.nextInt(characters.length());
-				PwFound=PwFound+characters.charAt(rNum);
-			}
-			foundMember.setPasswd(PwFound);
-	        memberService.modifyPw(foundMember);
-	        
 			jsScript+="<script>";
-			jsScript += "location.href='"+request.getContextPath()+"/member/PwFound?PwFound="+PwFound+"';";
+			jsScript += "location.href='"+request.getContextPath()+"/member/modifyPw?memberId="+memberDTO.getMemberId()+"';";
 			jsScript+="</script>";
 			
 		}
 		return jsScript;
 	}
 	
-	@GetMapping("/PwFound")
-	public ModelAndView PwFound( @RequestParam("PwFound")String PwFound) throws Exception {
+	@GetMapping("/modifyPw")
+	public ModelAndView modifyPw(@RequestParam("memberId")String memberId) throws Exception {
 		ModelAndView mv=new ModelAndView();
-		mv.setViewName("/member/PwFound");
-		mv.addObject("PwFound", PwFound);
+		mv.setViewName("/member/modifyPw");
+		mv.addObject("memberId", memberId);
 		return mv;
 	}
 	
