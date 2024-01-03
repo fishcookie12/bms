@@ -22,7 +22,7 @@ public interface MemberDAO {
 	
 	public MemberDTO findPw(MemberDTO memberDTO)throws Exception;
 	
-	public void temporaryPassword(MemberDTO memberDTO)throws Exception;
+	public void modifyPassword(MemberDTO memberDTO)throws Exception;
 	
 	public List<MemberDTO> selectListMember(Map<String, Object> searchMap) throws Exception;
 	

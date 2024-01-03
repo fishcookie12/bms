@@ -264,6 +264,27 @@ public class MemberController {
 		return mv;
 	}
 	
+	@PostMapping("/modifyPw")
+	@ResponseBody
+	public String modifyPw(HttpServletRequest request) throws Exception {
+	    String memberId = request.getParameter("memberId");
+	    String passwd = request.getParameter("passwd");
+	    
+	    MemberDTO memberDTO = new MemberDTO();
+	    memberDTO.setMemberId(memberId);
+	    memberDTO.setPasswd(passwd);
+	    
+	    memberService.modifyPw(memberDTO);
+	    
+	    String jsScript = "<script>";
+	    jsScript += "alert('Password Reset Complete');";
+	    jsScript += "location.href='" + request.getContextPath() + "/member/loginMember';";
+	    jsScript += "</script>";
+	    
+	    return jsScript;
+	}
+
+	
 	@GetMapping("/memberList")
 	public ModelAndView memberList(HttpServletRequest request)throws Exception{
 		ModelAndView mv=new ModelAndView();

@@ -22,6 +22,7 @@
 	            $('#passwordMessage').text('');
 	        }
 	    }
+
 	     
 	});
 </script>
@@ -30,8 +31,8 @@
 	<section class="checkout spad">
 		<div class="container">
 			<div class="checkout__form">
-				<h4>비밀번호수정페이지</h4>
-				<form action="${contextPath }/member/modifyMember" method="post">
+				<h4>비밀번호재설정</h4>
+				<form action="${contextPath }/member/modifyPw" method="post">
 					<div class="row">
                         <div class="col-lg-8 col-md-6">
 						

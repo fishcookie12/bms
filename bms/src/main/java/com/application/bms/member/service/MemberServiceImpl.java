@@ -95,7 +95,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void modifyPw(MemberDTO memberDTO) throws Exception {
-		memberDAO.temporaryPassword(memberDTO);
+		memberDTO.setPasswd(bCryptPasswordEncoder.encode(memberDTO.getPasswd()));
+		memberDAO.modifyPassword(memberDTO);
 		
 	}
 

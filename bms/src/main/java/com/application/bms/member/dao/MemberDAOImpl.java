@@ -63,9 +63,9 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public void temporaryPassword(MemberDTO memberDTO) throws Exception {
+	public void modifyPassword(MemberDTO memberDTO) throws Exception {
 		
-		sqlSession.update("memberMapper.temporaryPassword", memberDTO);
+		sqlSession.update("memberMapper.modifyPassword", memberDTO);
 	}
 
 	@Override

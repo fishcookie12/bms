@@ -92,6 +92,15 @@
 		AND
 				BIRTH_DT=#{birthDt}
 	</select>
+	
+	<update id="modifyPassword" parameterType="MemberDTO" >
+		UPDATE
+				MEMBER
+		SET
+				PASSWD = #{passwd}
+		WHERE
+				MEMBER_ID=#{memberId}
+	</update>
 
 	<select id="selectListMember" parameterType="hashMap" resultType="MemberDTO">
 		<choose>
