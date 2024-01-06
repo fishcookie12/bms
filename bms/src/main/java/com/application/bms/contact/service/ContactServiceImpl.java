@@ -21,9 +21,9 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public List<ContactDTO> contactList() throws Exception {
+	public List<ContactDTO> contactList(Map<String, Object> searchMap) throws Exception {
 		
-		return contactDAO.selectListContact();
+		return contactDAO.selectListContact(searchMap);
 	}
 
 	@Override

@@ -54,9 +54,9 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<OrderDTO> adminOrderList() throws Exception {
+	public List<OrderDTO> adminOrderList(Map<String, Object> searchMap) throws Exception {
 	
-		return orderDAO.adminOrderList();
+		return orderDAO.adminOrderList(searchMap);
 	}
 
 	@Override
@@ -94,5 +94,11 @@ public class OrderServiceImpl implements OrderService {
 		
 		return orderDAO.getManBestSeller();
 	}
-
+	/*
+	@Override
+	public int getAllOrderCnt(Map<String, String> searchCntMap) throws Exception {
+		
+		return orderDAO.selectOneAllOrderCnt(searchCntMap);
+	}
+	*/
 }

@@ -43,9 +43,7 @@
                             <div class="header__top__right__auth">
                             <c:choose>
 								<c:when test="${sessionScope.adminId eq 'admin1' or sessionScope.adminId eq 'admin2' or sessionScope.adminId eq 'admin3'}">
-								<!-- 
-									<p><a href="${contextPath }/member/memberList">회원리스트 조회</a></p>
-								 -->
+								
 								 	<p>${sessionScope.adminId}관리자로 접속중</p>
 									<p><a href="${contextPath }/member/logoutMember">로그아웃</a></p>
 								</c:when>
@@ -74,7 +72,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="${contextPath}/resources/bootstrap/img/logo.png" alt=""></a>
+                        <a href="${contextPath}/layout/index"><img src="${contextPath}/resources/bootstrap/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="hero__search__form">
@@ -144,10 +142,10 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="${contextPath }/cart/cartList"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            
+                            <li><a href="${contextPath }/cart/cartList"><i class="fa fa-shopping-bag"></i></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        <div class="header__cart__price"><span></span></div>
                     </div>
                 </div>
             </div>

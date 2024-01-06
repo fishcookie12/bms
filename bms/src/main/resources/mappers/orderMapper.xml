@@ -54,6 +54,7 @@
 	</delete>
 	
 	
+	
 	<select id="selectOrderList" resultType="OrderDTO">
 		SELECT
 				*
@@ -63,6 +64,7 @@
 				MEMBER_ID = #{memberId}
 		ORDER BY
     			ORDER_DT DESC
+    	
 	</select>
 	
 	<select id="selectOrderOne" parameterType="int" resultType="OrderDTO">
@@ -107,17 +109,66 @@
 				ORDER_CD = #{orderCd}
 	</delete>
 	
-	<select id="adminOrderList" resultType="OrderDTO">
-		SELECT
-				ORDER_CD,
-				MEMBER_ID,
-				ORDER_DT,
-				DELIVERY_STATUS
-				
-		FROM
-				ORDERS
-		ORDER BY
-       			ORDER_DT DESC
+	<select id="adminOrderList" parameterType="hashMap" resultType="OrderDTO">
+		<choose>
+			<when test='searchCategory.equals("total")'>
+				<choose>
+					<when test='searchContent.equals("")'>
+						SELECT
+								ORDER_CD,
+								MEMBER_ID,
+								ORDER_DT,
+								DELIVERY_STATUS
+								
+						FROM
+								ORDERS
+						ORDER BY
+				       			ORDER_DT DESC
+				       
+						
+					</when>
+					<otherwise>
+						SELECT
+								ORDER_CD,
+								MEMBER_ID,
+								ORDER_DT,
+								DELIVERY_STATUS
+								
+						FROM
+								ORDERS
+								
+						WHERE
+								MEMBER_ID LIKE CONCAT('%', #{searchContent}, '%') OR
+								DELIVERY_STATUS LIKE CONCAT('%', #{searchContent}, '%')
+						ORDER BY
+				       			ORDER_DT DESC
+				    
+						
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+					SELECT
+							ORDER_CD,
+							MEMBER_ID,
+							ORDER_DT,
+							DELIVERY_STATUS
+							
+					FROM
+							ORDERS
+							
+					WHERE
+							<if test='searchCategory.equals("deliveryStatus")'>
+								DELIVERY_STATUS LIKE CONCAT('%' , #{searchContent} , '%')
+							</if>
+							<if test='searchCategory.equals("memberId")'>
+								MEMBER_ID LIKE CONCAT('%' , #{searchContent} , '%')
+							</if>
+					ORDER BY
+			       			ORDER_DT DESC
+			      
+			</otherwise>
+		</choose>
 	</select>
 	
 	<select id="allsalse" resultType="int">

@@ -14,7 +14,8 @@ public interface OrderDAO {
 	public OrderDTO selectOrderOne(int orderCd)throws Exception;
 	public void updateOrder(OrderDTO orderDTO)throws Exception;
 	public void deleteOrder(int orderCd)throws Exception;
-	public List<OrderDTO> adminOrderList()throws Exception;
+	//public int selectOneAllOrderCnt(Map<String, String> searchCntMap) throws Exception;
+	public List<OrderDTO> adminOrderList(Map<String, Object>searchMap)throws Exception;
 	public int allsalse()throws Exception;
 	public int getWomanSales()throws Exception;
 	public int getManSales()throws Exception;

@@ -16,7 +16,7 @@
 	});
 	
 	function getMemberList() {
-		alert($("#searchData").val());
+		
 		var url = "${contextPath }/member/memberList"
 		    url += "?searchKeyword=" +  $("#searchKeyword").val();
 		    url += "&searchData=" + $("#searchData").val();

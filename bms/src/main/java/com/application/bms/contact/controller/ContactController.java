@@ -1,5 +1,8 @@
 package com.application.bms.contact.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +45,22 @@ public class ContactController {
 	}
 	
 	@GetMapping("/contactList")
-	public ModelAndView contactList() throws Exception{
+	public ModelAndView contactList(HttpServletRequest request) throws Exception{
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("/contact/contactList");
-		mv.addObject("contactList", contactService.contactList());
+		String searchQuery = request.getParameter("searchQuery");
+		if (searchQuery == null) searchQuery = "total";
+		
+		String searchTerm = request.getParameter("searchTerm");
+		if (searchTerm == null) searchTerm = "";
+		
+		mv.addObject("searchQuery", searchQuery);
+		mv.addObject("searchTerm", searchTerm);
+		
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		searchMap.put("searchQuery", searchQuery);
+		searchMap.put("searchTerm", searchTerm);
+		mv.addObject("contactList", contactService.contactList(searchMap));
 		
 		return mv;
 	}

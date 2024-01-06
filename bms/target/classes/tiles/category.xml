@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	
+ 	<definition name="/category/koreanNovel"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/koreanNovel.jsp"/>	
+ 		<put-attribute name="title" value="한국소설"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/englishNovel"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/englishNovel.jsp"/>	
+ 		<put-attribute name="title" value="영문소설"/>	
+ 	</definition>
+ 	
+ 	
+</tiles-definitions>

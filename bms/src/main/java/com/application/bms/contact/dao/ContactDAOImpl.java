@@ -21,9 +21,9 @@ public class ContactDAOImpl implements ContactDAO {
 	}
 
 	@Override
-	public List<ContactDTO> selectListContact() throws Exception {
+	public List<ContactDTO> selectListContact(Map<String, Object>searchMap) throws Exception {
 		
-		return sqlSession.selectList("contactMapper.selectListContact");
+		return sqlSession.selectList("contactMapper.selectListContact",searchMap);
 	}
 
 	@Override

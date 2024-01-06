@@ -54,9 +54,9 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 	@Override
-	public List<OrderDTO> adminOrderList() throws Exception {
+	public List<OrderDTO> adminOrderList(Map<String, Object>searchMap) throws Exception {
 		
-		return sqlSession.selectList("orderMapper.adminOrderList");
+		return sqlSession.selectList("orderMapper.adminOrderList",searchMap);
 	}
 
 	
@@ -110,4 +110,11 @@ public class OrderDAOImpl implements OrderDAO {
 	public void insertOrderByCart(List<OrderDTO> orderList) throws Exception{
 		sqlSession.insert("orderMapper.insertOrderByCart" , orderList);
 	}
+	/*
+	@Override
+	public int selectOneAllOrderCnt(Map<String, String> searchCntMap) throws Exception {
+		
+		return sqlSession.selectOne("orderMapper.selectOneAllOrderCnt", searchCntMap);
+	}
+	*/
 }

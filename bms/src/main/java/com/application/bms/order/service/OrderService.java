@@ -15,7 +15,8 @@ public interface OrderService {
 	public OrderDTO orderDetail(int orderCd)throws Exception;
 	public void modifyOrder(OrderDTO orderDTO)throws Exception;
 	public void removeOrder(int orderCd)throws Exception;
-	public List<OrderDTO> adminOrderList()throws Exception;
+	public List<OrderDTO> adminOrderList(Map<String, Object> searchMap)throws Exception;
+	//public int getAllOrderCnt(Map<String, String> searchCntMap) throws Exception;
 	public int totalSales()throws Exception;
 	public int totalWomanSales()throws Exception;
 	public int totalManSales()throws Exception;

@@ -9,6 +9,22 @@
 <head>
 <meta charset="UTF-8">
 <title>contactList</title>
+<script>
+	$().ready(function(){
+
+		$("#searchQuery").val("${searchQuery}");
+	});
+	
+	function getContactList() {
+		
+		var url = "${contextPath }/contact/contactList"
+		    url += "?searchQuery=" +  $("#searchQuery").val();
+		    url += "&searchTerm=" + $("#searchTerm").val();
+
+		location.href = url;
+		
+	}
+</script>
 </head>
 <body>
 	<div align="center">
@@ -33,6 +49,17 @@
 				</tr>
 				<c:set var="idx" value="${idx=idx+1 }"/>
 			</c:forEach>
+			<tr>
+				<td colspan="6" align="center">
+					<select id="searchQuery">
+						<option value="total">전체검색</option>
+						<option value="memberId">회원아이디</option>
+						<option value="resolved">답변상태</option>
+					</select>
+					<input type="text" id=searchTerm>
+                    <input type="button" value="조회하기" onclick="getContactList()">
+				</td>
+			</tr>
 		</table>
 		</div>
 </body>

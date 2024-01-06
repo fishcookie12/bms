@@ -9,6 +9,24 @@
 <head>
 <meta charset="UTF-8">
 <title>adminOrderList</title>
+
+<script>
+	$().ready(function(){
+	
+		$("#searchCategory").val("${searchCategory}");
+	});
+	
+	function getAdminOrderList() {
+		
+		var url = "${contextPath }/order/adminOrderList"
+		    url += "?searchCategory=" +  $("#searchCategory").val();
+		    url += "&searchContent=" + $("#searchContent").val();
+		    
+
+		location.href = url;
+		
+	}
+</script>
 </head>
 <body>
 	<div align="center">
@@ -28,7 +46,19 @@
 				<td>${orderDTO.deliveryStatus }</td>
 			</tr>
 		</c:forEach>
+		<tr>
+				<td colspan="5" align="center">			
+					<select id="searchCategory">
+						<option value="total">전체검색</option>
+						<option value="memberId">아이디</option>
+						<option value="deliveryStatus">배송상태</option>
+					</select>
+					<input type="text" id="searchContent" name="searchContent" value="${searchContent }">
+					<input type="button" value="검색" onclick="getAdminOrderList()">
+				</td>
+			</tr>
 	</table>
+	
 	</div>
 </body>
 </html>

@@ -16,14 +16,48 @@
 		 )
 	</insert>
 	
-	<select id="selectListContact" resultType="ContactDTO">
-		SELECT
-				*
-		FROM
-				CONTACT
-		ORDER BY 
-				ENROLL_DT DESC;
-		
+	<select id="selectListContact" parameterType="hashMap" resultType="ContactDTO">
+		<choose>
+			<when test='searchQuery.equals("total")'>
+				<choose>
+					<when test='searchTerm.equals("")'>
+						SELECT
+								*
+						FROM
+								CONTACT
+						ORDER BY
+								ENROLL_DT DESC
+					</when>
+					<otherwise>
+						SELECT 
+								*
+						FROM
+								CONTACT
+						WHERE
+								RESOLVED LIKE CONCAT('%' , #{searchWord} , '%') OR
+								MEMBER_ID LIKE CONCAT('%' , #{searchWord} , '%')
+						ORDER BY
+								ENROLL_DT DESC
+
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				SELECT
+						*
+				FROM
+						CONTACT
+				WHERE
+					<if test='searchQuery.equals("resolved")'>
+						RESOLVED LIKE CONCAT('%' , #{searchTerm} , '%')
+					</if>
+					<if test='searchQuery.equals("memberId")'>
+						MEMBER_ID LIKE CONCAT('%' , #{searchTerm} , '%')
+					</if>
+				ORDER BY
+						ENROLL_DT DESC
+			</otherwise>
+		</choose>
 	</select>
 	
 	<select id="selectOneContact" parameterType="int" resultType="ContactDTO">

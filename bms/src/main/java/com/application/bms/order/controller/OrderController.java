@@ -159,10 +159,24 @@ public class OrderController {
 	}
 	
 	@GetMapping("/adminOrderList")
-	public ModelAndView adminOrderList() throws Exception {
+	public ModelAndView adminOrderList(HttpServletRequest request) throws Exception {
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("/order/adminOrderList");
-		mv.addObject("orderList", orderService.adminOrderList());
+		String searchCategory = request.getParameter("searchCategory");
+		if (searchCategory == null) searchCategory = "total";
+		
+		String searchContent = request.getParameter("searchContent");
+		if (searchContent == null) searchContent = "";
+		
+		
+		mv.addObject("searchCategory"     , searchCategory);
+		mv.addObject("searchContent"        , searchContent);
+		
+		Map<String, Object> searchMap= new HashMap<String, Object>();
+		
+		searchMap.put("searchCategory"  , searchCategory);
+		searchMap.put("searchContent"     , searchContent);
+		mv.addObject("orderList", orderService.adminOrderList(searchMap));
 		return mv;
 	}
 	
