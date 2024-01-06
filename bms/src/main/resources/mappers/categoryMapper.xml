@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="categoryMapper">
+	<select id="selectKoreanNovel" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='한국소설'
+	</select>
+	<select id="selectenglishNovel" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='영문소설'
+	</select>
+	
+	<select id="selectJapanNovel" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='일본소설'
+	</select>
+	
+	<select id="selectEuropeanNovel" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='유럽소설'
+	</select>
+	
+	<select id="selectHumanities" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='인문학'
+	</select>
+	
+	<select id="selectPoetryEssay" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='시/에세이'
+	</select>
+	
+	<select id="selectEconomicsManagement" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='경제/경영'
+	</select>
+	
+	<select id="selectScience" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='과학'
+	</select>
+	
+	<select id="testPreparationBook" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='수험서'
+	</select>
+	
+	<select id="selectcivilServant" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='공무원'
+	</select>
+	
+	<select id="selectforeignLanguage" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='외국어'
+	</select>
+	
+	<select id="selectSecondarySchoolReferenceBook" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='중고등참고서'
+	</select>
+	
+	<select id="selectElementarySchoolReferenceBook" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='초등참고서'
+	</select>
+	
+	<select id="selectInternationalBook" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='외국도서'
+	</select>
+	
+	<select id="selectUsedBook" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='중고도서'
+	</select>
+	
+	<select id="selectEBook" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		SORT='이북'
+	</select>
+	
+	<select id="selectBestseller" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		PART='B'
+	</select>
+	
+	<select id="selectNewBook" resultType="BookDTO">
+		SELECT
+				*
+		FROM
+				BOOK	
+			
+		WHERE
+		 		PART='N'
+	</select>
+</mapper>

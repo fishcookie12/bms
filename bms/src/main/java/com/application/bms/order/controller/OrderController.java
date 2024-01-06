@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.application.bms.cart.dto.CartDTO;
 import com.application.bms.cart.service.CartService;
 import com.application.bms.order.dto.OrderDTO;
+import com.application.bms.order.dto.OrderDTO2;
 import com.application.bms.order.service.OrderService;
 
 @Controller
@@ -71,21 +72,36 @@ public class OrderController {
 		return mv;
 	}
 	
+	
+//	  @PostMapping("/addCartOrder")
+//	  @ResponseBody public String addCartOrder(OrderDTO orderDTO, HttpServletRequest request) throws Exception 
+//	  {
+//		  String jsScript=""; HttpSession session = request.getSession(); 
+//		  String memberId = (String) session.getAttribute("memberId");
+//		  orderService.addOrder(orderDTO); 
+//	jsScript+="<script>";
+//		  jsScript+="alert('Order Completed');";
+//		  jsScript+="location.href='"+request.getContextPath()+"/';";
+//		  jsScript+="</script>"; 
+//	System.out.println(orderDTO); 
+//		  return jsScript; 
+//	  }
+	
 	@PostMapping("/addCartOrder")
-	@ResponseBody
-	public String addCartOrder(OrderDTO orderDTO, HttpServletRequest request) throws Exception {
-		
-		String jsScript="";
-		HttpSession session = request.getSession();
-		String memberId = (String) session.getAttribute("memberId");
-		orderService.addOrder(orderDTO);
-		jsScript+="<script>";
-		jsScript+="alert('Order Completed');";
-		jsScript+="location.href='"+request.getContextPath()+"/';";
-		jsScript+="</script>";
-		System.out.println(orderDTO);
-		return jsScript;
-	}
+	@ResponseBody public String addCartOrder(OrderDTO2 orderDTO2, HttpServletRequest request) throws Exception 
+	  {
+		  String jsScript=""; HttpSession session = request.getSession(); 
+		  String memberId = (String) session.getAttribute("memberId");
+		  orderService.addOrder(orderDTO2); 
+		  jsScript+="<script>";
+		  jsScript+="alert('Order Completed');";
+		  jsScript+="location.href='"+request.getContextPath()+"/';";
+		  jsScript+="</script>"; 
+		  System.out.println(orderDTO2); 
+		  return jsScript; 
+	  }
+	 
+
 	@GetMapping("/orderList")
 	public ModelAndView orderList(OrderDTO orderDTO, HttpServletRequest request) throws Exception {
 		HttpSession session=request.getSession();

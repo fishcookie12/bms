@@ -124,6 +124,7 @@
                                         	<td style="width: 70%;">${cartDTO.bookNm}</td>
                                         	<td style="width: 20%;">${cartDTO.quantity}</td>
                                         	<td style="width: 65%;">${cartDTO.price * cartDTO.quantity}</td>
+                                        	<input type="hidden" name="bookCd" value="${cartDTO.bookCd}">
                                         	<input type="hidden" name="bookNm" value="${cartDTO.bookNm}">
 									        <input type="hidden" name="orderBookQty" value="${cartDTO.quantity}">
 									        <input type="hidden" name="totalPrice" value="${cartDTO.price * cartDTO.quantity}">

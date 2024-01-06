@@ -72,7 +72,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="${contextPath}/layout/index"><img src="${contextPath}/resources/bootstrap/img/logo.png" alt=""></a>
+                        <a href="/bms"><img src="${contextPath}/resources/bootstrap/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="hero__search__form">
@@ -120,16 +120,11 @@
                     		
                     		<c:otherwise>
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">베스트</a></li>
+                            <li class="active"><a href="/bms">Home</a></li>
+                            <li><a href="${contextPath}/category/bestseller">베스트</a></li>
                       
-                            <li><a href="#">신상품</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">국내도서</a></li>
-                                    <li><a href="./shoping-cart.html">외국도서</a></li>
-                                    <li><a href="./checkout.html">eBook</a></li>
-                                    
-                                </ul>
+                            <li><a href="${contextPath}/category/newBook">신상품</a>
+                               
                             </li>
                             <li><a href="${contextPath }/contact/addContact">문의하기</a></li>
                         </ul>

@@ -32,7 +32,7 @@
 		<div class="container">
 			<div class="checkout__form">
 				<h4>비밀번호재설정</h4>
-				<form action="${contextPath }/member/modifyPw" method="post">
+				<form action="modifyPw" method="post">
 					<div class="row">
                         <div class="col-lg-8 col-md-6">
 						

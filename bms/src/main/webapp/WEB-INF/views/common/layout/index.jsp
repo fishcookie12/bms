@@ -23,20 +23,20 @@
                         <ul>
                             <li><a href="${contextPath}/category/koreanNovel">한국소설</a></li>
                             <li><a href="${contextPath}/category/englishNovel">영문소설</a></li>
-                            <li><a href="">일본소설</a></li>
-                            <li><a href="">유럽소설</a></li>
-                            <li><a href="">시/에세이</a></li>
-                            <li><a href="">경제/경영</a></li>
-                            <li><a href="">과학</a></li>
-                            <li><a href="">수험서</a></li>
-                            <li><a href="">공무원</a></li>
-                            <li><a href="">외국어</a></li>
-                            <li><a href="">중고등참고서</a></li>
-                            <li><a href="">초등참고서</a></li>
-                            
-                            <li><a href="#">외국도서</a></li>
-                            <li><a href="#">중고샵</a></li>
-                            <li><a href="#">eBook</a></li>
+                            <li><a href="${contextPath}/category/japanNovel">일본소설</a></li>
+                            <li><a href="${contextPath}/category/europeanNovel">유럽소설</a></li>
+                            <li><a href="${contextPath}/category/humanities">인문학</a></li>
+                            <li><a href="${contextPath}/category/poetryEssay">시/에세이</a></li>
+                            <li><a href="${contextPath}/category/economicsManagement">경제/경영</a></li>
+                            <li><a href="${contextPath}/category/science">과학</a></li>
+                            <li><a href="${contextPath}/category/testPreparationBook">수험서</a></li>
+                            <li><a href="${contextPath}/category/civilServant">공무원</a></li>
+                            <li><a href="${contextPath}/category/foreignLanguage">외국어</a></li>
+                            <li><a href="${contextPath}/category/secondarySchoolReferenceBook">중고등참고서</a></li>
+                            <li><a href="${contextPath}/category/elementarySchoolReferenceBook">초등참고서</a></li>
+                            <li><a href="${contextPath}/category/internationalBook">외국도서</a></li>
+                            <li><a href="${contextPath}/category/usedBook">중고도서</a></li>
+                            <li><a href="${contextPath}/category/eBook">eBook</a></li>
                
                         </ul>
                     </div>
@@ -65,15 +65,6 @@
             </div>
         </div>
     </section>
-    <!-- Hero Section End -->
-
-    <!-- Categories Section Begin -->
-   
-    <!-- Categories Section End -->
-
-    <!-- Featured Section Begin -->
-    
-    <!-- Featured Section End -->
 
     <!-- Banner Begin -->
     <div class="banner">
@@ -81,12 +72,12 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="${contextPath}/resources/book/bannerImg1.png" alt="">
+                        <img src="${contextPath}/resources/book/bannerImg1.png" alt="사진없음">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="${contextPath}/resources/book/bannerImg2.png" alt="">
+                        <img src="${contextPath}/resources/book/bannerImg2.png" alt="사진없음">
                     </div>
                 </div>
             </div>
@@ -97,12 +88,12 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="${contextPath}/resources/book/bannerImg3.jpg" alt="">
+                        <img src="${contextPath}/resources/book/bannerImg3.jpg" alt="사진없음">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="${contextPath}/resources/book/bannerImg4.jpg" alt="">
+                        <img src="${contextPath}/resources/book/bannerImg4.jpg" alt="사진없음">
                     </div>
                 </div>
             </div>

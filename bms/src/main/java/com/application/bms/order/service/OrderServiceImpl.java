@@ -13,6 +13,7 @@ import com.application.bms.book.dto.BookDTO;
 import com.application.bms.member.dto.MemberDTO;
 import com.application.bms.order.dao.OrderDAO;
 import com.application.bms.order.dto.OrderDTO;
+import com.application.bms.order.dto.OrderDTO2;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -29,6 +30,33 @@ public class OrderServiceImpl implements OrderService {
 		
 		orderDAO.updateStock(orderMap);
 		orderDAO.insertOrder(orderDTO);
+	}
+	
+	@Override
+	@Transactional
+	public void addOrder(OrderDTO2 orderDTO2) throws Exception {
+	
+		OrderDTO orderDTO = new OrderDTO();
+		orderDTO.setMemberId(orderDTO2.getMemberId());
+		orderDTO.setDeliveryAdress(orderDTO2.getDeliveryAdress());
+		orderDTO.setDeliveryMessage(orderDTO2.getDeliveryMessage());
+		orderDTO.setDeliveryStatus(orderDTO2.getDeliveryStatus());
+		orderDTO.setOrderDt(orderDTO2.getOrderDt());
+		orderDTO.setReceiver(orderDTO2.getReceiver());
+		orderDTO.setHp(orderDTO2.getHp());
+		
+		for(int i=0; i<orderDTO2.getBookNm().size(); i++) {
+			orderDTO.setBookCd(orderDTO2.getBookCd().get(i));
+			orderDTO.setBookNm(orderDTO2.getBookNm().get(i));
+			orderDTO.setOrderBookQty(orderDTO2.getOrderBookQty().get(i));
+			orderDTO.setTotalPrice(orderDTO2.getTotalPrice().get(i));
+			orderDAO.insertOrder(orderDTO);
+			
+			Map<String, Object> orderMap = new HashMap<String, Object>();
+			orderMap.put("orderBookQty", orderDTO.getOrderBookQty());
+			orderMap.put("bookCd", orderDTO.getBookCd());
+			orderDAO.updateStock(orderMap);
+		}
 	}
 
 	@Override

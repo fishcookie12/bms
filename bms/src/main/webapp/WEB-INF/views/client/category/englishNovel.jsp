@@ -9,11 +9,7 @@
     <title>bookList</title>
 </head>
 <body>
-    <h3>영문소설</h3>
-    <c:if test="${sessionScope.adminId eq 'admin1' or sessionScope.adminId eq 'admin2' or sessionScope.adminId eq 'admin3'}">
-        <input type="button" value="도서추가하기" onclick="${contextPath}/book/addBook">
-    </c:if>
-    
+  
     <div class="container">
         <div class="row">
             <c:forEach var="bookDTO" items="${bookList}">
@@ -21,13 +17,14 @@
                     <div class="product__item">
                         <div class="product__item__pic set-bg">
                             <ul class="product__item__pic__hover">
-                                <img src="${contextPath}/book/thumbnails?fileName=${bookDTO.imgNm}" width="300" height="600" alt="사진">
+                                <a href="${contextPath}/book/bookDetail?bookCd=${bookDTO.bookCd }">
+                                    <img src="${contextPath}/book/thumbnails?fileName=${bookDTO.imgNm}" width="300" height="600" alt="사진">
+                                </a>
                             </ul>
                         </div>
                         <div class="product__item__text">
-                        
                             <h4><a href="${contextPath}/book/bookDetail?bookCd=${bookDTO.bookCd }">${bookDTO.bookNm }</a></h4>
-                            <h6>${bookDTO.price }</h6>
+                            <h6><fmt:formatNumber value="${bookDTO.price}" type="number" pattern="#,##0원"/></h6>
                             <h6>${bookDTO.writer }</h6>
                             <h6>${bookDTO.publisher }</h6>
                         </div>

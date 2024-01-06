@@ -204,13 +204,15 @@ public class BookController {
 	
 	
 	@PostMapping("/removeBook")
+	@ResponseBody
 	public String removeBook(HttpServletRequest request, int bookCd) throws Exception {
 		bookService.removeBook(bookCd);
+		System.out.println("삭제할 도서 : "+bookCd);
 		String jsScript="";
-		jsScript += "<script>";
+		jsScript+="<script>;";
 		jsScript += "alert('Deletion completed.');";
 		jsScript += "location.href='" + request.getContextPath() + "/'";
-		jsScript += "</script>";
+		jsScript+="</script>;";
 		
 		return jsScript;
 		

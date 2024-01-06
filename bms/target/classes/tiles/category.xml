@@ -13,5 +13,80 @@
  		<put-attribute name="title" value="영문소설"/>	
  	</definition>
  	
+ 	<definition name="/category/japanNovel"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/japanNovel.jsp"/>	
+ 		<put-attribute name="title" value="일본소설"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/europeanNovel"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/europeanNovel.jsp"/>	
+ 		<put-attribute name="title" value="유럽소설"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/humanities"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/humanities.jsp"/>	
+ 		<put-attribute name="title" value="인문학"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/poetryEssay"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/poetryEssay.jsp"/>	
+ 		<put-attribute name="title" value="시/에세이"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/science"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/science.jsp"/>	
+ 		<put-attribute name="title" value="경제/경영"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/testPreparationBook"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/testPreparationBook.jsp"/>	
+ 		<put-attribute name="title" value="수험서"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/civilServant"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/civilServant.jsp"/>	
+ 		<put-attribute name="title" value="공무원"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/foreignLanguage"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/foreignLanguage.jsp"/>	
+ 		<put-attribute name="title" value="외국어"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/secondarySchoolReferenceBook"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/secondarySchoolReferenceBook.jsp"/>	
+ 		<put-attribute name="title" value="중고등참고서"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/elementarySchoolReferenceBook"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/elementarySchoolReferenceBook.jsp"/>	
+ 		<put-attribute name="title" value="초등참고서"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/internationalBook"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/internationalBook.jsp"/>	
+ 		<put-attribute name="title" value="외국도서"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/usedBook"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/usedBook.jsp"/>	
+ 		<put-attribute name="title" value="중고도서"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/eBook"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/eBook.jsp"/>	
+ 		<put-attribute name="title" value="이북"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/bestseller"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/bestseller.jsp"/>	
+ 		<put-attribute name="title" value="베스트셀러"/>	
+ 	</definition>
+ 	
+ 	<definition name="/category/newBook"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/newBook.jsp"/>	
+ 		<put-attribute name="title" value="신작도서"/>	
+ 	</definition>
+ 	
  	
 </tiles-definitions>
