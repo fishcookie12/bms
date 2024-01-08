@@ -73,21 +73,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectList("memberMapper.selectListMember",searchMap);
 	}
 	
-	/*
-	@Override
-	public List<MemberDTO> selectListSearchMember(Map<String, String> searchMap) throws Exception {
-		return sqlSession.selectList("memberMapper.selectListSearchMember" , searchMap);
-	}
-	*/
-	@Override
-	public int selectMyOrderCnt(String memberId) throws Exception {
-		
-		return sqlSession.selectOne("memberMapper.selectMyOrderCnt" , memberId);
-	}
-
-	@Override
-	public int selectMyCartCnt(String memberId) throws Exception {
-		return sqlSession.selectOne("memberMapper.selectMyCartCnt" , memberId);
-	}
+	
 	
 }

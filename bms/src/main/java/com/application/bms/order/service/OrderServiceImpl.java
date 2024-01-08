@@ -25,8 +25,8 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderDAO orderDAO;
 	
-	//private static final String FILE_REPO_PATH ="C:\\bms_book_file_repo\\"; //window
-	private static final String FILE_REPO_PATH ="/var/lib/tomcat9/file_repo/"; //linux
+	private static final String FILE_REPO_PATH ="C:\\bms_book_file_repo\\"; //window
+	//private static final String FILE_REPO_PATH ="/var/lib/tomcat9/file_repo/"; //linux
 	
 	private static Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
 

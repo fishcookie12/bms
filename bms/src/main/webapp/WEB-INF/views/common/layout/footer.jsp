@@ -14,7 +14,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="${contextPath}/resources/bootstrap/img/logo.png" alt=""></a>
+                           
                         </div>
                         <ul>
                             <li>대표자 : 이세진</li>
@@ -27,7 +27,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="${contextPath}/resources/bootstrap/img/logo.png" alt=""></a>
+                           
                         </div>
                         <ul>
                             <li>주소 : 서울특별시 송파구 송파대로 1길</li>

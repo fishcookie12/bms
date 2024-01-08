@@ -66,11 +66,6 @@ public class CartController {
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 	
-	@PostMapping("/stockBook")
-	public ResponseEntity<Object> stockBook(Map<String, Object> orderDTO, HttpServletRequest request) throws Exception{
-		cartService.stockBook(orderDTO);
-		return new ResponseEntity<Object>(HttpStatus.OK);
-	}
 	
 	
 }

@@ -63,14 +63,4 @@
 				MEMBER_ID=#{memberId}
 	</delete>
 	
-	<update id="stockBook" parameterType="hashMap">
-		UPDATE
-				BOOK B
-		INNER JOIN CART C ON B.BOOK_CD = C.BOOK_CD
-		SET 
-				B.STOCK = B.STOCK - C.QUANTITY
-		WHERE	
-				BOOK_CD=#{bookCd}
-				AND B.STOCK >= C.QUANTITY
-	</update>
 </mapper>

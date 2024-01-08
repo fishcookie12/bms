@@ -18,6 +18,4 @@ public interface MemberService {
 	public void modifyPw(MemberDTO memberDTO)throws Exception;
 	public List<MemberDTO> getMemberList(Map<String, Object> searchMap) throws Exception;
 	
-	public int getMyOrderCnt(String memberId) throws Exception;
-	public int getMyCartCnt(String memberId) throws Exception;
 }

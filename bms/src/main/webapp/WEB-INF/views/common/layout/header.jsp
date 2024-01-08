@@ -18,7 +18,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                                <li><i class="fa fa-envelope"></i>leebook@gmail.com</li>
                                 <li>Free Shipping for all Order of $99</li>
                             </ul>
                         </div>
@@ -28,18 +28,9 @@
                             <div class="header__top__right__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                                
                             </div>
-                            <div class="header__top__right__language">
-                                <img src="${contextPath}/resources/bootstrap/img/language.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
+                           
                             <div class="header__top__right__auth">
                             <c:choose>
 								<c:when test="${sessionScope.adminId eq 'admin1' or sessionScope.adminId eq 'admin2' or sessionScope.adminId eq 'admin3'}">
@@ -52,7 +43,7 @@
 										<c:when test="${sessionScope.memberId eq null}">
                                 <a href="${contextPath}/member/loginMember"><i class="fa fa-user"></i> 로그인</a>
                                 <a href="${contextPath}/member/addMember"><i class="fa fa-user"></i> 회원가입</a>
-                                <a href="${contextPath}/admin/adminLog"><i class="fa fa-user"></i> 관리자</a>
+                              
 									</c:when>
 									<c:otherwise>
 									

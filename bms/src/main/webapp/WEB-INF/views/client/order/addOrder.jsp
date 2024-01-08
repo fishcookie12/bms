@@ -10,16 +10,36 @@
 <meta charset="UTF-8">
 <title>addOrder</title>
 <script>
-	function updateTotalPrice() {
-	    var totalPrice = 0;
-	
-	    $("table tr:gt(0)").each(function () {
-	        var priceCell = $(this).find("td:eq(2)");
-	        var price = parseInt(priceCell.text().replace("원", "").replace(",", ""), 10);
-	
-	        totalPrice += price;
-	    });
-	
+$(document).ready(function() {
+    updateTotalPrice();
+
+    $("#hp").on("input", function() {
+        var inputValue = $(this).val().replace(/[^0-9]/g, '');
+        inputValue = inputValue.substring(0, 11);
+        $(this).val(inputValue);
+    });
+
+    $("#checkoutForm").submit(function(event) {
+        var paymentMethod = $("input[name='paymentMethod']:checked").val();
+
+        if (!paymentMethod) {
+            alert("결제방식을 선택하세요");
+            event.preventDefault();
+        } else {
+            updateTotalPrice();
+        }
+    });
+
+    function updateTotalPrice() {
+        var totalPrice = 0;
+
+        $("table tr:gt(0)").each(function () {
+            var priceCell = $(this).find("td:eq(2)");
+            var price = parseInt(priceCell.text().replace("원", "").replace(",", ""), 10);
+
+            totalPrice += price;
+        });
+
         var deliveryFee = 2500;
         if (totalPrice < 70000) {
             totalPrice += deliveryFee;
@@ -27,28 +47,10 @@
         } else {
             $("#deliveryFee").text("0");
         }
-	
-	    $(".checkout__order__total span").text(totalPrice.toLocaleString() + "원");
-	}
 
-	$().ready(function() {
-		updateTotalPrice();
-	    $("#hp").on("input", function() {
-	    
-	        var inputValue = $(this).val().replace(/[^0-9]/g, '');
-	
-	        inputValue = inputValue.substring(0, 11);
-	
-	        $(this).val(inputValue);
-	    });
-	    $("form").submit(function () {
-            updateTotalPrice();
-        });
-	    
-	   
-	
-	});
-	
+        $(".checkout__order__total span").text(totalPrice.toLocaleString() + "원");
+    }
+});
 </script>
 </head>
 <body>
