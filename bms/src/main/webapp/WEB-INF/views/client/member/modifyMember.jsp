@@ -51,7 +51,7 @@
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
 										<p>비밀번호수정<span>*</span></p>
-										<input type="password" name="passwd" id="passwd" minlength="10" placeholder="영문숫자를 조합하여 10자 이상 입력하세요" size="40" required>
+										<input type="password" name="passwd" id="passwd" minlength="10" placeholder="영문숫자를 조합하여 10자 이상 입력하세요" size="40" >
 										<div id="passwordMessage" style="color: red;"></div>
 									</div>
 								</div>
@@ -60,7 +60,7 @@
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
 										<p>휴대폰번호수정<span>*</span></p>
-										<input type="text" name="hp" id="hp"  placeholder="숫자로만 입력하세요" maxlength="11" size="30" required>
+										<input type="text" name="hp" id="hp"  placeholder="숫자로만 입력하세요" maxlength="11" size="30" >
 									</div>
 								</div>
 							</div>
@@ -69,7 +69,7 @@
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
 										<p>이메일수정<span>*</span></p>
-										<input type="email" name="email" required>
+										<input type="email" name="email" >
 									</div>
 								</div>
 							</div>

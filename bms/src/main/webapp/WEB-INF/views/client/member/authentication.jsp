@@ -28,7 +28,7 @@
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
 										<p>비밀번호<span>*</span></p>
-										<input type="password" name="passwd">
+										<input type="password" name="passwd" required>
 										
 									</div>
 								</div>

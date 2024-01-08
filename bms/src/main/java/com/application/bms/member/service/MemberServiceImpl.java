@@ -105,12 +105,7 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberDTO> getMemberList(Map<String, Object> searchMap) throws Exception {
 		return memberDAO.selectListMember(searchMap);
 	}
-	/*
-	@Override
-	public List<MemberDTO> getMemberSearchList(Map<String, String> searchMap) throws Exception {
-		return memberDAO.selectListSearchMember(searchMap);
-	}
-	*/
+	
 	@Override
 	public int getMyOrderCnt(String memberId) throws Exception {
 		return memberDAO.selectMyOrderCnt(memberId);

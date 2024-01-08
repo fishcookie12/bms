@@ -15,7 +15,7 @@ public class OrderDTO {
 	private int orderBookQty;
 	private int totalPrice;
 	private String paymentMethod;
-	private int hp;
+	private String hp;
 	private String receiver;
 	private String deliveryAdress;
 	private String deliveryMessage;
@@ -63,10 +63,10 @@ public class OrderDTO {
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
-	public int getHp() {
+	public String getHp() {
 		return hp;
 	}
-	public void setHp(int hp) {
+	public void setHp(String hp) {
 		this.hp = hp;
 	}
 	public String getReceiver() {

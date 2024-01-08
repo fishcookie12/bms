@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"  />
 <!DOCTYPE html>
 <html>
@@ -26,11 +27,11 @@
         });
        
         $("#addToCart").click(function() {
-            alert("1");
+           
              if (${bookDTO.stock} === 0) {
                 return;
              }
-            alert("2");
+         
             var memberId="${sessionScope.memberId}";
             var quantity=parseInt($("#quantity").val());
             var bookCd = "${bookDTO.bookCd}";
@@ -71,7 +72,6 @@
             var totalPrice = ${bookDTO.price} * quantity;
             var point=${bookDTO.point}* quantity
 
-            // 수량 정보를 "주문하기" 페이지로 전달
             location.href = '${contextPath}/order/addOrder?bookCd=' + bookCd + '&bookNm=' + bookNm + '&quantity=' + quantity + '&price=' + totalPrice + "&point=" + point;
         });
    
@@ -127,6 +127,8 @@
                             <li><b>저자</b> <span>${bookDTO.writer }</li>
                             <li><b>출판사</b> <span> ${bookDTO.publisher }</span></li>
                             <li><b>총페이지 </b><span>${bookDTO.totalPage}</span></li>
+                            <li><b>출판일 </b><span><fmt:formatDate value="${bookDTO.publishedDt }" pattern="yyyy-MM-dd"/></span></li>
+                     
                         </ul>
                     </div>
                 </div>
@@ -143,22 +145,24 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">출판사 평</a>
+                                    aria-selected="false">기타</a>
                             </li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
                                     <h6>목차</h6>
-                                    <p>${bookDTO.contentsOrder }</p>
+                                    <c:if test="${bookDTO.contentsOrder !=null}">
+                                    	<p>${bookDTO.contentsOrder }</p>
+                                    </c:if>
                                 </div>
                                 <div class="product__details__tab__desc">
-                                    <h6>추천사</h6>
+                                    <h6>책소개</h6>
                                     <p>
-                                        <c:if test="${bookDTO.recommendation != null }">
+                                        <c:if test="${bookDTO.intro != null }">
                                             
-                                                <td>추천사</td>
-                                                <td>${bookDTO.recommendation }</td>
+                                                <td>책소개</td>
+                                                <td>${bookDTO.intro }</td>
                                         </c:if>    
                                     </p>
                                 </div>
@@ -168,7 +172,7 @@
                                     <h6>저자소개</h6>
                                     <p>
                                         <c:if test="${bookDTO.writerIntro != null }">
-                                            ${bookDTO.writerIntro }</p>
+                                            <p>${bookDTO.writerIntro }</p>
                                         </c:if>
                                 </div>
                             </div>
@@ -181,7 +185,16 @@
                                         </c:if>
                                     </p>
                                 </div>
+                                <div class="product__details__tab__desc">
+                                    <h6>추천사</h6>
+                                    <p>
+                                        <c:if test="${bookDTO.recommendation != null }">
+                                            ${bookDTO.recommendation }
+                                        </c:if>
+                                    </p>
+                                </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

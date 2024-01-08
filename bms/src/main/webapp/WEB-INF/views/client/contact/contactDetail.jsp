@@ -24,35 +24,66 @@
 </script>
 </head>
 <body>
-	<div align="center">
-	<h3>관리자전용페이지입니다.</h3>
-	
-		<table border="1">
-			<tr>
-				<td>회원</td>
-				<td>${contactDTO.memberId }</td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td>${contactDTO.email }</td>
-			</tr>
-			<tr>
-				<td>문의일</td>
-				<td><fmt:formatDate value="${contactDTO.enrollDt }" pattern="yyyy-MM-dd"/></td>
-			</tr>
-			<tr>
-				<td>문의메세지</td>
-				<td>${contactDTO.message }</td>
-			</tr>
-			<tr>
-				<td>답변상태</td>
-				<td>
-					<input type="radio" name="resolved" value="답변대기중">답변대기중
-					<input type="radio" name="resolved" value="답변완료">답변완료
-				</td>
-			</tr>
-		</table>
-		<input type="button" value="확인" id="resolvedChange">
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>고객문의확인</h4>
+				<form >
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p><strong>아이디</strong><span>*</span></p>
+										${contactDTO.memberId }
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p><strong>이메일</strong><span>*</span></p>
+										${contactDTO.email }
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p><strong>문의날짜</strong><span>*</span></p>
+										<fmt:formatDate value="${contactDTO.enrollDt }" pattern="yyyy-MM-dd"/>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p><strong>문의메세지</strong><span>*</span></p>
+										${contactDTO.message }
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p><strong>답변상태</strong><span>*</span></p>
+									</div>
+										<input type="radio" name="resolved" value="답변대기중">답변대기중
+										<input type="radio" name="resolved" value="답변완료">답변완료
+								</div>
+							</div>
+							
+							
+							<button type="button" class="site-btn" id="resolvedChange">완료</button>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
+	</section>
+		
+	
 </body>
 </html>

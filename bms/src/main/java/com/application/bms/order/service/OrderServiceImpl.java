@@ -1,11 +1,15 @@
 package com.application.bms.order.service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,10 +19,16 @@ import com.application.bms.order.dao.OrderDAO;
 import com.application.bms.order.dto.OrderDTO;
 import com.application.bms.order.dto.OrderDTO2;
 
+
 @Service
 public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderDAO orderDAO;
+	
+	//private static final String FILE_REPO_PATH ="C:\\bms_book_file_repo\\"; //window
+	private static final String FILE_REPO_PATH ="/var/lib/tomcat9/file_repo/"; //linux
+	
+	private static Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
 
 	@Override
 	@Transactional
@@ -41,6 +51,7 @@ public class OrderServiceImpl implements OrderService {
 		orderDTO.setDeliveryAdress(orderDTO2.getDeliveryAdress());
 		orderDTO.setDeliveryMessage(orderDTO2.getDeliveryMessage());
 		orderDTO.setDeliveryStatus(orderDTO2.getDeliveryStatus());
+		orderDTO.setPaymentMethod(orderDTO2.getPaymentMethod());
 		orderDTO.setOrderDt(orderDTO2.getOrderDt());
 		orderDTO.setReceiver(orderDTO2.getReceiver());
 		orderDTO.setHp(orderDTO2.getHp());
@@ -55,6 +66,7 @@ public class OrderServiceImpl implements OrderService {
 			Map<String, Object> orderMap = new HashMap<String, Object>();
 			orderMap.put("orderBookQty", orderDTO.getOrderBookQty());
 			orderMap.put("bookCd", orderDTO.getBookCd());
+			orderMap.put("memberId", orderDTO.getMemberId());
 			orderDAO.updateStock(orderMap);
 		}
 	}
@@ -88,7 +100,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public int totalSales() throws Exception {
+	public Integer totalSales() throws Exception {
 		
 		return orderDAO.allsalse();
 	}
@@ -100,7 +112,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public int totalWomanSales() throws Exception {
+	public Integer totalWomanSales() throws Exception {
 		
 		return orderDAO.getWomanSales();
 	}
@@ -112,7 +124,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public int totalManSales() throws Exception {
+	public Integer totalManSales() throws Exception {
 		
 		return orderDAO.getManSales();
 	}
@@ -122,11 +134,15 @@ public class OrderServiceImpl implements OrderService {
 		
 		return orderDAO.getManBestSeller();
 	}
-	/*
+	
 	@Override
-	public int getAllOrderCnt(Map<String, String> searchCntMap) throws Exception {
+	@Scheduled(cron="59 59 23 * * *")
+	public void getTodayNewMemberCnt() throws Exception {
 		
-		return orderDAO.selectOneAllOrderCnt(searchCntMap);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sdf.format(new Date());
+		logger.info("(" + today + ") 신규주문건수 : " + orderDAO.selectOneTodayNewOrderCnt(today));
+		
 	}
-	*/
+
 }

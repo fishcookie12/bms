@@ -59,12 +59,6 @@ public class OrderDAOImpl implements OrderDAO {
 		return sqlSession.selectList("orderMapper.adminOrderList",searchMap);
 	}
 
-	
-	@Override
-	public void deleteCart()throws Exception{
-		sqlSession.delete("orderMapper.deleteCart");
-	}
-
 	@Override
 	public void updateStock(Map<String,Object> orderMap) throws Exception {
 		sqlSession.update("orderMapper.updateStock", orderMap);
@@ -72,7 +66,7 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 	@Override
-	public int allsalse() throws Exception {
+	public Integer allsalse() throws Exception {
 		
 		return sqlSession.selectOne("orderMapper.allsalse");
 	}
@@ -83,7 +77,7 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 	@Override
-	public int getWomanSales() throws Exception {
+	public Integer getWomanSales() throws Exception {
 		
 		return sqlSession.selectOne("orderMapper.getWomanSales");
 	}
@@ -95,7 +89,7 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 	@Override
-	public int getManSales() throws Exception {
+	public Integer getManSales() throws Exception {
 		
 		return sqlSession.selectOne("orderMapper.getManSales");
 	}
@@ -110,11 +104,10 @@ public class OrderDAOImpl implements OrderDAO {
 	public void insertOrderByCart(List<OrderDTO> orderList) throws Exception{
 		sqlSession.insert("orderMapper.insertOrderByCart" , orderList);
 	}
-	/*
+	
 	@Override
-	public int selectOneAllOrderCnt(Map<String, String> searchCntMap) throws Exception {
-		
-		return sqlSession.selectOne("orderMapper.selectOneAllOrderCnt", searchCntMap);
+	public int selectOneTodayNewOrderCnt(String today) throws Exception {
+		return sqlSession.selectOne("member.selectOneTodayNewOrderCnt" , today);
 	}
-	*/
+
 }

@@ -10,23 +10,38 @@
 <title>adminLog</title>
 </head>
 <body>
-	<h3>관리자로그인</h3>
-	<form action="${contextPath }/admin/adminLog" method="post">
-		<table border="1">
-			<tr>
-				<td>관리자아이디</td>
-				<td>
-					<input type="text" name="adminId" required>
-				</td>
-			</tr>
-			<tr>
-				<td>관리자비밀번호</td>
-				<td>
-					<input type="password" name="adminPw" required>
-				</td>
-			</tr>
-		</table>
-		<input type="submit" value="로그인">
-	</form>
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>관리자로그인페이지</h4>
+				<form action="${contextPath }/admin/adminLog" method="post">
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>관리자아이디<span>*</span></p>
+										<input type="text" name="adminId" required>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>관리자비밀번호<span>*</span></p>
+										<input type="password" name="adminPw" required>
+										
+									</div>
+								</div>
+							</div>
+							<button type="submit" class="site-btn">로그인</button>
+						</div>
+					</div>
+				</form>
+				
+			</div>
+		</div>
+	</section>
+	
 </body>
 </html>

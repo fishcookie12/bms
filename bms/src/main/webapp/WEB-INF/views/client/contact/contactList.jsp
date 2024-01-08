@@ -27,40 +27,63 @@
 </script>
 </head>
 <body>
-	<div align="center">
-	<h3>문의관리</h3>
+	<section class="shoping-cart spad">
+        <div class="container">
+        	
+            <div class="row">
+            	<div class="shoping__cart__table">
+	                <table>
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+									<th>문의코드</th>
+									<th>멤버아이디</th>
+									<th>문의날짜</th>
+									<th>답변여부</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <c:set var="idx" value="1"/>
+								<c:forEach var="contactDTO" items="${contactList}">
+                                    <tr>
+                                    	<td>${idx }</td>
+                                    	<td ><a href="${contextPath }/contact/contactDetail?contactCd=${contactDTO.contactCd }">${contactDTO.contactCd }</a></a></td>
+                                        <td class="shoping__cart__item">
+                                            <img src="img/cart/cart-1.jpg" alt="">
+                                            <h5>${contactDTO.memberId }</h5>
+                                        </td>
+                                        <td class="shoping__cart__quantity">
+                                            <div class="quantity">
+                                                <fmt:formatDate value="${contactDTO.enrollDt }" pattern="yyyy-MM-dd"/>
+                                            </div>
+                                        </td>
+                                        <td class="shoping__cart__quantity">
+                                           <div class="quantity">
+                                               ${contactDTO.resolved }
+                                            </div>
+                                        </td>
+                                       
+                                    </tr>
+                                    <c:set var="idx" value="${idx=idx+1 }"/>
+                                </c:forEach>
+                                <tr>
+									<td colspan="6" align="center">
+								<select id="searchQuery">
+									<option value="total">전체검색</option>
+									<option value="memberId">회원아이디</option>
+									<option value="resolved">답변상태</option>
+								</select>
+								<input type="text" id=searchTerm>
+			                    <input type="button" value="조회하기" onclick="getContactList()">
+							</td>
+								</tr>
+                            </tbody>
+                        </table>
+              </div>
+			</div>
+        </div>
+    </section>
+
 	
-		<table border="1">
-			<tr>
-				<th>번호</th>
-				<th>문의코드</th>
-				<th>멤버아이디</th>
-				<th>문의날짜</th>
-				<th>답변여부</th>
-			</tr>
-			<c:set var="idx" value="1"/>
-			<c:forEach var="contactDTO" items="${contactList}">
-				<tr>
-					<td>${idx }</td>
-					<td><a href="${contextPath }/contact/contactDetail?contactCd=${contactDTO.contactCd }">${contactDTO.contactCd }</a></td>
-					<td>${contactDTO.memberId }</td>
-					<td><fmt:formatDate value="${contactDTO.enrollDt }" pattern="yyyy-MM-dd"/></td>
-					<td>${contactDTO.resolved }</td>
-				</tr>
-				<c:set var="idx" value="${idx=idx+1 }"/>
-			</c:forEach>
-			<tr>
-				<td colspan="6" align="center">
-					<select id="searchQuery">
-						<option value="total">전체검색</option>
-						<option value="memberId">회원아이디</option>
-						<option value="resolved">답변상태</option>
-					</select>
-					<input type="text" id=searchTerm>
-                    <input type="button" value="조회하기" onclick="getContactList()">
-				</td>
-			</tr>
-		</table>
-		</div>
 </body>
 </html>

@@ -45,16 +45,7 @@
 		WHERE
 				BOOK_CD=#{bookCd}
 	</update>
-	
-	<delete id="deleteCart" parameterType="String">
-		DELETE FROM
-				CART
-		WHERE
-				MEMBER_ID = #{memberId}				
-	</delete>
-	
-	
-	
+
 	<select id="selectOrderList" resultType="OrderDTO">
 		SELECT
 				*
@@ -171,7 +162,7 @@
 		</choose>
 	</select>
 	
-	<select id="allsalse" resultType="int">
+	<select id="allsalse" resultType="Integer">
 		SELECT 
 				SUM(TOTAL_PRICE) AS totalSales
         FROM 
@@ -192,7 +183,7 @@
 		LIMIT 10
 	</select>
 	
-	<select id="getWomanSales" resultType="int">
+	<select id="getWomanSales" resultType="Integer">
 		SELECT
             	SUM(ORDERS.TOTAL_PRICE) AS womanSales
         FROM
@@ -204,7 +195,7 @@
             	MEMBER.SEX = 'w'
     </select>
     
-    <select id="getManSales" resultType="int">
+    <select id="getManSales" resultType="Integer">
     	SELECT
     			SUM(O.TOTAL_PRICE)	AS	manSales
     	FROM
@@ -253,13 +244,14 @@
         		orderBookQty DESC
         LIMIT 10
 	</select>
-	<select id="selectOneOrderer" parameterType="String" resultType="MemberDTO">
+	
+	<select id="selectOneTodayNewOrderCnt" parameterType="String" resultType="int">
 		SELECT
-				*
+				COUNT(MEMBER_ID)
 		FROM
-				MEMBER
-		WHERE
-				MEMBER_ID = #{memberId}
+				ORDERS
+		WHERE 
+				LEFT(ORDER_DT , 10) = #{today}
 	</select>
 	
 </mapper>

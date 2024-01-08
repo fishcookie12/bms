@@ -18,12 +18,11 @@ public interface OrderService {
 	public void modifyOrder(OrderDTO orderDTO)throws Exception;
 	public void removeOrder(int orderCd)throws Exception;
 	public List<OrderDTO> adminOrderList(Map<String, Object> searchMap)throws Exception;
-	//public int getAllOrderCnt(Map<String, String> searchCntMap) throws Exception;
-	public int totalSales()throws Exception;
-	public int totalWomanSales()throws Exception;
-	public int totalManSales()throws Exception;
+	public Integer totalSales()throws Exception;
+	public Integer totalWomanSales()throws Exception;
+	public Integer totalManSales()throws Exception;
 	public List<OrderDTO> bestSaller()throws Exception;
 	public List<OrderDTO> womanBestSaller()throws Exception;
 	public List<OrderDTO> manBestSaller()throws Exception;
-	
+	public void getTodayNewMemberCnt() throws Exception;
 }

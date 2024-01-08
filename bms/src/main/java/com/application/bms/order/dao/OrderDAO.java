@@ -14,15 +14,14 @@ public interface OrderDAO {
 	public OrderDTO selectOrderOne(int orderCd)throws Exception;
 	public void updateOrder(OrderDTO orderDTO)throws Exception;
 	public void deleteOrder(int orderCd)throws Exception;
-	//public int selectOneAllOrderCnt(Map<String, String> searchCntMap) throws Exception;
 	public List<OrderDTO> adminOrderList(Map<String, Object>searchMap)throws Exception;
-	public int allsalse()throws Exception;
-	public int getWomanSales()throws Exception;
-	public int getManSales()throws Exception;
+	public Integer allsalse()throws Exception;
+	public Integer getWomanSales()throws Exception;
+	public Integer getManSales()throws Exception;
 	public List<OrderDTO> bestSeller()throws Exception;
 	public List<OrderDTO> getWomanBestSeller()throws Exception;
 	public List<OrderDTO> getManBestSeller()throws Exception;
 	public void updateStock(Map<String,Object> orderMap)throws Exception;
-	public void deleteCart()throws Exception;
 	public void insertOrderByCart(List<OrderDTO> orderList) throws Exception;
+	public int selectOneTodayNewOrderCnt(String today) throws Exception;
 }

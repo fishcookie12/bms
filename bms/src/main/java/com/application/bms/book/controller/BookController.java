@@ -41,8 +41,8 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 	
-	private static final String FILE_REPO_PATH ="C:\\bms_book_file_repo\\"; //window
-	//private static final String FILE_REPO_PATH ="/var/lib/tomcat9/file_repo"; //linux
+	//private static final String FILE_REPO_PATH ="C:\\bms_book_file_repo\\"; //window
+	private static final String FILE_REPO_PATH ="/var/lib/tomcat9/file_repo/"; //linux
 
 	@GetMapping("/addBook")
 	public ModelAndView main() throws Exception {

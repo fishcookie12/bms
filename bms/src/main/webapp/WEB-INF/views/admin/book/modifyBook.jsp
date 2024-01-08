@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"  />
 <!DOCTYPE html>
 <html>
@@ -10,123 +11,195 @@
 <title>modifyBook</title>
 </head>
 <body>
-	<h3>도서정보수정</h3>
-		<form action="${contextPath }/book/modifyBook" method="post" enctype="multipart/form-data">
-			<table style="width: 700px;" border="1">
-				<tr>
-			        <td><img src="${contextPath }/member/thumbnails?fileName=${bookDTO.imgNm}" width="50" height="50" alt="사진"></td>
-			        <td>
-			        	<input type="file" name="imgNm"/>
-			        	<input type="hidden" name="beforeFileName" value="${memberDTO.imgNm}"/>
-			        </td>
-	        	</tr>
-				<tr>
-					<td>도서제목</td>
-					<td>${bookDTO.bookNm }</td>
-				</tr>
-				<tr>
-					<td>저자</td>
-					<td>${bookDTO.writer }</td>
-				</tr>
-				<tr>
-					<td>가격</td>
-					<td>
-						<input type="number" name="price" value="${bookDTO.price }">
-					</td>
-				</tr>
-				<tr>
-					<td>할인률</td>
-					<td>
-						<input type="number" name="discountRt" value="${bookDTO.discountRt }">
-					</td>
-				</tr>
-				<tr>
-					<td>재고</td>
-					<td>
-						<input type="number" name="stock" value="${bookDTO.stock }">
-					</td>
-				</tr>
-				<tr>
-					<td>출판사</td>
-					<td>
-						${bookDTO.publisher }
-					</td>
-				</tr>
-				<tr>
-					<td>분류</td>
-					<td>
-						<input type="text" name="sort" value="${bookDTO.sort }">
-					</td>
-				</tr>
-				<tr>
-					<td>포인트</td>
-					<td>
-						<input type="number" name="point" value="${bookDTO.point }">
-					</td>
-				</tr>
-				<tr>
-					<td>출판일</td>
-					<td>
-						${bookDTO.publishedDt }
-					</td>
-				</tr>
-				<tr>
-					<td>총페이지</td>
-					<td>
-						<input type="number" name="totalPage" value="${bookDTO.totalPage }">
-					</td>
-				</tr>
-				<tr>
-					<td>ISBN</td>
-					<td>
-						<input type="text" name="isbn" value="${bookDTO.isbn }">
-					</td>
-				</tr>
-				<tr>
-					<td>배송료</td>
-					<td>
-						<input type="number" name="deliveryPrice" value="${bookDTO.deliveryPrice }">
-					</td>
-				</tr>
-				<tr>
-					<td>도서분류</td>
-					<td>
-						<input type="text" name="part" value="${bookDTO.part }">
-					</td>
-				</tr>
-				<tr>
-					<td>저자서문</td>
-					<td>
-						${bookDTO.writerIntro }
-					</td>
-				</tr>
-				<tr>
-					<td>목차</td>
-					<td>
-						${bookDTO.contentsOrder }
-					</td>
-				</tr>
-				<tr>
-					<td>설명</td>
-					<td>
-						${bookDTO.intro }
-					</td>
-				</tr>
-				<tr>
-					<td>출판사평</td>
-					<td>
-						${bookDTO.publisherComment }
-					</td>
-				</tr>
-				<tr>
-					<td>추천사</td>
-					<td>
-						${bookDTO.recommendation }
-					</td>
-				</tr>
-			</table>
-			<input type="submit" value="수정하기">
-			<input type="hidden" name="bookCd" value="${bookDTO.bookCd }">
-		</form>
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>도서정보수정페이지</h4>
+				<form action="${contextPath }/book/modifyBook" method="post" enctype="multipart/form-data">
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>도서이미지<span>*</span></p>
+										<input type="file" name="imgNm"/>
+			        					<input type="hidden" name="beforeFileName" value="${memberDTO.imgNm}"/>
+										
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>도서제목<span>*</span></p>
+										${bookDTO.bookNm }
+										
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>저자<span>*</span></p>
+										${bookDTO.writer }
+										
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>출판사<span>*</span></p>
+										${bookDTO.publisher }
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>가격<span>*</span></p>
+										<input type="number" name="price" value="${bookDTO.price }">
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>할인율<span>*</span></p>
+										<input type="number" name="discountRt" value="${bookDTO.discountRt }">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>재고<span>*</span></p>
+										<input type="number" name="stock" value="${bookDTO.stock }">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>도서분류<span>*</span></p>
+										<input type="text" name="sort" value="${bookDTO.sort }">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>포인트<span>*</span></p>
+										<input type="number" name="point" value="${bookDTO.point }">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>출판일<span>*</span></p>
+										<fmt:formatDate value="${bookDTO.publishedDt }" pattern="yyyy-MM-dd"/>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>총페이지<span>*</span></p>
+										<input type="number" name="totalPage" value="${bookDTO.totalPage }">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>ISBN<span>*</span></p>
+										<input type="text" name="isbn" value="${bookDTO.isbn }">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>배송료<span>*</span></p>
+										<input type="number" name="deliveryPrice" value="${bookDTO.deliveryPrice }">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>파트<span>*</span></p>
+										<input type="text" name="part" value="${bookDTO.part }">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>저자소개<span>*</span></p>
+										<textarea rows="10" cols="40" name="writerIntro">${bookDTO.writerIntro }</textarea>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>목차<span>*</span></p>
+										<textarea rows="10" cols="40" name="contentsOrder">${bookDTO.contentsOrder }</textarea>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>책소개<span>*</span></p>
+										<textarea rows="10" cols="40" name="intro">${bookDTO.intro }</textarea>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>출판사평<span>*</span></p>
+										<textarea rows="10" cols="40" name="publisherComment">${bookDTO.publisherComment }</textarea>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>추천사<span>*</span></p>
+										<textarea rows="10" cols="40" name="recommendation">${bookDTO.recommendation }</textarea>
+									</div>
+								</div>
+							</div>
+							
+							<button type="submit" class="site-btn">도서수정</button>
+							<input type="hidden" name="bookCd" value="${bookDTO.bookCd }">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	
 </body>
 </html>

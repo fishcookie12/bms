@@ -58,7 +58,6 @@ public class OrderController {
 		jsScript+="alert('Order Completed');";
 		jsScript+="location.href='"+request.getContextPath()+"/';";
 		jsScript+="</script>";
-		System.out.println(orderDTO);
 		return jsScript;
 	}
 	@GetMapping("/addCartOrder")
@@ -71,21 +70,7 @@ public class OrderController {
 		mv.addObject("cartList", cartService.cartList(memberId));
 		return mv;
 	}
-	
-	
-//	  @PostMapping("/addCartOrder")
-//	  @ResponseBody public String addCartOrder(OrderDTO orderDTO, HttpServletRequest request) throws Exception 
-//	  {
-//		  String jsScript=""; HttpSession session = request.getSession(); 
-//		  String memberId = (String) session.getAttribute("memberId");
-//		  orderService.addOrder(orderDTO); 
-//	jsScript+="<script>";
-//		  jsScript+="alert('Order Completed');";
-//		  jsScript+="location.href='"+request.getContextPath()+"/';";
-//		  jsScript+="</script>"; 
-//	System.out.println(orderDTO); 
-//		  return jsScript; 
-//	  }
+
 	
 	@PostMapping("/addCartOrder")
 	@ResponseBody public String addCartOrder(OrderDTO2 orderDTO2, HttpServletRequest request) throws Exception 
@@ -97,7 +82,7 @@ public class OrderController {
 		  jsScript+="alert('Order Completed');";
 		  jsScript+="location.href='"+request.getContextPath()+"/';";
 		  jsScript+="</script>"; 
-		  System.out.println(orderDTO2); 
+
 		  return jsScript; 
 	  }
 	 
@@ -227,7 +212,7 @@ public class OrderController {
 		orderService.modifyOrder(orderDTO);
 		jsScript+="<script>;";
 		jsScript+="alert('Modification Complete');";
-		jsScript += "location.href='" + request.getContextPath() + "/'";
+		jsScript += "location.href='" + request.getContextPath() + "/order/adminOrderList'";
 		jsScript+="</script>;";
 		return jsScript;
 	}

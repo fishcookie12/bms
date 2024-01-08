@@ -18,7 +18,7 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>Category</span>
                         </div>
                         <ul>
                             <li><a href="${contextPath}/category/koreanNovel">한국소설</a></li>

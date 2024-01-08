@@ -9,123 +9,195 @@
 <title>addBook</title>
 </head>
 <body>
-<h3>도서등록하기</h3>
-	<form action="${contextPath }/book/addBook" method="post" enctype="multipart/form-data">
-		<table border="1">
-			<tr>
-		        <td>도서이미지</td>
-		        <td><input type="file" name="imgNm" /></td>
-	        </tr>
-			<tr>
-				<td>도서제목</td>
-				<td>
-					<input type="text" name="bookNm">
-				</td>
-			</tr>
-			<tr>
-				<td>저자</td>
-				<td>
-					<input type="text" name="writer">
-				</td>
-			</tr>
-			<tr>
-				<td>가격</td>
-				<td>
-					<input type="number" name="price">
-				</td>
-			</tr>
-			<tr>
-				<td>할인률</td>
-				<td>
-					<input type="number" name="discountRt">
-				</td>
-			</tr>
-			<tr>
-				<td>재고</td>
-				<td>
-					<input type="number" name="stock">
-				</td>
-			</tr>
-			<tr>
-				<td>출판사</td>
-				<td>
-					<input type="text" name="publisher">
-				</td>
-			</tr>
-			<tr>
-				<td>분류</td>
-				<td>
-					<input type="text" name="sort">
-				</td>
-			</tr>
-			<tr>
-				<td>포인트</td>
-				<td>
-					<input type="number" name="point">
-				</td>
-			</tr>
-			<tr>
-				<td>출판일</td>
-				<td>
-					<input type="date" name="publishedDt">
-				</td>
-			</tr>
-			<tr>
-				<td>총페이지</td>
-				<td>
-					<input type="number" name="totalPage">
-				</td>
-			</tr>
-			<tr>
-				<td>ISBN</td>
-				<td>
-					<input type="text" name="isbn">
-				</td>
-			</tr>
-			<tr>
-				<td>배송료</td>
-				<td>
-					<input type="number" name="deliveryPrice">
-				</td>
-			</tr>
-			<tr>
-				<td>도서분류</td>
-				<td>
-					<input type="text" name="part">
-				</td>
-			</tr>
-			<tr>
-				<td>저자서문</td>
-				<td>
-					<textarea rows="10" cols="40" name="writerIntro"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td>목차</td>
-				<td>
-					<textarea rows="10" cols="40" name="contentsOrder"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td>설명</td>
-				<td>
-					<textarea rows="10" cols="40" name="intro"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td>출판사평</td>
-				<td>
-					<textarea rows="10" cols="40" name="publisherComment"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td>추천사</td>
-				<td>
-					<textarea rows="10" cols="40" name="recommendation"></textarea>
-				</td>
-			</tr>
-		</table>
-		<input type="submit" value="등록">
-	</form>
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>도서등록페이지</h4>
+				<form action="${contextPath }/book/addBook" method="post" enctype="multipart/form-data">
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>도서이미지등록<span>*</span></p>
+										<input type="file" name="imgNm" required/>
+										
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>도서제목<span>*</span></p>
+										<input type="text" name="bookNm" required>
+										
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>저자<span>*</span></p>
+										<input type="text" name="writer" required>
+										
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>출판사<span>*</span></p>
+										<input type="text" name="publisher" required>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>가격<span>*</span></p>
+										<input type="number" name="price" required>
+									</div>
+								</div>
+							</div>
+							
+							
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>할인율<span>*</span></p>
+										<input type="number" name="discountRt" required>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>재고<span>*</span></p>
+										<input type="number" name="stock" required>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>도서분류<span>*</span></p>
+										<input type="text" name="sort" required>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>포인트<span>*</span></p>
+										<input type="number" name="point" required>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>출판일<span>*</span></p>
+										<input type="date" name="publishedDt" required>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>총페이지<span>*</span></p>
+										<input type="number" name="totalPage" required>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>ISBN<span>*</span></p>
+										<input type="text" name="isbn" required>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>배송료<span>*</span></p>
+										<input type="number" name="deliveryPrice" required>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>파트<span>*</span></p>
+										<input type="text" name="part" required>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>저자소개<span>*</span></p>
+										<textarea rows="10" cols="40" name="writerIntro"></textarea>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>목차<span>*</span></p>
+										<textarea rows="10" cols="40" name="contentsOrder"></textarea>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>책소개<span>*</span></p>
+										<textarea rows="10" cols="40" name="intro"></textarea>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>출판사평<span>*</span></p>
+										<textarea rows="10" cols="40" name="publisherComment"></textarea>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>추천사<span>*</span></p>
+										<textarea rows="10" cols="40" name="recommendation"></textarea>
+									</div>
+								</div>
+							</div>
+							
+							<button type="submit" class="site-btn">도서등록</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+
 </body>
 </html>

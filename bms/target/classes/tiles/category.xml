@@ -33,9 +33,14 @@
  		<put-attribute name="title" value="시/에세이"/>	
  	</definition>
  	
+ 	<definition name="/category/economicsManagement"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/client/category/economicsManagement.jsp"/>	
+ 		<put-attribute name="title" value="경제/경영"/>	
+ 	</definition>
+ 	
  	<definition name="/category/science"  extends="baseLayout">	
  		<put-attribute name="body" value="/WEB-INF/views/client/category/science.jsp"/>	
- 		<put-attribute name="title" value="경제/경영"/>	
+ 		<put-attribute name="title" value="과학"/>	
  	</definition>
  	
  	<definition name="/category/testPreparationBook"  extends="baseLayout">	
