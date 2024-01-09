@@ -56,7 +56,7 @@ public class OrderController {
 		orderService.addOrder(orderDTO);
 		jsScript+="<script>";
 		jsScript+="alert('Order Completed');";
-		jsScript+="location.href='"+request.getContextPath()+"/';";
+		jsScript += "location.href='" + request.getContextPath() + "/order/orderList'";
 		jsScript+="</script>";
 		return jsScript;
 	}
@@ -80,7 +80,7 @@ public class OrderController {
 		  orderService.addOrder(orderDTO2); 
 		  jsScript+="<script>";
 		  jsScript+="alert('Order Completed');";
-		  jsScript+="location.href='"+request.getContextPath()+"/';";
+		  jsScript += "location.href='" + request.getContextPath() + "/order/orderList'";
 		  jsScript+="</script>"; 
 
 		  return jsScript; 
@@ -117,7 +117,6 @@ public class OrderController {
 		mv.setViewName("/order/modifyOrder");
 		mv.addObject("orderDTO", orderService.orderDetail(orderCd));
 		
-		System.out.println("orderCd : "+orderCd);
 		return mv;
 	}
 	
@@ -129,7 +128,8 @@ public class OrderController {
 		orderService.modifyOrder(orderDTO);
 		jsScript+="<script>;";
 		jsScript+="alert('Modification Complete');";
-		jsScript += "location.href='" + request.getContextPath() + "/'";
+		 jsScript += "location.href='" + request.getContextPath() + "/order/orderDetail?orderCd=" + orderDTO.getOrderCd() + "';";
+		 
 		jsScript+="</script>;";
 		return jsScript;
 	}
@@ -140,21 +140,21 @@ public class OrderController {
 	
 		mv.setViewName("/order/removeOrder");
 		mv.addObject("orderCd", orderCd);
-		System.out.println("orderCd : "+orderCd);
+		
 		return mv;
 	}
 	
 	@PostMapping("/removeOrder")
 	@ResponseBody
 	public String removeOrder(int orderCd, HttpServletRequest request) throws Exception {
-		System.out.println("orderCd : "+orderCd);
+		
 		
 		String jsScript="";
 		orderService.removeOrder(orderCd);
 		System.out.println("1");
 		jsScript+="<script>;";
 		jsScript+="alert('Order cancellation complete');";
-		jsScript += "location.href='" + request.getContextPath() + "/'";
+		jsScript += "location.href='" + request.getContextPath() + "/order/orderList'";
 		jsScript+="</script>;";
 		return jsScript;
 	}
@@ -199,8 +199,7 @@ public class OrderController {
 	
 		mv.setViewName("/order/adminModifyOrder");
 		mv.addObject("orderDTO", orderService.orderDetail(orderCd));
-		
-		System.out.println("orderCd : "+orderCd);
+	
 		return mv;
 	}
 	

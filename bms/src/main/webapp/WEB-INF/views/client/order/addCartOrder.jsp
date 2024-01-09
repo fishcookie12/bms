@@ -46,23 +46,30 @@
         });
 	    
 	    $("#checkoutForm").submit(function(event) {
-           
-            event.preventDefault();
+	    	 var paymentMethod = $("input[name='paymentMethod']:checked").val();
+
+	         if (!paymentMethod) {
+	             alert("결제방식을 선택하세요");
+	             event.preventDefault();
+	         } else {
+	             updateTotalPrice();
+	            event.preventDefault();
+	            $.ajax({
+	                type: "POST",
+	                url: "${contextPath}/cart/clearCart",
+	                data: { memberId: "${sessionScope.memberId}" },
+	                success: function(response) {
+	                	
+	                	$("#checkoutForm").unbind('submit').submit();
+	 
+	                },
+	                error: function(error) {
+	                   
+	                    console.error("Error clearing cart:", error);
+	                }
+	            });
+	         }
        
-            $.ajax({
-                type: "POST",
-                url: "${contextPath}/cart/clearCart",
-                data: { memberId: "${sessionScope.memberId}" },
-                success: function(response) {
-                	
-                	$("#checkoutForm").unbind('submit').submit();
- 
-                },
-                error: function(error) {
-                   
-                    console.error("Error clearing cart:", error);
-                }
-            });
            
            
         });
