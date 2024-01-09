@@ -20,14 +20,14 @@
                     <div class="contact__widget">
                         <span class="icon_phone"></span>
                         <h4>TellNum</h4>
-                        <p>02-1111-2222</p>
+                        <p>02-1234-5678</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                     <div class="contact__widget">
                         <span class="icon_pin_alt"></span>
                         <h4>Address</h4>
-                        <p>60-49 Road 11378 New York</p>
+                        <p>서울특별시 송파구 송파대로 1길</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -41,7 +41,7 @@
                     <div class="contact__widget">
                         <span class="icon_mail_alt"></span>
                         <h4>Email</h4>
-                        <p>hello@colorlib.com</p>
+                        <p>leebook@gmail.com</p>
                     </div>
                 </div>
             </div>

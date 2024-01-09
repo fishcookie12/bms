@@ -11,14 +11,14 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
 	private AdminDAO adminDAO;
-	
+
 	@Override
 	public AdminDTO adminLog(AdminDTO adminDTO) throws Exception {
-		AdminDTO dbAdmin=adminDAO.selectOneAdmin(adminDTO.getAdminId());
-		if(dbAdmin!=null) {
+		if(adminDAO.selectOneAdmin(adminDTO)!=null) {
 			return adminDTO;
 		}
 		return null;
 	}
+	
 
 }

@@ -172,7 +172,7 @@ public class MemberController {
 		session.setAttribute("memberId", memberDTO.getMemberId());
 		jsScript+="<script>";
 		jsScript+="alert('Modification completed');";
-		jsScript+="location.href='"+request.getContextPath()+"/';";
+		jsScript+="location.href='"+request.getContextPath()+"/member/detailMember?memberId=" + memberDTO.getMemberId() + "';";
 		jsScript+="</script>";
 		return jsScript;
 	}

@@ -32,8 +32,7 @@ public class CartController {
 	@PostMapping("/addCart")
 	public ResponseEntity<Object> addCart(@ModelAttribute CartDTO cartDTO) throws Exception {
 		cartService.addCart(cartDTO);
-		System.out.println(cartDTO);
-		
+
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 	
@@ -49,7 +48,7 @@ public class CartController {
 	
 	@PostMapping("/modifyCart")
 	public ResponseEntity<Object> modifyCart(CartDTO cartDTO) throws Exception {
-		System.out.println(cartDTO);
+		
 		cartService.modifyCart(cartDTO);
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}

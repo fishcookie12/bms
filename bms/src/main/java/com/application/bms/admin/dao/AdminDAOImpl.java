@@ -10,9 +10,9 @@ public class AdminDAOImpl implements AdminDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	@Override
-	public AdminDTO selectOneAdmin(String adminId) throws Exception {
+	public AdminDTO selectOneAdmin(AdminDTO adminDTO) throws Exception {
 	
-		return sqlSession.selectOne("adminMapper.selectOneAdmin", adminId);
+		return sqlSession.selectOne("adminMapper.selectOneAdmin", adminDTO);
 	}
 	
 }

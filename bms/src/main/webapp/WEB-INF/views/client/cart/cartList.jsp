@@ -67,17 +67,7 @@
         }
         
        function updateCart(cartCd , quantity) {
-    	   /*
-    	    var memberId="${sessionScope.memberId}";
-   			var bookCd="${cartDTO.bookCd}";
-   			var quantity=parseInt($("#quantity").val());
-   			var param={
-	   				"memberId" : memberId,
-	   				"bookCd" : bookCd,
-	   				"quantity" : quantity
-   			};
-   			
-   			*/
+    	 
    			var param={
 	   				"cartCd" : Number(cartCd),
 	   				"quantity" : Number(quantity)
