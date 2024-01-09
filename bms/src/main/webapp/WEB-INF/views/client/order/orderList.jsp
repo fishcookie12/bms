@@ -32,7 +32,7 @@
                                     <tr>
                                     	<td ><a href="${contextPath}/order/orderDetail?orderCd=${orderDTO.orderCd }">${orderDTO.orderCd}</a></td>
                                         <td class="shoping__cart__item">
-                                            <img src="img/cart/cart-1.jpg" alt="">
+                                            <!--<img src="img/cart/cart-1.jpg" alt="">-->
                                             <h5>${orderDTO.bookNm}</h5>
                                         </td>
                                         <td class="shoping__cart__quantity">

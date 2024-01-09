@@ -38,6 +38,11 @@ public class BookDAOImpl implements BookDAO {
 	public void deleteBook(int bookCd) throws Exception {
 		sqlSession.delete("bookMapper.deleteBook",bookCd);
 	}
+	@Override
+	public List<BookDTO> bookStock(Map<String, Object> searchMap) throws Exception {
+		
+		return sqlSession.selectList("bookMapper.bookStock", searchMap);
+	}
 	
 
 }

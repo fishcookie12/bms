@@ -157,4 +157,48 @@
 				BOOK_CD=#{bookCd}
 	</delete>
 	
+	<select id="bookStock" parameterType="hashMap" resultType="BookDTO">
+		<choose>
+			<when test='stockSearchkeywords.equals("total")'>
+				<choose>
+					<when test='stockSearchWords.equals("")'>
+						SELECT
+								*
+						FROM
+								BOOK
+						ORDER BY
+								ENROLL_DT DESC
+			
+					</when>
+					<otherwise>
+						SELECT 
+								*
+						FROM
+								BOOK
+						WHERE
+								BOOK_NM LIKE CONCAT('%' , #{stockSearchWords} , '%') OR
+								WRITER LIKE CONCAT('%' , #{stockSearchWords} , '%')
+						ORDER BY
+								ENROLL_DT DESC
+		
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				SELECT
+						*
+				FROM
+						BOOK
+				WHERE
+					<if test='stockSearchkeywords.equals("writer")'>
+						WRITER LIKE CONCAT('%' , #{stockSearchWords} , '%')
+					</if>
+					<if test='stockSearchkeywords.equals("bookNm")'>
+						BOOK_NM LIKE CONCAT('%' , #{stockSearchWords} , '%')
+					</if>
+				ORDER BY
+						ENROLL_DT DESC
+			</otherwise>
+		</choose>
+	</select>
 </mapper>

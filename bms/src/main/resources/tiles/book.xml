@@ -27,5 +27,10 @@
  		<put-attribute name="body" value="/WEB-INF/views/admin/book/removeBook.jsp"/>	
  		<put-attribute name="title" value="도서삭제"/>	
  	</definition>
+ 	
+ 	<definition name="/book/bookStock"  extends="baseLayout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/admin/book/bookStock.jsp"/>	
+ 		<put-attribute name="title" value="도서재고현황"/>	
+ 	</definition>
  
 </tiles-definitions>

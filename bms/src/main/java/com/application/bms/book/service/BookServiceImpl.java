@@ -44,5 +44,12 @@ public class BookServiceImpl implements BookService {
 		
 	}
 
+	@Override
+	public List<BookDTO> bookStock(Map<String, Object> searchMap) throws Exception {
+		
+		return bookDAO.bookStock(searchMap);
+	}
+
+
 
 }

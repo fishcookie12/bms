@@ -52,7 +52,7 @@ public class BookController {
 	@PostMapping("/addBook")
 	@ResponseBody
 	public String addBook(HttpServletRequest request, MultipartHttpServletRequest multipartRequest) throws Exception {
-		System.out.println("1");
+		
 		String jsScript="";
 		Iterator<String> fileList = multipartRequest.getFileNames();			
 		String fileName = "";
@@ -89,7 +89,7 @@ public class BookController {
 		bookDTO.setImgNm(fileName);
 
 		bookService.addBook(bookDTO);
-		System.out.println(bookDTO);
+		
 		jsScript = "<script>";
 		jsScript += "alert('Registration completed.');";
 		jsScript += "location.href='" + request.getContextPath() + "/'";
@@ -126,7 +126,7 @@ public class BookController {
 		
 		searchMap.put("searchOption"  , searchOption);
 		searchMap.put("searchWord"     , searchWord);
-		System.out.println(bookService.getBookList(searchMap));
+		
 		mv.addObject("bookList",  bookService.getBookList(searchMap));		
 		return mv;
 	}
@@ -136,7 +136,7 @@ public class BookController {
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("/book/bookDetail");
 		mv.addObject("bookDTO", bookService.getBookDetail(bookCd));
-		System.out.println("bookCd : "+bookCd);
+		
 		return mv;
 	}
 	
@@ -145,7 +145,7 @@ public class BookController {
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("/book/modifyBook");
 		mv.addObject("bookDTO", bookService.getBookDetail(bookCd));
-		System.out.println("modifybookCd : "+bookCd );
+		
 		return mv;
 	}
 	
@@ -180,7 +180,7 @@ public class BookController {
 		bookDTO.setImgNm(fileName);
 		
 		
-		System.out.println(bookDTO);
+		
 		bookService.modifyBook(bookDTO);
 		jsScript+="<script>;";
 		jsScript += "alert('Modifications completed.');";
@@ -197,7 +197,7 @@ public class BookController {
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("/book/removeBook");
 		mv.addObject("bookCd", bookCd);
-		System.out.println(bookCd);
+		
 		return mv;
 		
 	}
@@ -207,7 +207,7 @@ public class BookController {
 	@ResponseBody
 	public String removeBook(HttpServletRequest request, int bookCd) throws Exception {
 		bookService.removeBook(bookCd);
-		System.out.println("삭제할 도서 : "+bookCd);
+	
 		String jsScript="";
 		jsScript+="<script>;";
 		jsScript += "alert('Deletion completed.');";
@@ -218,6 +218,24 @@ public class BookController {
 		
 	}
 	
+	@GetMapping("/bookStock")
+	public ModelAndView bookInventoryStatus(HttpServletRequest request) throws Exception {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("/book/bookStock");
+		String stockSearchkeywords = request.getParameter("stockSearchkeywords");
+		if (stockSearchkeywords == null) stockSearchkeywords = "total";
+		String stockSearchWords = request.getParameter("stockSearchWords");
+		if (stockSearchWords == null) stockSearchWords = "";
+		mv.addObject("stockSearchkeywords"     , stockSearchkeywords);
+		mv.addObject("stockSearchWords"        , stockSearchWords);
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		
+		searchMap.put("stockSearchkeywords"  , stockSearchkeywords);
+		searchMap.put("stockSearchWords"     , stockSearchWords);
+		
+		mv.addObject("bookList",  bookService.bookStock(searchMap));	
+		return mv;
+	}
 	
 	
 }

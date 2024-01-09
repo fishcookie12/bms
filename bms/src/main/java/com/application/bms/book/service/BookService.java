@@ -11,5 +11,6 @@ public interface BookService {
 	public BookDTO getBookDetail(int bookCd)throws Exception;
 	public void modifyBook(BookDTO bookDTO)throws Exception;
 	public void removeBook(int bookCd)throws Exception;
+	public List<BookDTO> bookStock(Map<String, Object> searchMap)throws Exception;
 
 }

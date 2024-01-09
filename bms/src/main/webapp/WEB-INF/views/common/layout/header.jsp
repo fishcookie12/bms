@@ -84,7 +84,7 @@
                     			<ul>
                     				<li><a href="">도서관리</a>
                                 	<ul class="header__menu__dropdown">
-                                    <li><a href="${contextPath}/book/bookList">도서리스트</a></li>
+                                    <li><a href="${contextPath}/book/bookStock">도서재고현황</a></li>
                                     <li><a href="${contextPath}/book/addBook">도서등록</a></li>
                                     
                                 	</ul>

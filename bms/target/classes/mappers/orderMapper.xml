@@ -173,13 +173,13 @@
 		SELECT
 				BOOK_CD,
 			    BOOK_NM,
-			    SUM(ORDER_BOOK_QTY) AS totalSales
+			    SUM(ORDER_BOOK_QTY) AS orderBookQty
 		FROM
 		    	ORDERS
 		GROUP BY
 		    	BOOK_CD, BOOK_NM
 		ORDER BY
-		    	totalSales DESC
+		    	orderBookQty DESC
 		LIMIT 10
 	</select>
 	

@@ -31,7 +31,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>도서제목<span>*</span></p>
+										<p><strong>도서제목</strong><span>*</span></p>
 										${bookDTO.bookNm }
 										
 									</div>
@@ -41,7 +41,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>저자<span>*</span></p>
+										<p><strong>저자</strong><span>*</span></p>
 										${bookDTO.writer }
 										
 									</div>
@@ -51,7 +51,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>출판사<span>*</span></p>
+										<p><strong>출판사</strong><span>*</span></p>
 										${bookDTO.publisher }
 									</div>
 								</div>
@@ -60,7 +60,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>가격<span>*</span></p>
+										<p><strong>가격</strong><span>*</span></p>
 										<input type="number" name="price" value="${bookDTO.price }">
 									</div>
 								</div>
@@ -69,7 +69,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>할인율<span>*</span></p>
+										<p><strong>할인율</strong><span>*</span></p>
 										<input type="number" name="discountRt" value="${bookDTO.discountRt }">
 									</div>
 								</div>
@@ -78,7 +78,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>재고<span>*</span></p>
+										<p><strong>재고</strong><span>*</span></p>
 										<input type="number" name="stock" value="${bookDTO.stock }">
 									</div>
 								</div>
@@ -87,7 +87,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>도서분류<span>*</span></p>
+										<p><strong>도서분류</strong><span>*</span></p>
 										<input type="text" name="sort" value="${bookDTO.sort }">
 									</div>
 								</div>
@@ -96,7 +96,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>포인트<span>*</span></p>
+										<p><strong>포인트</strong><span>*</span></p>
 										<input type="number" name="point" value="${bookDTO.point }">
 									</div>
 								</div>
@@ -105,7 +105,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>출판일<span>*</span></p>
+										<p><strong>출판일</strong><span>*</span></p>
 										<fmt:formatDate value="${bookDTO.publishedDt }" pattern="yyyy-MM-dd"/>
 									</div>
 								</div>
@@ -114,7 +114,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>총페이지<span>*</span></p>
+										<p><strong>총페이지</strong><span>*</span></p>
 										<input type="number" name="totalPage" value="${bookDTO.totalPage }">
 									</div>
 								</div>
@@ -123,7 +123,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>ISBN<span>*</span></p>
+										<p><strong>ISBN</strong><span>*</span></p>
 										<input type="text" name="isbn" value="${bookDTO.isbn }">
 									</div>
 								</div>
@@ -132,7 +132,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>배송료<span>*</span></p>
+										<p><strong>배송료</strong><span>*</span></p>
 										<input type="number" name="deliveryPrice" value="${bookDTO.deliveryPrice }">
 									</div>
 								</div>
@@ -141,7 +141,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>파트<span>*</span></p>
+										<p><strong>파트</strong><span>*</span></p>
 										<input type="text" name="part" value="${bookDTO.part }">
 									</div>
 								</div>
@@ -150,7 +150,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>저자소개<span>*</span></p>
+										<p><strong>저자소개</strong><span>*</span></p>
 										<textarea rows="10" cols="40" name="writerIntro">${bookDTO.writerIntro }</textarea>
 									</div>
 								</div>
@@ -159,7 +159,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>목차<span>*</span></p>
+										<p><strong>목차</strong><span>*</span></p>
 										<textarea rows="10" cols="40" name="contentsOrder">${bookDTO.contentsOrder }</textarea>
 									</div>
 								</div>
@@ -168,7 +168,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>책소개<span>*</span></p>
+										<p><strong>책소개</strong><span>*</span></p>
 										<textarea rows="10" cols="40" name="intro">${bookDTO.intro }</textarea>
 									</div>
 								</div>
@@ -177,7 +177,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>출판사평<span>*</span></p>
+										<p><strong>출판사평</strong><span>*</span></p>
 										<textarea rows="10" cols="40" name="publisherComment">${bookDTO.publisherComment }</textarea>
 									</div>
 								</div>
@@ -186,7 +186,7 @@
 							<div class="row">
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
-										<p>추천사<span>*</span></p>
+										<p><strong>추천사</strong><span>*</span></p>
 										<textarea rows="10" cols="40" name="recommendation">${bookDTO.recommendation }</textarea>
 									</div>
 								</div>

@@ -58,7 +58,7 @@
                             <span>온라인도서쇼핑몰</span>
                             <h2 style="color: white">BOOK STORE</h2>
                             <p style="color: black">국내도서해외도서 eBook까지</p>
-                            <a href="${contextPath}/book/bookList" class="primary-btn">SHOP NOW</a>
+                            
                         </div>
                     </div>
                 </div>
