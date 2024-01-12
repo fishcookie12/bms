@@ -107,10 +107,23 @@
                         <input type="button" value="+" id="plus1">
                         <input type="text" value="1" id="quantity" name="quantity">
                         <input type="button" value="-" id="minus1">
-                 		<button type="button" class="site-btn" id="addToCart">장바구니</button>
-                 		<button type="button" class="site-btn" id="checkoutButton">주문하기</button>
+                        <c:choose>
+                            <c:when test="${bookDTO.stock eq 0 }">
+                               <button type="button" class="site-btn" id="addToCart" disabled>장바구니</button>
+                 		<button type="button" class="site-btn" id="checkoutButton" disabled>주문하기</button>
+                            </c:when>
+                            <c:otherwise>
+		                 		<button type="button" class="site-btn" id="addToCart">장바구니</button>
+		                 		<button type="button" class="site-btn" id="checkoutButton">주문하기</button>
+                                
+                            </c:otherwise>
+                        </c:choose>
                        
                         <h6>총금액 :<span id="totalPrice"> ${bookDTO.price }원 </h6>
+                 		 <c:if test="${sessionScope.adminId eq 'admin1' or sessionScope.adminId eq 'admin2' or sessionScope.adminId eq 'admin3'}">
+				            <button type="button" class="site-btn" onclick="location.href='modifyBook?bookCd=${bookDTO.bookCd}';">도서정보수정하기</button>
+				            <button type="button" class="site-btn" onclick="location.href='removeBook?bookCd=${bookDTO.bookCd}';">도서정보삭제하기</button>
+				        </c:if>
                         <ul>
                             <li><b>재고유무</b> 
                                 <span>
@@ -200,10 +213,7 @@
                 </div>
             </div>
         </div>
-        <c:if test="${sessionScope.adminId eq 'admin1' or sessionScope.adminId eq 'admin2' or sessionScope.adminId eq 'admin3'}">
-            <input type="button" value="도서정보수정하기" onclick="location.href='modifyBook?bookCd=${bookDTO.bookCd}';">
-            <input type="button" value="도서정보삭제하기" onclick="location.href='removeBook?bookCd=${bookDTO.bookCd}';">
-        </c:if>
+        
     </section>
 </body>
 </html>

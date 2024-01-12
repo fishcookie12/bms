@@ -10,12 +10,30 @@
 <title>removeBook</title>
 </head>
 <body>
-	<h3>도서 삭제</h3>
-		<p><span style="color:red;">해당 도서를 삭제하시겠습니까?</span></p>
-		<form action="${contextPath }/book/removeBook" method="post">
-			<input type="hidden" name="bookCd" value="${bookCd }">
-			<input type="submit" value="삭제하기">
-			
-		</form>
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>도서삭제</h4>
+				<form action="${contextPath }/book/removeBook" method="post" >
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p><span style="color:red;">해당 도서를 삭제하시겠습니까?</span></p>
+										<input type="hidden" name="bookCd" value="${bookCd }">
+										
+									</div>
+								</div>
+							</div>
+							
+							<button type="submit" class="site-btn">삭제하기</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	
+		
 </body>
 </html>
