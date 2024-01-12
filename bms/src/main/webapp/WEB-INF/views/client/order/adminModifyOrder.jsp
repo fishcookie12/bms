@@ -11,26 +11,42 @@
 <title>adminModifyOrder</title>
 </head>
 <body>
-	<div align="center">
-	<h5>관리자주문수정페이지입니다.</h5>
-		<form action="${contextPath }/order/adminModifyOrder" method="post">
-			<table border="1">
-				<tr  align="center">
-					<th>${orderDTO.memberId }배송상태</th>
-				</tr>
-				<tr>
-					<td>
-						<input type="radio" name="deliveryStatus" value="배송준비중" checked>배송준비중
-						<input type="radio" name="deliveryStatus" value="출고처리중" >출고처리중
-						<input type="radio" name="deliveryStatus" value="출고완료" >출고완료
-						<input type="radio" name="deliveryStatus" value="배송시작" >배송시작
-						<input type="radio" name="deliveryStatus" value="배송완료" >배송완료
-					</td>
-				</tr>
-			</table>
-			<input type="hidden" value="${orderDTO.orderCd }" name="orderCd">
-			<input type="submit" value="수정완료">
-		</form>
-	</div>
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>배송상태수정</h4>
+				<form action="${contextPath }/order/adminModifyOrder" method="post">
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+                        <div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p>회원아이디 : ${orderDTO.memberId }<span></span></p>
+										
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										
+									</div>
+										<input type="radio" name="deliveryStatus" value="배송준비중" checked>배송준비중
+										<input type="radio" name="deliveryStatus" value="출고처리중" >출고처리중
+										<input type="radio" name="deliveryStatus" value="출고완료" >출고완료
+										<input type="radio" name="deliveryStatus" value="배송시작" >배송시작
+										<input type="radio" name="deliveryStatus" value="배송완료" >배송완료
+								</div>
+							</div>
+							<input type="hidden" value="${orderDTO.orderCd }" name="orderCd">
+							<button type="submit" class="site-btn">수정완료</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+
+
 </body>
 </html>
