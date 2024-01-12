@@ -125,7 +125,7 @@ $(document).ready(function() {
 								<input type="hidden" name="bookNm" value="${param.bookNm}">
 								<input type="hidden" name="orderBookQty" value="${param.quantity}">
 								<input type="hidden" name="totalPrice" value="${param.price}">
-                               <input type="submit" value="결제하기">
+                               <button type="submit" class="site-btn">결제하기</button>
                                
                             </div>
                         </div>

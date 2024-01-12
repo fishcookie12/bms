@@ -107,9 +107,9 @@
                         <input type="button" value="+" id="plus1">
                         <input type="text" value="1" id="quantity" name="quantity">
                         <input type="button" value="-" id="minus1">
-                 
-                        <input type="button" value="장바구니" id="addToCart">
-                        <input type="button" value="주문하기" id="checkoutButton">
+                 		<button type="button" class="site-btn" id="addToCart">장바구니</button>
+                 		<button type="button" class="site-btn" id="checkoutButton">주문하기</button>
+                       
                         <h6>총금액 :<span id="totalPrice"> ${bookDTO.price }원 </h6>
                         <ul>
                             <li><b>재고유무</b> 

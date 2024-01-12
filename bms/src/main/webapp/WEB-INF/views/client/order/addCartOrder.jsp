@@ -147,7 +147,7 @@
                                 <input type="radio" name="paymentMethod" value="bankTransfer">계좌이체
                                 <input type="radio" name="paymentMethod" value="phone">휴대폰결제
 								<input type="hidden" name="memberId" value="${sessionScope.memberId}">
-                               <input type="submit" value="결제하기">
+                               <button type="submit" class="site-btn">결제하기</button>
                                
                             </div>
                         </div>

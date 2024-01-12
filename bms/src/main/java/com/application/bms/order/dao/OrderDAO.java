@@ -8,7 +8,7 @@ import com.application.bms.book.dto.BookDTO;
 import com.application.bms.order.dto.OrderDTO;
 
 public interface OrderDAO {
-	public List<Map<String,Object>> getListByCart(String memberId)throws Exception;
+	
 	public void insertOrder(OrderDTO orderDTO)throws Exception;
 	public List<OrderDTO> selectOrderList(String memberId)throws Exception;
 	public OrderDTO selectOrderOne(int orderCd)throws Exception;
@@ -22,6 +22,6 @@ public interface OrderDAO {
 	public List<OrderDTO> getWomanBestSeller()throws Exception;
 	public List<OrderDTO> getManBestSeller()throws Exception;
 	public void updateStock(Map<String,Object> orderMap)throws Exception;
-	public void insertOrderByCart(List<OrderDTO> orderList) throws Exception;
+	
 	public int selectOneTodayNewOrderCnt(String today) throws Exception;
 }

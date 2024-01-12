@@ -18,12 +18,6 @@ public class OrderDAOImpl implements OrderDAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<Map<String, Object>> getListByCart(String memberId) throws Exception {
-		
-		return sqlSession.selectList("orderMapper.getListByCart", memberId);
-	}
-	
-	@Override
 	public void insertOrder(OrderDTO orderDTO) throws Exception {
 		sqlSession.insert("orderMapper.insertOrder", orderDTO);
 		
@@ -99,12 +93,7 @@ public class OrderDAOImpl implements OrderDAO {
 		
 		return sqlSession.selectList("orderMapper.getManBestSeller");
 	}
-	
-	@Override
-	public void insertOrderByCart(List<OrderDTO> orderList) throws Exception{
-		sqlSession.insert("orderMapper.insertOrderByCart" , orderList);
-	}
-	
+
 	@Override
 	public int selectOneTodayNewOrderCnt(String today) throws Exception {
 		return sqlSession.selectOne("member.selectOneTodayNewOrderCnt" , today);
