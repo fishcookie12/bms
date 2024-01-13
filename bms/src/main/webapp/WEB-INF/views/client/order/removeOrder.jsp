@@ -11,13 +11,30 @@
 <title>removeOrder</title>
 </head>
 <body>
-	<div align="center">
-		
-		<p><span style="color:red;">주문을 취소하시겠습니까?</span></p>
-		<form action="${contextPath }/order/removeOrder" method="post">
-			<input type="hidden" name="orderCd" value="${orderCd }">
-			<input type="submit" value="취소하기">
-		</form>
-	</div>
+
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<h4>주문취소페이지</h4>
+				<form action="${contextPath }/order/removeOrder" method="post">
+					<div class="row">
+                        <div class="col-lg-8 col-md-6">
+							<div class="row">
+                                <div class="col-lg-6">
+                                	<div class="checkout__input">
+										<p><strong>해당주문건을 취소하시겠습니까?</strong><span></span></p>
+										<p>주문코드 : ${orderCd } </p>
+									</div>
+								</div>
+							</div>
+							<input type="hidden" name="orderCd" value="${orderCd }">
+							<button type="submit" class="site-btn">주문취소</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	
 </body>
 </html>
