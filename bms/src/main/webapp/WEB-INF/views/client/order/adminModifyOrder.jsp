@@ -22,6 +22,8 @@
                                 <div class="col-lg-6">
                                 	<div class="checkout__input">
 										<p>회원아이디 : ${orderDTO.memberId }<span></span></p>
+										<p>주문코드: ${orderDTO.orderCd }<span></span></p>
+										<p>현재배송상태 : ${orderDTO.deliveryStatus }<span></span></p>
 										
 									</div>
 								</div>
